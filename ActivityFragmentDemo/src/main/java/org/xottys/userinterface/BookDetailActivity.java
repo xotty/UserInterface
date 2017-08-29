@@ -1,3 +1,13 @@
+/**
+ * 在本Activity加载了BookDetailFragment，用其填充了activity_book_detail布局中的容器book_detail_container
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name: FragmentGeneral
+ * <br/>Date:Aug，2017
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface;
 
 import android.app.Activity;
@@ -5,16 +15,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-/**
- * Description:
- * <br/>website: <a href="http://www.crazyit.org">crazyit.org</a>
- * <br/>Copyright (C), 2001-2014, Yeeku.H.Lee
- * <br/>This program is protected by copyright laws.
- * <br/>Program Name:
- * <br/>Date:
- * @author Yeeku.H.Lee kongyeeku@163.com
- * @version 1.0
- */
 public class BookDetailActivity extends Activity
 {
 	@Override
@@ -24,8 +24,10 @@ public class BookDetailActivity extends Activity
 		// 指定加载/res/layout目录下的activity_book_detail.xml布局文件
 		// 该界面布局文件内只定义了一个名为book_detail_container的FrameLayout
 		setContentView(R.layout.activity_book_detail);
+
 		// 将ActionBar上应用图标转换成可点击的按钮
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+
 		if (savedInstanceState == null)
 		{
 			// 创建BookDetailFragment对象
@@ -42,6 +44,7 @@ public class BookDetailActivity extends Activity
 		}
 	}
 
+    //点击ActionBar后返回BookListActivity
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{

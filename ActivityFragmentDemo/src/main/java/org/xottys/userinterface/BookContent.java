@@ -1,3 +1,13 @@
+/**
+ * 演示FragmentGeneral用到的数据类，主要包含Book、ITEMS和ITEM_MAP三个对象
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name: FragmentGeneral
+ * <br/>Date:Aug，2017
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface;
 
 import java.util.ArrayList;
@@ -5,16 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Description:
- * <br/>website: <a href="http://www.crazyit.org">crazyit.org</a>
- * <br/>Copyright (C), 2001-2014, Yeeku.H.Lee
- * <br/>This program is protected by copyright laws.
- * <br/>Program Name:
- * <br/>Date:
- * @author Yeeku.H.Lee kongyeeku@163.com
- * @version 1.0
- */
 public class BookContent
 {
 	public static class Book

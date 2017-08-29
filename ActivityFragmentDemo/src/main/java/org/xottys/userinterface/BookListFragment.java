@@ -1,3 +1,15 @@
+/**
+ * 本例用ListFragment来显示书籍名称，其主要用法是：
+ * 1)用setListAdapter填充其自带的ListView数据
+ * 2)重写onListItemClick响应项目点击事件
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:LifecycleActivity
+ * <br/>Date:Aug，2017
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface;
 
 import android.app.Activity;
@@ -12,16 +24,6 @@ import android.widget.ListView;
 
 import static android.content.ContentValues.TAG;
 
-/**
- * Description:
- * <br/>website: <a href="http://www.crazyit.org">crazyit.org</a>
- * <br/>Copyright (C), 2001-2014, Yeeku.H.Lee
- * <br/>This program is protected by copyright laws.
- * <br/>Program Name:
- * <br/>Date:
- * @author Yeeku.H.Lee kongyeeku@163.com
- * @version 1.0
- */
 public class BookListFragment extends ListFragment
 {
 	private Callbacks mCallbacks;
@@ -35,12 +37,14 @@ public class BookListFragment extends ListFragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		// 为该ListFragment设置Adapter
+		//为该ListFragment设置Adapter，将Book数据(BookContent.ITEMS)添加进去
 		setListAdapter(new ArrayAdapter<BookContent.Book>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, BookContent.ITEMS));  //①
+				android.R.id.text1, BookContent.ITEMS));
+
 		Log.d(TAG, "-------onCreate------");
 	}
+
 	// 当该Fragment被添加、显示到Activity时，回调该方法
 	@Override
 	public void onAttach(Activity activity)
@@ -54,6 +58,7 @@ public class BookListFragment extends ListFragment
 		}
 		// 把该Activity当成Callbacks对象
 		mCallbacks = (Callbacks) activity;
+
 		Log.d(TAG, "-------onAttach------");
 	}
 
@@ -62,7 +67,7 @@ public class BookListFragment extends ListFragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle data)
 	{
-		// 输出日志
+		// ListFragment使用系统定义的ListView，不需要自定义view
 		Log.d(TAG, "-------onCreateView------");
 
 		return super.onCreateView(inflater,container,data);
@@ -72,7 +77,7 @@ public class BookListFragment extends ListFragment
 	public void onActivityCreated(Bundle savedInstanceState)
 	{
 		super.onActivityCreated(savedInstanceState);
-		// 输出日志
+
 		Log.d(TAG, "-------onActivityCreated------");
 	}
 
@@ -80,7 +85,7 @@ public class BookListFragment extends ListFragment
 	public void onStart()
 	{
 		super.onStart();
-		// 输出日志
+
 		Log.d(TAG, "-------onStart------");
 	}
 
@@ -88,7 +93,7 @@ public class BookListFragment extends ListFragment
 	public void onResume()
 	{
 		super.onResume();
-		// 输出日志
+
 		Log.d(TAG, "-------onResume------");
 	}
 
@@ -96,7 +101,7 @@ public class BookListFragment extends ListFragment
 	public void onPause()
 	{
 		super.onPause();
-		// 输出日志
+
 		Log.d(TAG, "-------onPause------");
 	}
 
@@ -104,7 +109,7 @@ public class BookListFragment extends ListFragment
 	public void onStop()
 	{
 		super.onStop();
-		// 输出日志
+
 		Log.d(TAG, "-------onStop------");
 	}
 
@@ -112,7 +117,7 @@ public class BookListFragment extends ListFragment
 	public void onDestroyView()
 	{
 		super.onDestroyView();
-		// 输出日志
+
 		Log.d(TAG, "-------onDestroyView------");
 	}
 
@@ -120,11 +125,9 @@ public class BookListFragment extends ListFragment
 	public void onDestroy()
 	{
 		super.onDestroy();
-		// 输出日志
+
 		Log.d(TAG, "-------onDestroy------");
 	}
-
-
 
 	// 当该Fragment从它所属的Activity中被删除时回调该方法
 	@Override
@@ -133,11 +136,12 @@ public class BookListFragment extends ListFragment
 		super.onDetach();
 		// 将mCallbacks赋为null。
 		mCallbacks = null;
+
 		Log.d(TAG, "-------onDetach------");
 	}
 
 
-	// 当用户点击某列表项时回调该方法
+	// 当用户点击某列表项时回调该方法，通过调用Avtivity的回调方法，把数据传给Activity
 	@Override
 	public void onListItemClick(ListView listView
 		, View view, int position, long id)
@@ -146,6 +150,7 @@ public class BookListFragment extends ListFragment
 		mCallbacks.onItemSelected(BookContent.ITEMS.get(position).id);
 	}
 
+	// 设置listview中项目点击模式
 	public void setActivateOnItemClick(boolean activateOnItemClick)
 	{
 		getListView().setChoiceMode(

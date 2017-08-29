@@ -1,3 +1,13 @@
+/**
+ * 用传入的书籍id获取对应的书籍信息，将其填充到fragment_book_detail布局中去
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name: FragmentGeneral
+ * <br/>Date:Aug，2017
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface;
 
 import android.app.Fragment;
@@ -7,16 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
- * Description:
- * <br/>website: <a href="http://www.crazyit.org">crazyit.org</a>
- * <br/>Copyright (C), 2001-2014, Yeeku.H.Lee
- * <br/>This program is protected by copyright laws.
- * <br/>Program Name:
- * <br/>Date:
- * @author Yeeku.H.Lee kongyeeku@163.com
- * @version 1.0
- */
 public class BookDetailFragment extends Fragment
 {
 	public static final String ITEM_ID = "item_id";
@@ -26,7 +26,7 @@ public class BookDetailFragment extends Fragment
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		// 如果启动该Fragment时包含了ITEM_ID参数
+		// 如果启动该Fragment时包含了ITEM_ID参数，将传入的id对应的书籍取出来
 		if (getArguments().containsKey(ITEM_ID))
 		{
 			book = BookContent.ITEM_MAP.get(getArguments()
