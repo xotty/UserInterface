@@ -11,9 +11,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-/**
- * Created by changqing on 2017/8/29.
- */
+
 
 public class MyListActivity extends ListActivity {
     @Override
