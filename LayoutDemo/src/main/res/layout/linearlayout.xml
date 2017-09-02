@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+<Button  
+	android:id="@+id/bn1"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:text="@string/bn1"
+	/>
+<Button  
+	android:id="@+id/bn2"
+	android:layout_width="200dp"
+	android:layout_height="80dp"
+	android:text="@string/bn2"
+	/>
+<TextView
+	android:id="@+id/tv1"
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:text="演示Textview1"
+	android:textSize="30sp"
+	android:textColor="@android:color/white"
+	android:background="@color/color3"
+	/>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:layout_marginTop="30dp"
+		android:orientation="horizontal">
+		<Button
+			android:id="@+id/bn4"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/bn4" />
+		<TextView
+			android:id="@+id/tv2"
+			android:layout_width="140dp"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="40dp"
+			android:paddingLeft="10dp"
+			android:textColor="@android:color/black"
+			android:background="@color/color5"
+			android:text="演示Textview2" />
+	</LinearLayout>
+</LinearLayout>
