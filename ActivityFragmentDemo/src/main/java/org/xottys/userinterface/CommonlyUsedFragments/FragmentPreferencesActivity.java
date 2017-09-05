@@ -12,11 +12,13 @@
  * @version 1.0
  */
 
-package org.xottys.userinterface;
+package org.xottys.userinterface.CommonlyUsedFragments;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+
+import org.xottys.userinterface.R;
 
 public class FragmentPreferencesActivity extends Activity {
 
@@ -36,4 +38,5 @@ public class FragmentPreferencesActivity extends Activity {
             addPreferencesFromResource(R.xml.fragment_preferences);
         }
     }
+
 }

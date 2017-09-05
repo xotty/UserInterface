@@ -9,7 +9,7 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface;
+package org.xottys.userinterface.ActivityLifecycle;
 
 import android.app.Activity;
 import android.graphics.Color;

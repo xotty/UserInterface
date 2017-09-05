@@ -11,7 +11,7 @@
 	android:showDividers="middle">
 	<!-- 添加一个Fragment -->
 	<fragment
-		android:name="org.xottys.userinterface.BookListFragment"
+		android:name="org.xottys.userinterface.FragmentGeneral.BookListFragment"
 		android:id="@+id/book_list"
 		android:layout_width="0dp"
 		android:layout_height="match_parent"

@@ -8,7 +8,7 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface;
+package org.xottys.userinterface.FragmentGeneral;
 
 import java.util.ArrayList;
 import java.util.HashMap;

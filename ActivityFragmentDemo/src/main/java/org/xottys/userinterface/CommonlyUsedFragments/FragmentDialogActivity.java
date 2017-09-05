@@ -13,7 +13,7 @@
  * @version 1.0
  */
 
-package org.xottys.userinterface;
+package org.xottys.userinterface.CommonlyUsedFragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,6 +22,8 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+
+import org.xottys.userinterface.R;
 
 public class FragmentDialogActivity extends Activity {
     private static final String TAG = "DialogFragment";

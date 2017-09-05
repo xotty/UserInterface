@@ -1,13 +1,13 @@
-/**±í¸ñ²¼¾Ö
- * Ã¿¸ö<TableRow>»òµ¥¶À¿Ø¼ş¾ùÎª±í¸ñµÄÒ»ĞĞ
- * <TableRow>ÀïÃæµÄÃ¿¸ö¿Ø¼şÎªÒ»ÁĞ£¬
- * android:layout_column ¿ÉÒÔÖ±½ÓÉèÖÃ¿Ø¼şÔÚµÚ¼¸ÁĞ
- * android:layout_span ¿ÉÒÔÉèÖÃÒ»¸ö¿Ø¼şÄÜ¿ç¶àÉÙÁĞ
+/**è¡¨æ ¼å¸ƒå±€
+ * æ¯ä¸ª<TableRow>æˆ–å•ç‹¬æ§ä»¶å‡ä¸ºè¡¨æ ¼çš„ä¸€è¡Œ
+ * <TableRow>é‡Œé¢çš„æ¯ä¸ªæ§ä»¶ä¸ºä¸€åˆ—ï¼Œ
+ * android:layout_column å¯ä»¥ç›´æ¥è®¾ç½®æ§ä»¶åœ¨ç¬¬å‡ åˆ—
+ * android:layout_span å¯ä»¥è®¾ç½®ä¸€ä¸ªæ§ä»¶èƒ½è·¨å¤šå°‘åˆ—
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
  * <br/>Program Name:LayoutDemo
- * <br/>Date:Aug£¬2017
+ * <br/>Date:Augï¼Œ2017
  * @author xottys@163.com
  * @version 1.0
  */

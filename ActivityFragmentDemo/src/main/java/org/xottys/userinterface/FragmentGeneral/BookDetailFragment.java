@@ -8,7 +8,7 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface;
+package org.xottys.userinterface.FragmentGeneral;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import org.xottys.userinterface.R;
 
 public class BookDetailFragment extends Fragment
 {
