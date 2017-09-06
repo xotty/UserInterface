@@ -49,7 +49,6 @@ public class MyAuthenticator extends AbstractAccountAuthenticator {
         final Intent intent = new Intent(mContext, AuthenticatorActivity.class);
         intent.putExtra(AuthenticatorActivity.ARG_ACCOUNT_TYPE, accountType);
         intent.putExtra(AuthenticatorActivity.ARG_AUTH_TYPE, authTokenType);
-        intent.putExtra(AuthenticatorActivity.ARG_IS_ADDING_NEW_ACCOUNT, true);
         intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
 
         //把封装了信息的intent放入Bundle
@@ -59,7 +58,7 @@ public class MyAuthenticator extends AbstractAccountAuthenticator {
         return bundle;
     }
     //获取token，本地如果获取失败则调用服务器登录程序进一步获取
-    //这一步实际就是账户正确性验证，取得非空token则验证成功，否则验证失败
+    //这一步也可以作为账户正确性验证，取得非空token则验证成功，否则验证失败
     @Override
     public Bundle getAuthToken(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle options) throws NetworkErrorException {
 
@@ -101,6 +100,7 @@ public class MyAuthenticator extends AbstractAccountAuthenticator {
             result.putString(AccountManager.KEY_ACCOUNT_NAME, account.name);
             result.putString(AccountManager.KEY_ACCOUNT_TYPE, account.type);
             result.putString(AccountManager.KEY_AUTHTOKEN, authToken);
+
             return result;
         }
 
@@ -112,6 +112,8 @@ public class MyAuthenticator extends AbstractAccountAuthenticator {
         intent.putExtra(AuthenticatorActivity.ARG_ACCOUNT_TYPE, account.type);
         intent.putExtra(AuthenticatorActivity.ARG_AUTH_TYPE, authTokenType);
         intent.putExtra(AuthenticatorActivity.ARG_ACCOUNT_NAME, account.name);
+        //intent.putExtra(AuthenticatorActivity.ARG_IS_ADDING_NEW_ACCOUNT, false);
+
         final Bundle bundle = new Bundle();
         bundle.putParcelable(AccountManager.KEY_INTENT, intent);
         return bundle;
@@ -148,5 +150,15 @@ public class MyAuthenticator extends AbstractAccountAuthenticator {
     @Override
     public Bundle updateCredentials(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle options) throws NetworkErrorException {
         return null;
+    }
+
+    //AccountManager.removeAccount()方法会触发此方法，在这里可以去服务器删除账号，若成功则允许删除，否则不允许删除
+    @Override
+    public Bundle getAccountRemovalAllowed(AccountAuthenticatorResponse response, Account account) {
+        Bundle result = new Bundle();
+        boolean allowed = true ;// or whatever logic you want here
+        result.putBoolean(AccountManager.KEY_BOOLEAN_RESULT, allowed);
+        Log.i(TAG, "getAccountRemovalAllowed:");
+        return result;
     }
 }

@@ -2,7 +2,7 @@
  * 1）AccountAuthenticatorActivity的子类，呈现登录界面，可以跳转注册页面
  * 2）处理登录操作，去服务器获取token
  * 3) 根据token确定注册登录结果，若失败则本地显示错误信息
- * 4）注册登录成功则添加账户或修改密码，将成功结果传递给Authenticator
+ * 4）注册登录成功则添加账户或示登录验证成功，将成功结果传递给Authenticator
  * <p>
  * <br/>Copyright (C), 2013-2018, udinic
  * <br/>This program is protected by copyright laws.
@@ -50,9 +50,10 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_login);
         mAccountManager = AccountManager.get(getBaseContext());
-        System.out.println("AuthenticatorActivity1");
         String accountName = getIntent().getStringExtra(ARG_ACCOUNT_NAME);
         mAuthTokenType = getIntent().getStringExtra(ARG_AUTH_TYPE);
+        System.out.println("AuthenticatorActivity1--"+accountName+"--"+mAuthTokenType);
+
         if (mAuthTokenType == null)
             mAuthTokenType = AccountGeneral.AUTHTOKEN_TYPE_FULL_ACCESS;
 
@@ -121,6 +122,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
                     data.putString(AccountManager.KEY_ACCOUNT_TYPE, accountType);
                     data.putString(AccountManager.KEY_AUTHTOKEN, authtoken);
                     data.putString(PARAM_USER_PASS, userPass);
+                    data.putBoolean(ARG_IS_ADDING_NEW_ACCOUNT,false);
 
                 } catch (Exception e) {
                     data.putString(KEY_ERROR_MESSAGE, e.getMessage());
@@ -189,7 +191,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         //hideProgress();
     }
 
-    //账号登录注册处理第三步，成功后在AccountMangager中添加账号或
+    //账号登录注册处理第三步，成功后在AccountMangager中添加账号或显示登录验证成功
     private void finishLogin(Intent intent) {
         Log.d(TAG,  "AuthenticatorActivity > finishLogin");
         System.out.println("AuthenticatorActivity2");
@@ -197,7 +199,7 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
         String accountPassword = intent.getStringExtra(PARAM_USER_PASS);
         final Account account = new Account(accountName, intent.getStringExtra(AccountManager.KEY_ACCOUNT_TYPE));
         //如果是新增账号则在AccountMangager中添加账号
-        if (getIntent().getBooleanExtra(ARG_IS_ADDING_NEW_ACCOUNT, false)) {
+        if (intent.getBooleanExtra(ARG_IS_ADDING_NEW_ACCOUNT, false)) {
             Log.d(TAG , "AuthenticatorActivity > finishLogin > addAccountExplicitly");
             String authtoken = intent.getStringExtra(AccountManager.KEY_AUTHTOKEN);
             String authtokenType = mAuthTokenType;
@@ -206,14 +208,16 @@ public class AuthenticatorActivity extends AccountAuthenticatorActivity {
             // (Not setting the auth token will cause another call to the server to authenticate the user)
             mAccountManager.addAccountExplicitly(account, accountPassword, null);
             mAccountManager.setAuthToken(account, authtokenType, authtoken);
+            intent.putExtra("action","Register Succeed");
         }
-        //如果旧账号则在AccountMangager中修改密码
+        //如果旧账号成功登录
         else {
-            Log.d(TAG, "AuthenticatorActivity > finishLogin > setPassword："+account+"／"+accountPassword);
-            mAccountManager.setPassword(account, accountPassword);
+           intent.putExtra("action","Login Succeed");
+            Log.d(TAG, "AuthenticatorActivity > finishLogin > succeed："+account+"／"+accountPassword);
+           // mAccountManager.setPassword(account, accountPassword);
         }
 
-        //这是验证成功结果，返回调用者
+        //这是验证成功结果，返回调用者Authenticator，进一步传递到MyAuthenticateActivity
         setAccountAuthenticatorResult(intent.getExtras());
         setResult(RESULT_OK, intent);
         finish();

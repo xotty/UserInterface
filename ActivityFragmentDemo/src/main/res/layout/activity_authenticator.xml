@@ -10,24 +10,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="addAccount"/>
+        android:textSize="25sp"
+        android:textAllCaps="false"
+        android:text="SignAccount" />
 
     <Button android:id="@+id/btnGetAuthToken"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="getAuthToken"/>
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        android:text="GetAuthToken"/>
 
-    <Button android:id="@+id/btnGetAuthTokenConvenient"
+    <Button android:id="@+id/btnRenameAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="getAuthTokenByFeatures"/>
+        android:text="RenameAccount"
+        android:textSize="25sp"
+        android:textAllCaps="false"/>
 
     <Button android:id="@+id/btnInvalidateAuthToken"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="invalidateAuthToken"/>
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        android:text="InvalidateAuthToken"/>
+
+    <Button android:id="@+id/btnRemoveAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        android:text="RemoveAccount"/>
 
 </LinearLayout>

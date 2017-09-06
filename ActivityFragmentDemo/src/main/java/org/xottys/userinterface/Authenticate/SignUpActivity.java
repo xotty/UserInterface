@@ -24,6 +24,7 @@ import org.xottys.userinterface.R;
 
 import static org.xottys.userinterface.Authenticate.AccountGeneral.sServerAuthenticate;
 import static org.xottys.userinterface.Authenticate.AuthenticatorActivity.ARG_ACCOUNT_TYPE;
+import static org.xottys.userinterface.Authenticate.AuthenticatorActivity.ARG_IS_ADDING_NEW_ACCOUNT;
 import static org.xottys.userinterface.Authenticate.AuthenticatorActivity.PARAM_USER_PASS;
 import static org.xottys.userinterface.Authenticate.AuthenticatorActivity.KEY_ERROR_MESSAGE;
 
@@ -80,6 +81,7 @@ public class SignUpActivity extends Activity {
                     data.putString(AccountManager.KEY_ACCOUNT_TYPE, mAccountType);
                     data.putString(AccountManager.KEY_AUTHTOKEN, authtoken);
                     data.putString(PARAM_USER_PASS, accountPassword);
+                    data.putBoolean(ARG_IS_ADDING_NEW_ACCOUNT,true);
                 } catch (Exception e) {
                     data.putString(KEY_ERROR_MESSAGE, e.getMessage());
                 }
