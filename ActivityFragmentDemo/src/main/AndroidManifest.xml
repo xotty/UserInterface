@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.xottys.userinterface">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- client -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <!-- Authenticator -->
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".ActivityLifecycle.AppGlobal"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityLifecycle.LifecycleActivity"
+            android:label="@string/lifecycle" />
+        <activity
+            android:name=".ActivityLifecycle.LifecycleSecondActivity"
+            android:label="@string/lifecycle"
+            android:theme="@android:style/Theme.Holo.Dialog" />
+        <activity
+            android:name=".ActivityLifecycle.LifecycleThirdActivity"
+            android:label="@string/lifecycle" />
+        <activity
+            android:name=".CommonlyUsedActivities.MyLauncherActivity"
+            android:label="laucher" />
+        <activity
+            android:name=".CommonlyUsedActivities.MyExpandableListActivity"
+            android:label="查看星际兵种" />
+        <activity
+            android:name=".CommonlyUsedActivities.MyPreferenceActivity"
+            android:label="设置程序参数" />
+        <activity
+            android:name=".FragmentLifecycle.FragmentLifecycleActivity"
+            android:label="Fragment生命周期" />
+        <activity
+            android:name=".ActivityTaskMode.StandardActivity"
+            android:label="@string/title_activity_standard" />
+        <activity
+            android:name=".ActivityTaskMode.SingleTaskActivity"
+            android:label="singleTask"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ActivityTaskMode.SingleTopActivity"
+            android:label="singleTask"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".ActivityTaskMode.SingleInstanceActivity"
+            android:label="singleTask"
+            android:launchMode="singleInstance" />
+        <activity
+            android:name=".FragmentGeneral.BookListActivity"
+            android:label="@string/title_book_list" />
+        <activity
+            android:name=".FragmentGeneral.BookDetailActivity"
+            android:label="@string/title_book_detail" />
+        <activity
+            android:name=".CommonlyUsedActivities.MyListActivity"
+            android:label="ListActivityDemo"></activity>
+        <activity-alias
+            android:name=".CommonlyUsedActivities.MyAliasActivity"
+            android:targetActivity=".CommonlyUsedActivities.MyListActivity"
+            android:label="AliasActivityDemo"></activity-alias>
+
+        <activity
+            android:name=".CommonlyUsedFragments.FragmentListActivity"
+            android:label="ListFragmentDemo"></activity>
+        <activity
+            android:name=".CommonlyUsedFragments.FragmentDialogActivity"
+            android:label="DiaologFragmentDemo"></activity>
+        <activity
+            android:name=".CommonlyUsedFragments.FragmentWebViewActivity"
+            android:label="WebViewFragmentDemo"></activity>
+        <activity
+            android:name=".CommonlyUsedFragments.FragmentPreferencesActivity"
+            android:label="PreferencesFragmentDemo"></activity>
+        <!-- Authenticator related activities and service needs to be declared here in order for the app to recognize them-->
+        <activity
+            android:name=".CommonlyUsedActivities.MyAuthenticateActivity"
+            android:label="AuthenticatorActivitytDemo"></activity>
+        <activity android:name=".Authenticate.AuthenticatorActivity" android:label="@string/login_label"/>
+        <activity android:name=".Authenticate.SignUpActivity" android:label="@string/signup_title"/>
+        <service android:name=".Authenticate.MyAuthenticatorService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+    </application>
+</manifest>
