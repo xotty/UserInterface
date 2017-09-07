@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string-array name="gender_name_list">
+	<item>男</item>
+	<item>女</item>
+</string-array>
+<string-array name="gender_value_list">
+	<item>male</item>
+	<item>female</item>
+</string-array>
+<string-array name="light_strength_list">
+	<item>弱光</item>
+	<item>中等</item>
+	<item>强光</item>
+</string-array>
+<string-array name="light_value_list">
+	<item>weak</item>
+	<item>medium</item>
+	<item>strong</item>
+</string-array>
+
+	<!-- Used in app/menu examples -->
+	<string-array name="entries_list_preference">
+		<item>Alpha Option 01</item>
+		<item>Beta Option 02</item>
+		<item>Charlie Option 03</item>
+	</string-array>
+	<!-- Used in app/menu examples -->
+	<string-array name="entryvalues_list_preference">
+		<item>alpha</item>
+		<item>beta</item>
+		<item>charlie</item>
+	</string-array>
+	<!-- Used in app/menu examples -->
+	<string-array name="books_list_preference">
+		<item>从0到1</item>
+		<item>万历十五年</item>
+		<item>文明的冲突</item>
+		<item>谁在导演世界</item>
+		<item>被颠覆的文明：我们怎么会落到这一步</item>
+	</string-array>
+
+</resources>

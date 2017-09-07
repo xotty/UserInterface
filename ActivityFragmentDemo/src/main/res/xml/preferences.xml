@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- 设置系统铃声 -->
+<RingtonePreference
+	android:key="ring_tone_key"
+	android:ringtoneType="all"
+	android:title="设置铃声"
+	android:summary="选择铃声（演示RingtonePreference)"
+	android:showDefault="true"
+	android:showSilent="true">
+</RingtonePreference>
+<PreferenceCategory android:title="第一组">
+	<!-- 通过输入框填写用户名 -->
+	<EditTextPreference
+		android:key="edit_text_key"
+		android:title="填写用户名"
+		android:summary="填写您的用户名（演示EditTextPreference)"
+		android:dialogTitle="您所使用的用户名为：" />
+	<!-- 通过列表框选择性别 -->
+	<ListPreference
+		android:key="list_key"
+		android:title="性别"
+		android:summary="选择您的性别（演示ListPreference）"
+		android:dialogTitle="ListPreference"
+		android:entries="@array/gender_name_list"
+		android:entryValues="@array/gender_value_list" />
+	<!-- 通过多选列表框选择喜爱的书籍 -->
+	<MultiSelectListPreference
+		android:key="multiselect_list_key"
+		android:title="书籍"
+		android:summary="选择您喜爱的书籍（演示MultiSelectListPreference）"
+		android:entries="@array/books_list_preference"
+		android:entryValues="@array/books_list_preference"
+		android:dialogTitle="MultiSelectListPreference" />
+
+</PreferenceCategory>
+<PreferenceCategory android:title="第二组">
+    <!-- 通过CheckBoxPreference设置是否自动保存进度 -->
+    <CheckBoxPreference
+        android:key="check_box_key"
+        android:title="自动保存进度（演示CheckBoxPreference）"
+        android:summaryOn="自动保存: 开启"
+        android:summaryOff="自动保存: 关闭"
+        android:defaultValue="true" />
+    <!-- 通过SwitchPreference设置是否自动滚屏 -->
+    <SwitchPreference
+        android:key="switch_key"
+        android:title="自动滚屏(演示SwitchPreference)"
+        android:summaryOn="自动滚屏: 开启"
+        android:summaryOff="自动滚屏: 关闭"
+        android:defaultValue="true" />
+</PreferenceCategory>
+    <PreferenceCategory android:title="第三组">
+    <!-- 通过Preference设置 -->
+    <Preference
+        android:key="preference_key"
+        android:title="关于（演示Preference）"
+		android:summary="此处通常会启动一个新的界面">
+		<intent	android:action="android.intent.action.VIEW"
+			android:data="http://www.sina.com.cn" />
+	</Preference>
+    <!-- 通过自定义Preference设置 -->
+    <org.xottys.userinterface.CommonlyUsedActivities.MyPreference
+        android:key="custom_key"
+        android:title="自定义Preference)">
+		<intent
+			android:action="android.intent.action.MAIN"
+			android:targetClass="org.xottys.userinterface.CommonlyUsedActivities.MyPreferenceActivity"
+			android:targetPackage="org.xottys.userinterface" />
+	</org.xottys.userinterface.CommonlyUsedActivities.MyPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

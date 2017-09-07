@@ -1,0 +1,137 @@
+<resources>
+    <!-- ================================ -->
+    <!--  app/shortcuts examples strings  -->
+    <!-- ================================ -->
+    <string name="app_name">ActivityFragmentDemo</string>
+    <string name="lifecycle">Activity生命周期演示</string>
+    <string name="addtxt">动态添加\nButton</string>
+    <string name="deltxt">动态删除\nButton</string>
+    <string name="title_book_detail">图书详情</string>
+    <string name="title_book_list">图书列表</string>
+    <string name="title_activity_standard">StandardActivity</string>
+    <string name="title_activity_my_account_authenticator">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_my_alias">MyAliasActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="alert_dialog_ok">确认</string>
+    <string name="alert_dialog_hide">Hide</string>
+    <string name="alert_dialog_something">Something</string>
+    <string name="alert_dialog_cancel">取消</string>
+    <string name="alert_dialog_two_buttons_title">双按钮DialogFragment演示. </string>
+    <!-- ====================================== -->
+    <!--  app/FragmentSubClass examples strings -->
+    <!-- ====================================== -->
+    <string name="launch_preference_activity">Launch PreferenceActivity</string>
+
+    <string name="inline_preferences">In-line preferences</string>
+    <string name="dialog_based_preferences">Dialog-based preferences</string>
+    <string name="launch_preferences">Launch preferences</string>
+    <string name="preference_attributes">Preference attributes</string>
+
+    <string name="title_checkbox_preference">Checkbox preference</string>
+    <string name="summary_checkbox_preference">This is a checkbox</string>
+
+    <string name="title_switch_preference">Switch preference</string>
+    <string name="summary_switch_preference">This is a switch</string>
+    <string name="summary_switch_preference_yes_no">This is a switch with custom text</string>
+
+    <string name="title_yesno_preference">Yes or no preference</string>
+    <string name="summary_yesno_preference">An example that uses a yes/no dialog</string>
+    <string name="dialog_title_yesno_preference">Do you like bananas?</string>
+
+    <string name="title_edittext_preference">Edit text preference</string>
+    <string name="summary_edittext_preference">An example that uses an edit text dialog</string>
+    <string name="dialog_title_edittext_preference">Enter your favorite animal</string>
+
+    <string name="title_list_preference">List preference</string>
+    <string name="summary_list_preference">An example that uses a list dialog</string>
+    <string name="dialog_title_list_preference">Choose one</string>
+
+    <string name="title_mlist_preference">Muti Select List preference</string>
+    <string name="summary_mlist_preference">An example that uses a muti select list dialog</string>
+    <string name="dialog_title_mlist_preference">Choose multi item</string>
+
+    <string name="title_screen_preference">Screen preference</string>
+    <string name="summary_screen_preference">Shows another screen of preferences</string>
+
+    <string name="title_fragment_preference">Fragment preference</string>
+    <string name="summary_fragment_preference">Shows another fragment of preferences</string>
+
+    <string name="title_next_screen_toggle_preference">Toggle preference</string>
+    <string name="summary_next_screen_toggle_preference">Preference that is on the next screen but same hierarchy</string>
+
+    <string name="title_intent_preference">Intent preference</string>
+    <string name="summary_intent_preference">Launches an Activity from an Intent</string>
+
+    <string name="title_my_preference">My preference</string>
+    <string name="summary_my_preference">This is a custom counter preference</string>
+
+    <string name="title_advanced_toggle_preference">Haunted preference</string>
+    <string name="summary_on_advanced_toggle_preference">I\'m on! :)</string>
+    <string name="summary_off_advanced_toggle_preference">I\'m off! :(</string>
+
+    <string name="title_parent_preference">Parent checkbox preference</string>
+    <string name="summary_parent_preference">This is visually a parent</string>
+    <string name="title_child_preference">Child checkbox preference</string>
+    <string name="summary_child_preference">This is visually a child</string>
+
+    <string name="example_preference_dependency">Example preference dependency</string>
+    <string name="title_wifi">WiFi</string>
+    <string name="title_wifi_settings">WiFi settings</string>
+
+    <string name="default_value_list_preference">beta</string>
+    <string name="default_value_edittext_preference">Default value</string>
+
+    <string name="signup_title">Create new account</string>
+    <string name="login_label">Log in</string>
+    <string name="label">Xotty</string>
+
+
+    <!-- Label above username EditText -->
+    <string
+        name="login_activity_username_label">Username</string>
+    <!-- Label above password EditText -->
+    <string
+        name="login_activity_password_label">Password</string>
+    <!-- Button to sign in after entering username and password -->
+    <string
+        name="login_activity_ok_button">Sign in</string>
+
+    <!-- Module Authenticate -->
+    <string
+        name="signin_succeed">登录成功!</string>
+    <string
+        name="signup_succeed">注册成功!</string>
+    <string
+        name="signin_failed">登录失败!</string>
+    <string
+        name="signup_failed">注册失败!</string>
+    <string
+        name="login_activity_loginfail_text_both">The username or password isn\'t valid!</string>
+    <!-- Message shown in dialog if the password is invalid -->
+    <string
+        name="login_activity_loginfail_text_pwonly">Wrong password or your account has changed.</string>
+    <!-- Message shown in dialog to prompt the user for their password -->
+    <string
+        name="login_activity_loginfail_text_pwmissing">Type the password for this account.</string>
+    <!--
+        Message shown if the provided account doesn't support the current
+        activity.
+    -->
+    <string
+        name="login_activity_newaccount_text">Sign in to your Sample SyncAdapter account. </string>
+
+</resources>
