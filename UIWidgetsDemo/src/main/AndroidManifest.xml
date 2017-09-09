@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@android:style/Theme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +26,10 @@
         <activity
             android:name=".TextViewActivity"
             android:label="@string/title_activity_text_view"
+            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DialogActivity"
+            android:name=".DialogDemo.DialogActivity"
             android:label="Dialog Demo" />
         <activity
             android:name=".ImageViewActivity"

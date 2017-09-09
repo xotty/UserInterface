@@ -1,11 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.xottys.userinterface.TextViewActivity">
+    android:background="@color/light_green"
+    android:orientation="vertical" >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-</android.support.design.widget.CoordinatorLayout>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buttons_1_normal" />
+
+            <Button
+                android:id="@+id/button_disabled"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buttons_1_small" />
+
+            <!--设置点击时颜色-->
+            <Button
+                android:id="@+id/button_icon"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="图形按钮"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:drawableTop="@drawable/button_icon"
+
+                android:background="@drawable/button_bg">
+            </Button>
+
+            <!--设置按钮形状-->
+            <Button
+                android:id="@+id/roundButton"
+                android:text=" 圆角按钮 "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="50dp"
+                android:textColor="@android:color/white"
+
+                android:background="@drawable/button_round"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/controls_1_save" />
+
+           <!--track：下面的滑道  thumb:上面的滑块，二者均可以自定义颜色和形状-->
+            <Switch
+                android:id="@+id/mySwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:switchMinWidth="20dp"
+                android:layout_marginLeft="20dp"
+                android:textOn="开"
+                android:textOff="关"
+                android:showText="true"
+                android:checked="true"
+                android:text="电视机"
+                android:thumb="@drawable/switch_shape"
+                android:track="@drawable/switch_track"/>
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"/>
+
+            <ToggleButton
+                android:id="@+id/myToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOn="打开"
+                android:textOff="关闭"
+                android:textColor="@android:color/white"
+                android:background="@drawable/toggle_selector"
+                android:checked="true"
+                android:layout_marginLeft="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_dark"
+                android:hint="电话号码"
+                android:inputType="phone"
+                android:background="@color/light_gray"
+                android:imeOptions="actionSend"
+                android:layout_weight="1" />
+            <EditText
+                android:id="@+id/edit2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"
+                android:cursorVisible="false"
+                android:layout_weight="1" />
+            <EditText
+                android:id="@+id/edit3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_selector"
+                android:digits="0123456789abcdef"
+                android:imeOptions="actionNext"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+        <org.xottys.userinterface.MyEditText
+            android:id="@+id/edit4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionGo"
+            android:maxLines="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@android:drawable/ic_menu_myplaces"
+            android:drawableRight="@android:drawable/ic_delete"
+            android:background="@drawable/edittext_selector"
+            android:hint="输入用户名"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:orientation="vertical" >
+        <CheckBox
+            android:id="@+id/check1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controls_1_checkbox_1" />
+        <CheckBox
+            android:id="@+id/star"
+            style="?android:attr/starStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controls_1_checkbox_2" />
+        <CheckBox
+            android:id="@+id/check3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CustomCheckBoxTheme"
+            android:checked="true"
+            android:text="@string/controls_1_checkbox_3" />
+</LinearLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/controls_1_radiobutton_1" />
+
+            <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/controls_1_radiobutton_2"/>
+            <RadioButton
+                android:id="@+id/radio3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CustomRadioButtonTheme"
+                android:text="@string/controls_1_radiobutton_3" />
+
+        </RadioGroup>
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:focusable="true"
+            android:text="@string/textColorPrimary"
+            android:textStyle="italic|bold"
+            android:background="@drawable/edittext_selector"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:focusable="true"
+            android:text="@string/textColorSecondary"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:typeface="serif"
+            android:textColor="?android:attr/textColorSecondary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:focusable="true"
+            android:text="@string/textColorTertiary"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="?android:attr/textColorTertiary" />
+
+        <TextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_marginTop="5dip"
+            android:text="@string/listSeparatorTextViewStyle"
+            android:textColor="?android:attr/textColorPrimaryInverse"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:text="(And all inside of a ScrollView!)"
+            android:textColor="?android:attr/textColorSecondaryInverse"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:textSize="30sp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="人民日报生活漫步：莫让千元打车费毁了专车" />
+        </LinearLayout>
+
+        <CheckedTextView
+            android:id="@+id/check_textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+            android:focusable="true"
+            android:clickable="true"
+            android:checked="true"
+            android:text="CheckedTextView1" />
+        <CheckedTextView
+            android:id="@+id/check_textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="?android:attr/listChoiceIndicatorMultiple"
+            android:enabled="true"
+            android:text="CheckedTextView2" />
+    </LinearLayout>
+
+</ScrollView>

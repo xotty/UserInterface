@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
+import org.xottys.userinterface.DialogDemo.DialogActivity;
+
 public class MainActivity extends LauncherActivity {
     //定义要跳转的各个Activity的名称
     String[] names = {"TextView Demo", "Dialog Demo", "ImageView Demo", "WebView Demo"};
