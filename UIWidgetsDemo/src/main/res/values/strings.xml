@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">UIWidgetsDemo</string>
     <string name="title_activity_text_view">TextViewActivity</string>
 
@@ -115,4 +115,12 @@
 
     <drawable name="clr_normal">#ff6501</drawable>
     <drawable name="clr_pressed">#a44100</drawable>
+
+    <string name="chronometer_start">Start</string>
+    <string name="chronometer_stop">Stop</string>
+    <string name="chronometer_reset">Reset</string>
+    <string name="chronometer_set_format">Set format string</string>
+    <string name="chronometer_clear_format">Clear format string</string>
+    <string name="chronometer_initial_format"> <xliff:g id="initial-format">%s</xliff:g></string>
+    <string name="autocomplete_country">Country:</string>
 </resources>

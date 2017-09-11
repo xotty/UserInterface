@@ -22,5 +22,9 @@
     <style name="CustomRadioButtonTheme" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:button">@drawable/radiobutton_selector</item>
     </style>
-
+    <style name="AutoCompleteStyle" parent="@android:style/Widget.AutoCompleteTextView">
+        <item name="android:popupBackground">@color/green</item>
+        <item name="android:dropDownVerticalOffset">100dip</item>
+        <item name="android:dropDownHorizontalOffset">100dip</item>
+    </style>
 </resources>
