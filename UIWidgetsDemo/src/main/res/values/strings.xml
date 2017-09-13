@@ -111,7 +111,7 @@
     <string name="textColorPrimary">textColorPrimary</string>
     <string name="textColorSecondary">textColorSecondary</string>
     <string name="textColorTertiary">textColorTertiary</string>
-    <string name="listSeparatorTextViewStyle">listSeparatorTextViewStyle</string>
+    <string name="listSeparatorTextViewStyle">listSeparatorStyle</string>
 
     <drawable name="clr_normal">#ff6501</drawable>
     <drawable name="clr_pressed">#a44100</drawable>
@@ -123,4 +123,22 @@
     <string name="chronometer_clear_format">Clear format string</string>
     <string name="chronometer_initial_format"> <xliff:g id="initial-format">%s</xliff:g></string>
     <string name="autocomplete_country">Country:</string>
+
+    <string name="styled_12_hour_clock">MM/<font color="red"><b>dd</b></font>/yy h<font color="#ffff0000"><sup><small>mm</small></sup></font><b>aa</b></string>
+    <string name="styled_24_hour_clock">MM/<font color="red"><b>dd</b></font>/yy k<font color="#ffff0000"><sup><small>mm</small></sup></font></string>
+
+    <string name="styled_12_hour_clock2">\'自定义:\' <font color="@android:color/holo_orange_dark" face="sans-serif-thick">MM/dd/yy h:mm aa</font></string>
+    <string name="styled_24_hour_clock2">\'自定义\' <font color="@android:color/holo_orange_dark" face="sans-serif-thick">MM/dd/yy k:mm</font></string>
+    <string name="link_text_auto"><b>text1: Various kinds
+      of data that will be auto-linked.</b>  In
+      this text are some things that are actionable.  For instance,
+      you can click on http://www.baidu.com and it will launch the
+      web browser.  You can click on baidu.com too.  If you
+      click on (415) 555-1212 it should dial the phone.  Or just write
+      foobar@example.com for an e-mail link.
+    </string>
+    <string name="link_text_manual"><b>text2: Explicit links using &lt;a&gt; markup.</b>
+      This has markup for a <a href="http://www.google.com">link</a> specified
+      via an &lt;a&gt; tag.  Use a \"tel:\" URL to <a href="tel:4155551212">dial a phone number</a>.
+    </string>
 </resources>

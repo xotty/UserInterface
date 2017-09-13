@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_green"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -22,21 +24,23 @@
                 android:layout_height="wrap_content"
                 android:text="@string/buttons_1_normal" />
 
+            <!--设置style为Small，enabled为false-->
             <Button
                 android:id="@+id/button_disabled"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="@string/buttons_1_small" />
 
-            <!--设置点击时颜色-->
+            <!--设置图片和背景样式（点击时改变颜色）-->
             <Button
-                android:id="@+id/button_icon"
+                android:id="@+id/iconButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/button_bg"
+                android:background="@drawable/button_selector"
                 android:drawableTop="@drawable/button_icon"
                 android:paddingBottom="5dp"
                 android:paddingLeft="5dp"
@@ -44,7 +48,7 @@
                 android:paddingTop="5dp"
                 android:text="图形按钮"
                 android:textColor="#000000"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <!--设置按钮形状-->
             <Button
@@ -55,8 +59,7 @@
                 android:layout_marginStart="20dp"
                 android:background="@drawable/button_round"
                 android:text=" 圆角按钮 "
-
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/holo_blue_dark" />
         </LinearLayout>
 
         <LinearLayout
@@ -89,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp" />
 
+            <!--设置了文字及其颜色、背景样式（点击时改变颜色）-->
             <ToggleButton
                 android:id="@+id/myToggle"
                 android:layout_width="wrap_content"
@@ -100,27 +104,36 @@
                 android:textOff="关闭"
                 android:textOn="打开" />
         </LinearLayout>
+
         <View
             android:layout_width="fill_parent"
             android:layout_height="3dip"
             android:layout_marginTop="5dp"
+            android:background="?android:attr/listDivider"
             android:backgroundTint="@color/light_blue"
-            android:backgroundTintMode="add"
-            android:background="?android:attr/listDivider" />
+            android:backgroundTintMode="add" />
+
+        <!--EditText默认就会自动获取焦点,在其父控件中设置focusable和focusableInTouchMode，即可改变这一默认的行为-->
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="horizontal">
+            <!--设置了密码输入方式-->
             <EditText
                 android:id="@+id/edit1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="textPassword" />
+            <!--设置了电话好吗输入方式、文字为红色、背景为浅灰色-->
             <EditText
                 android:id="@+id/edit2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:background="@color/light_gray"
                 android:hint="电话号码"
@@ -128,10 +141,12 @@
                 android:inputType="phone"
                 android:textColor="@android:color/holo_red_dark" />
 
+            <!--设置了可输入的限制字符，背景样式（其中设置了进入和离开两种边框颜色）-->
             <EditText
                 android:id="@+id/edit3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/edittext_selector"
                 android:digits="0123456789abcdef"
@@ -139,26 +154,29 @@
 
         </LinearLayout>
 
+        <!--完全自定义EditText，增加右侧删除按钮，增加为空时摇晃动画-->
         <org.xottys.userinterface.MyEditText
             android:id="@+id/edit4"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/edittext_selector"
-            android:drawableStart="@android:drawable/ic_menu_myplaces"
             android:drawableEnd="@android:drawable/ic_delete"
+            android:drawableStart="@android:drawable/ic_menu_myplaces"
             android:hint="输入用户名"
             android:imeOptions="actionGo"
             android:maxLines="1" />
+
         <View
             android:layout_width="fill_parent"
             android:layout_height="3dip"
             android:layout_marginTop="10dp"
+            android:background="?android:attr/listDivider"
             android:backgroundTint="@color/light_blue"
-            android:backgroundTintMode="add"
-            android:background="?android:attr/listDivider" />
+            android:backgroundTintMode="add" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,6 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
+
                 android:orientation="vertical">
 
                 <CheckBox
@@ -177,6 +196,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/controls_1_checkbox_1" />
 
+                <!-- Star形式checkbox-->
                 <CheckBox
                     android:id="@+id/star"
                     style="?android:attr/starStyle"
@@ -184,6 +204,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/controls_1_checkbox_2" />
 
+                <!-- 自定义样式checkbox-->
                 <CheckBox
                     android:id="@+id/check3"
                     style="@style/CustomCheckBoxTheme"
@@ -194,6 +215,7 @@
             </LinearLayout>
 
             <RadioGroup
+                android:id="@+id/radiogroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -205,12 +227,17 @@
                     android:layout_height="wrap_content"
                     android:text="@string/controls_1_radiobutton_1" />
 
+                <!--设置了文字大小和图片位置-->
                 <RadioButton
                     android:id="@+id/radio2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/controls_1_radiobutton_2" />
+                    android:button="@null"
+                    android:drawableRight="@android:drawable/btn_radio"
+                    android:text="@string/controls_1_radiobutton_2"
+                    android:textSize="20sp" />
 
+                <!-- 自定义样式radiobutton-->
                 <RadioButton
                     android:id="@+id/radio3"
                     style="@style/CustomRadioButtonTheme"
@@ -221,86 +248,160 @@
             </RadioGroup>
 
         </LinearLayout>
+
         <View
             android:layout_width="fill_parent"
             android:layout_height="3dip"
             android:layout_marginTop="5dp"
+            android:background="?android:attr/listDivider"
             android:backgroundTint="@color/light_blue"
-            android:backgroundTintMode="add"
-            android:background="?android:attr/listDivider" />
+            android:backgroundTintMode="add" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:text="@string/textColorPrimary"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:background="@drawable/edittext_selector"
-                android:focusable="true"
-                android:text="@string/textColorPrimary"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textStyle="italic|bold" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:focusable="true"
-                android:text="@string/textColorSecondary"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="?android:attr/textColorSecondary"
-                android:typeface="serif" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:text="no Color no Size" />
+                <!--小号字，Primary Color-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/textColorPrimary"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="?android:attr/textColorPrimary" />
+                <!--中号字，Secondary Color-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/textColorSecondary"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="?android:attr/textColorSecondary" />
+                <!--大号字，Tertiary Color-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/textColorTertiary"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="?android:attr/textColorTertiary" />
+                <!--中号字，PrimaryInverse Color-->
+                <TextView
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_marginTop="5dip"
+                    android:text="@string/listSeparatorTextViewStyle"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="?android:attr/textColorPrimaryInverse" />
+                <!--中号字，可选择的文本-->
+                <TextView
+                    android:id="@+id/text_selectable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Selectable"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textIsSelectable="true" />
+                <!--小号字，不可见文本-->
+                <TextView
+                    android:id="@+id/text_invisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Invisibible"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:visibility="invisible" />
+                <!--大号字，带背景色文本-->
+                <TextView
+                    android:id="@+id/text_background_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="#ff00ff00"
+                    android:text="background color"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <!-- text3 builds the text in the Java code using HTML. -->
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:focusable="true"
-                android:text="@string/textColorTertiary"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="?android:attr/textColorTertiary" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
 
-            <TextView
-                style="?android:attr/listSeparatorTextViewStyle"
-                android:layout_marginTop="5dip"
-                android:text="@string/listSeparatorTextViewStyle"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="?android:attr/textColorPrimaryInverse" />
+                <!-- text1 automatically linkifies things like URLs and phone numbers. -->
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="all"
+                    android:paddingBottom="8dp"
+                    android:text="@string/link_text_auto"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:text="(And all inside of a ScrollView!)"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="?android:attr/textColorSecondaryInverse" />
+                <!-- text2 uses a string resource containing explicit <a> tags to specify links. -->
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/link_text_manual"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dip"
-                android:ellipsize="marquee"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:singleLine="true"
-                android:text="为天地立心 为生民立命 为往圣继绝学 为万世开太平"
-                android:textSize="30sp" />
+                <!-- text4 builds the text in the Java code without using HTML. -->
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </LinearLayout>
         </LinearLayout>
+
+        <!--跑马灯文本，需要获取焦点才有效果：focusable、focusableInTouchMode、requestFocus必不可少-->
+        <TextView
+            android:id="@+id/textView_marquee"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="为天地立心 为生民立命 为往圣继绝学 为万世开太平"
+            android:textSize="30sp"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+            <requestFocus />
+        </TextView>
+
         <View
             android:layout_width="fill_parent"
             android:layout_height="3dip"
             android:layout_marginTop="5dp"
+            android:background="?android:attr/listDivider"
             android:backgroundTint="@color/light_blue"
-            android:backgroundTintMode="add"
-            android:background="?android:attr/listDivider" />
+            android:backgroundTintMode="add" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -322,8 +423,8 @@
                     android:checked="true"
                     android:clickable="true"
                     android:focusable="true"
-                    android:textSize="18sp"
-                    android:text="CheckedTextView1" />
+                    android:text="CheckedTextView1"
+                    android:textSize="18sp" />
 
                 <CheckedTextView
                     android:id="@+id/check_textview2"
@@ -331,8 +432,8 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="?android:attr/listChoiceIndicatorMultiple"
                     android:enabled="true"
-                    android:textSize="18sp"
-                    android:text="CheckedTextView2" />
+                    android:text="CheckedTextView2"
+                    android:textSize="18sp" />
 
                 <CheckedTextView
                     android:id="@+id/check_textview3"
@@ -343,8 +444,8 @@
                     android:checked="true"
                     android:clickable="true"
                     android:focusable="true"
-                    android:textSize="18sp"
-                    android:text="CheckedTextView1" />
+                    android:text="CheckedTextView1"
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -362,8 +463,8 @@
                     android:checked="true"
                     android:clickable="true"
                     android:focusable="true"
-                    android:textSize="18sp"
-                    android:text="CheckedTextView4" />
+                    android:text="CheckedTextView4"
+                    android:textSize="18sp" />
 
                 <CheckedTextView
                     android:id="@+id/check_textview5"
@@ -371,8 +472,8 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="?android:attr/listChoiceIndicatorSingle"
                     android:enabled="true"
-                    android:textSize="18sp"
-                    android:text="CheckedTextView5" />
+                    android:text="CheckedTextView5"
+                    android:textSize="18sp" />
 
                 <CheckedTextView
                     android:id="@+id/check_textview6"
@@ -383,168 +484,231 @@
                     android:checked="true"
                     android:clickable="true"
                     android:focusable="true"
-                    android:textSize="18sp"
-                    android:text="CheckedTextView6" />
+                    android:text="CheckedTextView6"
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
+
         <View
             android:layout_width="fill_parent"
             android:layout_height="3dip"
             android:layout_marginTop="5dp"
+            android:background="?android:attr/listDivider"
             android:backgroundTint="@color/light_blue"
-            android:backgroundTintMode="add"
-            android:background="?android:attr/listDivider" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:orientation="vertical">
-        <AnalogClock android:id="@+id/analogClock1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
-        <!-- 数字时钟控件 -->
-        <TextClock android:id="@+id/textClock1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
-        </LinearLayout>
+            android:backgroundTintMode="add" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:orientation="vertical">
-            <AnalogClock android:id="@+id/analogClock2"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:dial="@drawable/clock"
-                android:hand_hour="@drawable/hour_hand"
-                android:hand_minute="@drawable/minute_hand"
-                android:layout_gravity="center_horizontal"/>
-            <!-- 数字时钟控件 -->
-            <TextClock android:id="@+id/textClock2"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <AnalogClock
+                    android:id="@+id/analogClock1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!-- 数字时钟控件,缺省格式 -->
+                <TextClock
+                    android:id="@+id/textClock1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!-- 显示星期和年月日 -->
+                <TextClock
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:format12Hour="EE, MMM dd, yyyy"
+                    android:format24Hour="EE, MMM dd, yyyy" />
+                <!-- 显示年月日 时分秒（异形） -->
+                <TextClock
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:format12Hour="@string/styled_12_hour_clock"
+                    android:format24Hour="@string/styled_24_hour_clock"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center_horizontal" />
+
+                <!-- 代码中用styles显示自定义样式 -->
+                <TextClock
+                    android:id="@+id/textclock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                     />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:format12Hour="MMM dd, yyyy h:mmaa"
-                android:format24Hour="yyyy-MM-dd HH:mm:ss"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
+
+                <!-- 自定义表盘和指针-->
+                <AnalogClock
+                    android:id="@+id/analogClock2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:dial="@drawable/clock"
+                    android:hand_hour="@drawable/hour_hand"
+                    android:hand_minute="@drawable/minute_hand" />
+                <!-- 显示年月日 时分秒 -->
+                <TextClock
+                    android:id="@+id/textClock2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:format12Hour="MMM dd, yyyy h:mmaa"
+                    android:format24Hour="yyyy-MM-dd HH:mm:ss"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp" />
+                <!-- 仅显示时分秒 -->
+                <TextClock
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:format12Hour="hh:mm:ss a"
+                    android:format24Hour="HH:mm:ss"
+                    android:shadowColor="#7fffffff"
+                    android:shadowRadius="3.0"
+                    android:textSize="20sp" />
+
+                <!-- 显示特定时区的时间 -->
+                <TextClock
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:format12Hour="'巴黎:' MMM dd, yyyy h:mma"
+                    android:format24Hour="'巴黎:' MMM dd, yyyy HH:mm"
+                    android:timeZone="Europe/Paris" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dip"
+            android:layout_marginTop="5dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="@color/light_blue"
+            android:backgroundTintMode="add" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Chronometer
+                android:id="@+id/chronometer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal" />
+
+            <!--额外设置了字体颜色和小时显示-->
+            <Chronometer
+                android:id="@+id/chronometer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:format="计时器: 00:%s"
+                android:gravity="center_horizontal"
                 android:textColor="@color/blue"
-                android:layout_gravity="center_horizontal"/>
+                android:textSize="20sp" />
+
+            <!--额外设置了字体颜色和文本显示-->
+            <Chronometer
+                android:id="@+id/chronometer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:format="倒计时器: %s"
+                android:gravity="center_horizontal"
+                android:textColor="@color/red"
+                android:textSize="20sp" />
         </LinearLayout>
-        </LinearLayout>
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="3dip"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/light_blue"
-            android:backgroundTintMode="add"
-            android:background="?android:attr/listDivider" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
-        <Chronometer android:id="@+id/chronometer1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            />
 
-        <Chronometer android:id="@+id/chronometer2"
-            android:format="计时器: 00:%s"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/blue"
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            />
-
-        <Chronometer android:id="@+id/chronometer3"
-            android:format="倒计时器: %s"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/red"
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            />
-        </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <Button android:id="@+id/start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/chronometer_start">
-            <requestFocus />
-        </Button>
-
-        <Button android:id="@+id/stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/chronometer_stop">
-        </Button>
-
-        <Button android:id="@+id/reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/chronometer_reset">
-        </Button>
-
-    </LinearLayout>
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="3dip"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/light_blue"
-            android:backgroundTintMode="add"
-            android:background="?android:attr/listDivider" />
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/chronometer_start">
+
+            </Button>
+
+            <Button
+                android:id="@+id/stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/chronometer_stop"/>
+
+            <Button
+                android:id="@+id/reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/chronometer_reset"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dip"
+            android:layout_marginTop="5dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="@color/light_blue"
+            android:backgroundTintMode="add" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/autocomplete_country" />
 
-            <AutoCompleteTextView android:id="@+id/autoedit"
+            <AutoCompleteTextView
+                android:id="@+id/autoedit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
+
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/autocomplete_country" />
-
-            <MultiAutoCompleteTextView android:id="@+id/multautoedit"
+            <!--额外设置弹出框的宽度、样式(背景色、显示位置)-->
+            <MultiAutoCompleteTextView
+                android:id="@+id/multautoedit"
+                style="@style/AutoCompleteStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:dropDownWidth="100dp"
-                style="@style/AutoCompleteStyle"/>
+                android:dropDownWidth="100dp" />
 
         </LinearLayout>
     </LinearLayout>

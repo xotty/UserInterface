@@ -26,7 +26,6 @@
         <activity
             android:name=".TextViewActivity"
             android:label="@string/title_activity_text_view"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DialogDemo.DialogActivity"

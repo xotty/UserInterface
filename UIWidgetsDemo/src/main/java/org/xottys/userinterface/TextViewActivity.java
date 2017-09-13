@@ -1,10 +1,12 @@
-/**本例演示了TextView即其子类的基本用法
- * 1)LinearLayout
- * 2)RelativeLayout
- * 3)TableLayout
- * 4)GridLayout
- * 5)FrameLayout
- * 6)AbsoluteLayout
+/**本例演示了TextView及其子类的基本用法
+ * 1)Button、ToggleButton
+ * 2)EditText
+ * 3)CheckBox
+ * 4)RadioButton
+ * 5)TextView
+ * 6)AnalogClock/TextClock
+ * 7)Chronometer
+ * 8)AutoCompleteTextView/MultiAutoCompleteTextView
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
@@ -16,31 +18,52 @@
 package org.xottys.userinterface;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.text.Editable;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
+import android.text.style.StyleSpan;
+import android.text.style.URLSpan;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.Chronometer;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
+import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import static org.xottys.userinterface.R.id.textView;
+import static android.text.Html.FROM_HTML_MODE_LEGACY;
+import static android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT;
+import static org.xottys.userinterface.R.string.styled_12_hour_clock2;
+import static org.xottys.userinterface.R.string.styled_24_hour_clock2;
 
 public class TextViewActivity extends Activity {
+    private static final String TAG = "TextViewActivity";
     //存放单选CheckedTextView的id
     int[] singleCheckedTextViewId = new int[3];
 
     //存放计时器的秒数
     int countSecond=0;
 
-    //多选checkedTextView点击方法，将现有状态反转
+    //多选checkedTextView点击方法，将现有图标状态反转
     View.OnClickListener multiListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -67,9 +90,16 @@ public class TextViewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_textview);
-        Button disabledButton = (Button) findViewById(R.id.button_disabled);
-        disabledButton.setEnabled(false);
 
+        //从左到右依次是正常Button、小号不可点击Button、带图片带背景样式Button和圆角矩形Button
+        Button iconButton = (Button) findViewById(R.id.iconButton);
+        iconButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                showMessage("你击了：iconButton");
+            }
+        });
+
+        //右边的自定义样式Switch改变了文字、滑道和滑块样式
         Switch mySwitch = (Switch) findViewById(R.id.mySwitch);
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -82,6 +112,7 @@ public class TextViewActivity extends Activity {
             }
         });
 
+        //右边的自定义样式ToggleButton改变了文字、背景样式和点击时改变颜色
         ToggleButton myToggleButton = (ToggleButton) findViewById(R.id.myToggle);
         myToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -94,10 +125,155 @@ public class TextViewActivity extends Activity {
             }
         });
 
-        TextView tv = (TextView) findViewById(textView);
-        tv.setSelected(true);
 
-        //多选checkedTextView
+
+        //第一行从左到右依次是简单密码EditText、电话号码EditText、带边框EditTex，其中主要是改变的背景、加了输入限制，更改键盘样式等
+        //第二行是完全自定义EditText，增加右侧删除按钮，增加为空时摇晃动画
+        final EditText edittext1=(EditText)findViewById(R.id.edit1);
+
+        //将背景LinearLayout点击事件设为剥夺edittext1的焦点，以便关闭软键盘
+        LinearLayout bg=(LinearLayout)findViewById(R.id.bg);
+        bg.setOnClickListener(new View.OnClickListener() {//给背景一个id，并对它的点击事件进行监听
+            @Override
+            public void onClick(View v) {
+                //点击背景的时候，让这个editText失去焦点
+                edittext1.setFocusable(false);
+                Log.i(TAG, "LinearLayout Background Clicked!");
+            }
+        });
+
+        //点击edittext1时，使其立即获取焦点
+        edittext1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                //EditText 立即获得焦点
+                view.setFocusable(true);
+                view.setFocusableInTouchMode(true);
+                view.requestFocus();
+                Log.i(TAG, "edittext1 Clicked！");
+            }
+        });
+
+        //edittext1焦点改变事件处理，在失去焦点时关闭软键盘
+        edittext1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                if(hasFocus) {
+                    //弹出显示软键盘
+                    imm.showSoftInput(v, SHOW_IMPLICIT);
+
+                    showMessage("EditText获得焦点");
+                    Log.i(TAG, "edittext1焦点改变：获得检点");
+                } else {
+                    //关闭软键盘
+                   // InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                    boolean isOpen = imm.isActive();
+                    if (isOpen) {
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                        showMessage("EditText失去焦点");
+                        Log.i(TAG, "edittext1焦点改变：失去检点");
+                    }
+                }
+            }
+        });
+
+        //这个事件可以用来校验输入的数据格式和长度
+        edittext1.addTextChangedListener(new TextWatcher() {
+            @Override
+            //text  输入框中改变后的字符串信息
+            //start 输入框中改变后的字符串的起始位置
+            //before 输入框中改变前的字符串的位置 默认为0
+            //count 输入框中改变后的一共输入字符串的数量
+            public void onTextChanged(CharSequence text, int start, int before, int count) {
+
+                Log.i(TAG, "onTextChanged:EditText正在改变");
+            }
+
+            @Override
+            //text  输入框中改变前的字符串信息
+            //start 输入框中改变前的字符串的起始位置
+            //count 输入框中改变前后的字符串改变数量一般为0
+            //after 输入框中改变后的字符串与起始位置的偏移量
+            public void beforeTextChanged(CharSequence text, int start, int count,int after) {
+                Log.i(TAG, "beforeTextChanged:EditText改变前");
+            }
+
+            @Override
+            //edit  输入结束呈现在输入框中的信息
+            public void afterTextChanged(Editable edit) {
+                Log.i(TAG, "afterTextChanged:EditText改变后");
+            }
+       });
+
+        //从上到下依次是普通CheckBox、星形CheckBox、自定义样式CheckBox
+        CheckBox checkBox = (CheckBox) findViewById(R.id.check3);
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               if(isChecked)
+                   showMessage("选择了 checkBox3");
+                else
+                   showMessage("取消了 checkBox3");
+            }
+        });
+
+        //从上到下依次是普通RadioButton、改变了位置和大小的RadioButton、自定义样式RadioButton
+        //利用其多选一的特性及其图片可以放在文字的上面或下面，可以用它来实现Tab功能
+        RadioGroup radiogroup = (RadioGroup) findViewById(R.id.radiogroup);
+        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                //根据checkedId获取选中项RadioButton的实例
+                RadioButton rb = (RadioButton) findViewById(checkedId);
+                //显示选中项RadioButton的的文本
+                showMessage("当前选择了：" + rb.getText());
+            }
+        });
+
+        //左侧除最下面的test3外，皆为普通TextView，属性主要是字体大小、颜色和背景
+        //跑马灯效果也可以在这个点击事件里强制获取焦点而呈现
+        final TextView textView_marquee=(TextView)findViewById(R.id.textView_marquee);
+        textView_marquee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setFocusable(true);
+                v.setFocusableInTouchMode(true);
+                v.requestFocus();
+                v.setSelected(true);
+                Log.i(TAG, "onClick: marquee");
+            }
+        });
+
+        //test1～test4是4种不同的链接文本实现方式
+        //1)设置自动识别属性，其中的网址、电话、email等会自动标识并可点击跳转
+        //2)在文本中用<a>链接文本</a>，其中tel：为电话，http://为网址
+        TextView t2 = (TextView) findViewById(R.id.text2);
+        t2.setMovementMethod(LinkMovementMethod.getInstance());
+
+        //3)在程序中用代码实现，将2）中格式的文本用Html.fromHtml解析后使用
+        TextView t3 = (TextView) findViewById(R.id.text3);
+        t3.setText(
+                Html.fromHtml(
+                        "<b>text3: Constructed from HTML programmatically.</b>  Text with a " +
+                                "<a href=\"http://www.google.com\">link</a> " +
+                                "created in the Java source code using HTML.",FROM_HTML_MODE_LEGACY));
+        t3.setMovementMethod(LinkMovementMethod.getInstance());
+
+        //4)使用SpannableString构造链接文本
+        SpannableString ss = new SpannableString(
+                "text4: Manually created spans. Click here to dial the phone.");
+        ss.setSpan(new StyleSpan(Typeface.BOLD), 0, 30,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(new URLSpan("tel:4155551212"), 31+6, 31+10,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        TextView t4 = (TextView) findViewById(R.id.text4);
+        t4.setText(ss);
+        t4.setMovementMethod(LinkMovementMethod.getInstance());
+
+        //checkedTextView的点选图标切换需要在OnClickListener中手动实现，系统没有提供现成的
+        //左侧为多选checkedTextView，从上到下依次为标准、选择框在右侧和自定义选择框样式
         CheckedTextView checkedTextView1 = (CheckedTextView) findViewById(R.id.check_textview1);
         checkedTextView1.setOnClickListener(multiListener);
         CheckedTextView checkedTextView2 = (CheckedTextView) findViewById(R.id.check_textview2);
@@ -105,7 +281,7 @@ public class TextViewActivity extends Activity {
         CheckedTextView checkedTextView3 = (CheckedTextView) findViewById(R.id.check_textview3);
         checkedTextView3.setOnClickListener(multiListener);
 
-        //单选checkedTextView，将id加入数组
+        //右侧为单选checkedTextView，将id加入数组，从上到下依次为标准、选择框在左侧和自定义选择框样式
         CheckedTextView checkedTextView4 = (CheckedTextView) findViewById(R.id.check_textview4);
         singleCheckedTextViewId[0] = checkedTextView4.getId();
         checkedTextView4.setOnClickListener(singleListener);
@@ -116,6 +292,13 @@ public class TextViewActivity extends Activity {
         singleCheckedTextViewId[2] = checkedTextView6.getId();
         checkedTextView6.setOnClickListener(singleListener);
 
+        //显示时间的两种方式：模拟钟表方式和文本方式，前者可以自定义表盘和指针，但没有秒针
+        //后者可以显示年月日时分秒、星期、特定时区等。字体、颜色、样式均可以在布局文件或代码中自由设定
+        TextClock textClock=(TextClock)findViewById(R.id.textclock);
+        textClock.setFormat12Hour(getString(styled_12_hour_clock2));
+        textClock.setFormat24Hour(getString(styled_24_hour_clock2));
+
+        //计时器，从左到右依次为标准样式、自定义样式和自定义样式倒计时
         final Chronometer mChronometer1 = (Chronometer) findViewById(R.id.chronometer1);
         final Chronometer mChronometer2 = (Chronometer) findViewById(R.id.chronometer2);
         final Chronometer mChronometer3 = (Chronometer) findViewById(R.id.chronometer3);
@@ -150,6 +333,15 @@ public class TextViewActivity extends Activity {
             }
         });
 
+        //暂停计时器
+        ((Button) findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mChronometer1.stop();
+                mChronometer2.stop();
+                mChronometer3.stop();
+            }
+        });
+
         //计时器清零，回到初始计时基准时间
         ((Button) findViewById(R.id.reset)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -166,29 +358,21 @@ public class TextViewActivity extends Activity {
             }
         });
 
-        //暂停计时器
-        ((Button) findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mChronometer1.stop();
-                mChronometer2.stop();
-                mChronometer3.stop();
-            }
-        });
-
+        //单选自动搜索和填充TextView，设置标准Adapter
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-
         AutoCompleteTextView textView1 = (AutoCompleteTextView) findViewById(R.id.autoedit);
         textView1.setAdapter(adapter1);
 
+        //多选自动搜索和填充TextView，设置自定义Adapter,设定弹出框的样式和其中文本的样式
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
                 R.layout.autocompletetvpop, COUNTRIES);
-
         MultiAutoCompleteTextView textView2 = (MultiAutoCompleteTextView) findViewById(R.id.multautoedit);
         textView2.setAdapter(adapter2);
         textView2.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
     }
 
+    //供AutoCompleteTextView使用的国家名称
     static final String[] COUNTRIES = new String[] {
             "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
             "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
@@ -198,7 +382,7 @@ public class TextViewActivity extends Activity {
             "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory",
             "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
             "Cote d'Ivoire", "Cambodia", "Cameroon", "Canada", "Cape Verde",
-            "Cayman Islands", "Central African Republic", "Chad", "Chile", "China",
+            "Cayman Islands", "Central African Republic", "Cemtral African Republic of ","Chad", "Chile", "China",
             "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo",
             "Cook Islands", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
             "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
@@ -232,6 +416,7 @@ public class TextViewActivity extends Activity {
             "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Wallis and Futuna", "Western Sahara",
             "Yemen", "Yugoslavia", "Zambia", "Zimbabwe","中国","中非"
     };
+
     private void showMessage(final String msg) {
         Toast.makeText(TextViewActivity.this, msg, Toast.LENGTH_LONG).show();
     }
