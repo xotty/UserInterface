@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <!-- 定义显示图片整体的ImageView -->
+        <ImageView
+            android:id="@+id/image1"
+            android:layout_width="240dp"
+            android:layout_height="180dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/shuangta" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <!-- 定义显示图片局部细节的ImageView -->
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="#00f" />
+
+            <Button
+                android:id="@+id/next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="下一张" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <!-- Limit to at most 50x50 -->
+        <ImageView
+            android:id="@+id/image3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="50dip"
+            android:maxWidth="50dip"
+            android:src="@drawable/shuangta" />
+
+        <!-- 3. Limit to at most 70x70, with no padding-->
+        <ImageView
+            android:id="@+id/image4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="#66534e4e"
+            android:maxHeight="70dip"
+            android:maxWidth="70dip"
+            android:src="@drawable/shuangta" />
+
+        <!-- 4. Limit to exactly 70x70, with 10 pixels of padding all around -->
+        <ImageView
+            android:id="@+id/image5"
+            android:layout_width="70dip"
+            android:layout_height="70dip"
+            android:background="#66534e4e"
+            android:padding="10dip"
+            android:scaleType="centerInside"
+            android:src="@drawable/shuangta" />
+
+        <Button
+            android:id="@+id/plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="增大透明度" />
+
+        <Button
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="降低透明度" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/light_blue"
+        android:backgroundTintMode="add" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+        <!-- 普通图片按钮 -->
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/button_blue" />
+        <!-- 按下时显示不同图片的按钮 -->
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/imagebutton_selector" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+        <ImageButton
+            android:layout_width="100dip"
+            android:layout_height="50dip"
+            android:src="@android:drawable/sym_action_call" />
+
+        <org.xottys.userinterface.MyImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/button_img"/>
+            </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/light_blue"
+        android:backgroundTintMode="add" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+        <!-- 分别定义2个ZoomButton，并分别似乎用btn_minus和btn_plus图片 -->
+
+        <ZoomButton
+            android:id="@+id/btn_zoom_up"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/btn_plus" />
+
+        <ZoomButton
+            android:id="@+id/btn_zoom_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/btn_minus" />
+        <!-- 定义ZoomControls组件 -->
+        <ZoomControls
+            android:id="@+id/zoomControls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="3dip"
+        android:layout_marginTop="20dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/light_blue"
+        android:backgroundTintMode="add" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <QuickContactBadge
+            android:id="@+id/badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/qcb_sample" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="张三妹"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>
