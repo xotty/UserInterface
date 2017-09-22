@@ -11,43 +11,48 @@
             android:orientation="vertical">
             <Button android:id="@+id/two_buttons"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="双按钮普通Dialog"/>
+                android:text="双按钮普通Dialog"
+                android:textSize="20sp"/>
             <Button android:id="@+id/three_buttons"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="三按钮普通Dialog"/>
+                android:text="三按钮普通Dialog"
+                android:textSize="20sp"/>
             <Button android:id="@+id/text_list"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="文字列表Dialog"/>
+                android:text="文字列表Dialog"
+                android:textSize="20sp"/>
             <Button android:id="@+id/radio_button"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="单选框Dialog"/>
+                android:text="单选框Dialog"
+                android:textSize="20sp"/>
             <Button android:id="@+id/checkbox_button"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="多选框Dialog"/>
-            <Button android:id="@+id/progress_wheel"
+                android:text="多选框Dialog"
+                android:textSize="20sp"/>
+           <Button android:id="@+id/text_entry"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="进度转轮Dialog"/>
-            <Button android:id="@+id/progress_bar"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="进度条Dialog"/>
-            <Button android:id="@+id/text_entry"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="文本输入Dialog"/>
+                android:text="文本输入Dialog"
+               android:textSize="20sp"/>
             <Button android:id="@+id/custom_text_entry"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="自定义文本输入Dialog"/>
+                android:text="自定义文本输入Dialog"
+                android:textSize="20sp"/>
             <Button android:id="@+id/two_buttons2ultra"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="超长文本Dialog"/>
+                android:text="超长文本Dialog"
+                android:textSize="20sp"/>
             <Button android:id="@+id/two_buttons_old_school"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="@string/alert_dialog_two_buttons_old_school"/>
+                android:text="@string/alert_dialog_two_buttons_old_school"
+                android:textSize="20sp"/>
             <Button android:id="@+id/two_buttons_holo_light"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="@string/alert_dialog_two_buttons_holo_light"/>
+                android:text="@string/alert_dialog_two_buttons_holo_light"
+                android:textSize="20sp"/>
             <Button android:id="@+id/two_buttons_default_light"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="@string/alert_dialog_two_buttons_default_light"/>
+                android:text="@string/alert_dialog_two_buttons_default_light"
+                android:textSize="20sp"/>
 
         </LinearLayout>
     </ScrollView>

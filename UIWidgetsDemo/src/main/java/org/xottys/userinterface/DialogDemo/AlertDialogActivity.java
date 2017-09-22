@@ -19,7 +19,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -206,55 +205,7 @@ public class AlertDialogActivity extends Activity {
             }
         });
 
-
-        //AlertDialog-6，进度转轮Dialog，new ProgressDialog构造
-        Button progressWheelButton = (Button) findViewById(R.id.progress_wheel);
-        progressWheelButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                ProgressDialog waitingDialog =
-                        new ProgressDialog(AlertDialogActivity.this);
-                waitingDialog.setTitle("我是一个等待Dialog");
-                waitingDialog.setMessage("等待中...");
-                waitingDialog.setIndeterminate(true);
-                waitingDialog.setCancelable(true);
-                waitingDialog.show();
-            }
-        });
-
-        //AlertDialog-7，进度条Dialog，new ProgressDialog构造
-        Button progressBarButton = (Button) findViewById(R.id.progress_bar);
-        progressBarButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                final int MAX_PROGRESS = 100;
-                final ProgressDialog progressDialog =
-                        new ProgressDialog(AlertDialogActivity.this);
-                progressDialog.setProgress(0);
-                progressDialog.setTitle("我是一个进度条Dialog");
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                progressDialog.setMax(MAX_PROGRESS);
-                progressDialog.show();
-                 //模拟进度增加的过程,新开一个线程，每100ms，进度增加1
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        int progress = 0;
-                        while (progress < MAX_PROGRESS) {
-                            try {
-                                Thread.sleep(100);
-                                progress++;
-                                progressDialog.setProgress(progress);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        //进度达到最大值后，窗口消失
-                        progressDialog.cancel();
-                    }
-                }).start();
-            }
-        });
-
-        //AlertDialog-8，文本输入Dialog
+        //AlertDialog-6，文本输入Dialog
         Button textEntryButton = (Button) findViewById(R.id.text_entry);
         textEntryButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -278,7 +229,7 @@ public class AlertDialogActivity extends Activity {
             }
         });
 
-        //AlertDialog-9，自定义文本输入Dialog
+        //AlertDialog-7，自定义文本输入Dialog
         final Handler handler=new Handler(){
             @Override
             public void handleMessage(Message msg){
@@ -316,7 +267,7 @@ public class AlertDialogActivity extends Activity {
             }
         });
 
-        //AlertDialog-10，超长文本Dialog，DialogFragment方式使用
+        //AlertDialog-8，超长文本Dialog，DialogFragment方式使用
         Button ultraButton = (Button) findViewById(R.id.two_buttons2ultra);
         ultraButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -327,7 +278,7 @@ public class AlertDialogActivity extends Activity {
                 myDialogFragment.show(getFragmentManager(), "dialog");
             }
         });
-        //AlertDialog-11，Tradition主题Dialog，DialogFragment方式使用
+        //AlertDialog-9，Tradition主题Dialog，DialogFragment方式使用
         Button traditionThemeButton = (Button) findViewById(R.id.two_buttons_old_school);
         traditionThemeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -339,7 +290,7 @@ public class AlertDialogActivity extends Activity {
             }
         });
 
-        //AlertDialog-12，Holo_Light主题Dialog，DialogFragment方式使用
+        //AlertDialog-10，Holo_Light主题Dialog，DialogFragment方式使用
         Button holoLightThemeButton = (Button) findViewById(R.id.two_buttons_holo_light);
         holoLightThemeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -352,7 +303,7 @@ public class AlertDialogActivity extends Activity {
             }
         });
 
-        //AlertDialog-13，Default_Light主题Dialog，DialogFragment方式使用
+        //AlertDialog-11，Default_Light主题Dialog，DialogFragment方式使用
         Button deviceDefaultLightButton = (Button) findViewById(R.id.two_buttons_default_light);
         deviceDefaultLightButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
