@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="books">
+		<item>从0到1</item>
+		<item>数学与人文</item>
+		<item>万历十五年</item>
+		<item>文明的冲突</item>
+	</string-array>
+</resources>

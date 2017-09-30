@@ -37,6 +37,14 @@
             android:label="ImageView Demo" />
 
         <activity android:name=".ProgressBarActivity"></activity>
+
+        <activity
+            android:name=".AdapterViewDemo.AdapterViewActivity"
+            android:label="AdapterView Demo" />
+        <activity
+            android:name=".AdapterViewDemo.BasicAdapterViewActivity"
+            android:label="BasicAdapterView Demo" />
+
     </application>
 
 </manifest>
