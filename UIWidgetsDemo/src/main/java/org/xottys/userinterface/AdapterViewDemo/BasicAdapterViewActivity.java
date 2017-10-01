@@ -24,6 +24,8 @@
 package org.xottys.userinterface.AdapterViewDemo;
 
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +47,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -127,6 +130,7 @@ public class BasicAdapterViewActivity extends Activity {
             listItem.put("desc", descs[i]);
             listItems.add(listItem);
         }
+
         //创建Adapter，将数据和视图关联起来
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, listItems,
                 R.layout.simple_item,
@@ -137,6 +141,30 @@ public class BasicAdapterViewActivity extends Activity {
         list.setAdapter(simpleAdapter);
         setListViewHeightBasedOnChildren(list);
 
+        // SimpleCursorAdapter，数据来自直接数据库查询结果的Cursor
+        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(getFilesDir().toString() + "/myDB", null);
+        //创建表
+        db.execSQL("create table IF NOT EXISTS cursorAdapterTest(_id integer"
+                + " primary key autoincrement,"
+                + " name text not null,"
+                + " header int not null,"
+                + " desc text)");
+        //插入数据
+        db.execSQL("replace into cursorAdapterTest values(1,'武松',"+imageIds[0]+",'打虎英雄'),(2,'林冲'," +
+                ""+imageIds[1]+",'豹子头，八十万禁军教头'),(3,'李逵',"+imageIds[2]+",'黑旋风')");
+        //sql语句查询数据库得到Cursor
+        String sql = "select _id,name,header,desc from cursorAdapterTest";
+        Cursor cursor = db.rawQuery(sql,null);
+        // 用Cursor构造适配器
+        // 最后一个参数flags是一个标识，标识当数据改变调用onContentChanged()的时候，是
+        // 否通知ContentProvider数据的改变，如果无需监听ContentProvider的改变，则可以传0。
+        SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,
+                R.layout.simple_item, cursor, new String[] { "name", "header","desc" },
+                new int[]{R.id.name, R.id.header, R.id.desc}, 0);
+        ListView listView = findViewById(R.id.mylist2);
+        listView.setAdapter(simpleCursorAdapter);
+        setListViewHeightBasedOnChildren(listView);
+
         //BaseAdapter，完全自定义Listview内容和样式
         //准备数据
         for (int i = 0; i < 20; i++
@@ -146,14 +174,15 @@ public class BasicAdapterViewActivity extends Activity {
         }
 
         //设置该Listview的高度
-
-        final ListView myList = (ListView) findViewById(R.id.mylist2);
+        final ListView myList = (ListView) findViewById(R.id.mylist3);
         ViewGroup.LayoutParams params = myList.getLayoutParams();
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
         params.height = 800;
         myList.setLayoutParams(params);
         //定义BaseAdapter子类并重写相关方法
         final BaseAdapter adapter = new BaseAdapter() {
+
+            //返回有多少个item
             @Override
             public int getCount() {
                 // 指定一共包含20个选项
@@ -166,32 +195,32 @@ public class BasicAdapterViewActivity extends Activity {
 
                 return count;
             }
-
+            //获取item的数据对象
             @Override
             public Object getItem(int position) {
-                return null;
+                return strArr.get(position);
             }
 
-            // 重写该方法，该方法的返回值将作为列表项的ID
+            //获取item的对应索引值
             @Override
             public long getItemId(int position) {
                 return position;
             }
 
-            // 重写该方法，该方法返回的View将作为每一行的视图
+            //获取每个item对应的布局对象
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                // 创建一个LinearLayout，并向其中添加两个组件
-                LinearLayout line = new LinearLayout(BasicAdapterViewActivity.this);
-                ImageView image = new ImageView(BasicAdapterViewActivity.this);
-                image.setImageResource(android.R.drawable.ic_btn_speak_now);
-                TextView text = new TextView(BasicAdapterViewActivity.this);
-                text.setText(strArr.get(position));
-                text.setTextSize(20);
-                text.setTextColor(Color.RED);
-                line.addView(image);
-                line.addView(text);
-                line.setPadding(40, 0, 0, 0);
+               // 创建一个LinearLayout，并向其中添加两个组件
+               LinearLayout line = new LinearLayout(BasicAdapterViewActivity.this);
+               ImageView image = new ImageView(BasicAdapterViewActivity.this);
+               image.setImageResource(android.R.drawable.ic_btn_speak_now);
+               TextView text = new TextView(BasicAdapterViewActivity.this);
+               text.setText(strArr.get(position));
+               text.setTextSize(20);
+               text.setTextColor(Color.RED);
+               line.addView(image);
+               line.addView(text);
+               line.setPadding(40, 0, 0, 0);
                 // 返回LinearLayout实例
                 return line;
             }
