@@ -3,11 +3,12 @@
  * 1)重用convertView以免不必要的inflating View
  * 2)使用ViewHolder模型，以免不必要的反复调用findViewById()
  * <p>
- * <br/>Copyright (C), 2017-2018, wcy
+ * <br/>Copyright (C), 2017-2018, Google
  * <br/>This program is protected by copyright laws.
  * <br/>Program Name:LayoutDemo
  * <br/>Date:Oct，2017
- * @author wcy
+ *
+ * @author Google Inc.
  * @version 1.0
  */
 

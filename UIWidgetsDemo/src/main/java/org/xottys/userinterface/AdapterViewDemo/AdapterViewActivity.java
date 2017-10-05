@@ -31,15 +31,16 @@ public class AdapterViewActivity extends ExpandableListActivity {
     private static final String TAG = "AdapterViewActivity";
 
     private String[] groupArr = new String[]
-            {"Basic AdapterView", "Advanced AdapterView", "Customer AdapterView" ,"Spinner",
-             "Dialog Demo","WebView Demo"};
+            {"Basic AdapterView", "Advanced AdapterView", "Customer AdapterView" ,
+              "ExpandableListView","Spinner"
+             };
 
     private String[][] childArr = new String[][]
             {
               {},
               { "Activated Items", "Overlay Array", "ViewBinder", "Transcript Mode","Selection Mode"},
-              { "可伸缩" , "分组","延迟加载","即时加载" },
-              {},
+              { "可伸缩","分组","延迟加载","即时加载" },
+              { "SimpleExpandableListAdapter","SimpleCursorTreeAdapter","BaseExpandableListAdapter"},
               {}
             };
 
@@ -47,7 +48,8 @@ public class AdapterViewActivity extends ExpandableListActivity {
     Class<?>[] clazzs = {BasicAdapterViewActivity.class, ActivatedItemsActivity.class,
             OverlayArrayActivity.class, ViewBinderActivity.class,TranscriptModeActivity.class,
             SelectionModeActivity.class,CustomerAdapterActivity1.class,CustomerAdapterActivity2.class,
-            SlowAdapterActivity.class,EfficentAdapterActivity.class};
+            SlowAdapterActivity.class,EfficentAdapterActivity.class,SimpleExpandableActivity.class,
+            SimpleCursorTreeActivity.class,BaseExpandableActivity.class};
 
     //将clazzs数组直接放入，系统将按顺序对应listview上的每一行，行点击后将跳转相应Intent的Activity
     public Intent intentForPosition(int position) {

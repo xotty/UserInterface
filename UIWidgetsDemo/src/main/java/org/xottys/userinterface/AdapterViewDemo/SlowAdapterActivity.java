@@ -3,11 +3,12 @@
  * 1)getViw中只给出虚拟数据：Loding...
  * 2)onScrollStateChanged状态为Idle时，填入真实数据
  * <p>
- * <br/>Copyright (C), 2017-2018, wcy
+ * <br/>Copyright (C), 2017-2018, Google
  * <br/>This program is protected by copyright laws.
  * <br/>Program Name:LayoutDemo
  * <br/>Date:Oct，2017
- * @author wcy
+ *
+ * @author Google Inc.
  * @version 1.0
  */
 

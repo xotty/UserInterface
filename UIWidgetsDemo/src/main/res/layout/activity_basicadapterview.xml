@@ -80,18 +80,5 @@
 		android:id="@+id/mylist3"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"/>
-
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="ExpandableListAdapter ExpandableListView:"
-		android:textSize="20sp"
-		android:textColor="#2f6dea" />
-	<!--ExpandableListAdapter ExpandableListView-->
-	<ExpandableListView
-		android:id="@+id/exlist"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:childIndicator="@android:drawable/ic_dialog_alert"/>
 	</LinearLayout>
 </ScrollView>

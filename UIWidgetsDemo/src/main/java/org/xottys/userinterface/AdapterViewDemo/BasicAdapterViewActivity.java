@@ -6,7 +6,6 @@
  * 4)SimpleCursorAdapter，数据准备用Cursor代替ArrayList，其它功能和用法与3)相同
  * 5)BaseAdapter，本身是抽象类，需要实例化其子类（匿名的也行），
  * 子类中要重写getCount(), getItem(), getItemId()和getView()方法，然后使用
- * 6)ExpandableListAdapter,扩展列表的专用适配器
  * 其中最常用的2）3）实现步骤为：
  * 1）用Array或ArrayList定义要呈现的数据（文本、图片等）
  * 2）定义每一行Item的视图样式（xml布局文件或系统自带的ListItem布局）
@@ -42,6 +41,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckedTextView;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -174,7 +174,6 @@ public class BasicAdapterViewActivity extends Activity {
         ListView listView = (ListView)findViewById(R.id.mylist2);
         listView.setAdapter(simpleCursorAdapter);
         setListViewHeightBasedOnChildren(listView);
-
         //BaseAdapter，完全自定义Listview内容和样式
         //准备数据
         for (int i = 0; i < 20; i++
@@ -327,124 +326,6 @@ public class BasicAdapterViewActivity extends Activity {
                     }
                 }
 
-            }
-        });
-
-        //ExpandableListAdapter
-        ExpandableListAdapter exadapter = new BaseExpandableListAdapter() {
-            int[] logos = new int[]
-                    {
-                            R.drawable.p,
-                            R.drawable.z,
-                            R.drawable.t
-                    };
-            private String[] armTypes = new String[]
-                    {"神族兵种", "虫族兵种", "人族兵种"};
-            private String[][] arms = new String[][]
-                    {
-                            {"狂战士", "龙骑士", "黑暗圣堂", "电兵"},
-                            {"小狗", "刺蛇", "飞龙", "自爆飞机"},
-                            {"机枪兵", "护士MM", "幽灵"}
-                    };
-            // 获取指定组位置、指定子列表项处的子列表项数据
-            @Override
-            public Object getChild(int groupPosition, int childPosition) {
-                return arms[groupPosition][childPosition];
-            }
-
-            @Override
-            public long getChildId(int groupPosition, int childPosition) {
-                return childPosition;
-            }
-
-            @Override
-            public int getChildrenCount(int groupPosition) {
-                return arms[groupPosition].length;
-            }
-
-            private TextView getTextView() {
-                AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT, 64);
-                TextView textView = new TextView(BasicAdapterViewActivity.this);
-                textView.setLayoutParams(lp);
-                textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
-                textView.setPadding(36, 0, 0, 0);
-                textView.setTextSize(20);
-                return textView;
-            }
-
-            // 该方法决定每个子选项的外观
-            @Override
-            public View getChildView(int groupPosition, int childPosition,
-                                     boolean isLastChild, View convertView, ViewGroup parent) {
-                TextView textView = getTextView();
-                textView.setText(getChild(groupPosition, childPosition)
-                        .toString());
-                return textView;
-            }
-
-            // 获取指定组位置处的组数据
-            @Override
-            public Object getGroup(int groupPosition) {
-                return armTypes[groupPosition];
-            }
-
-            @Override
-            public int getGroupCount() {
-                return armTypes.length;
-            }
-
-            @Override
-            public long getGroupId(int groupPosition) {
-                return groupPosition;
-            }
-
-            // 该方法决定每个组选项的外观
-            @Override
-            public View getGroupView(int groupPosition, boolean isExpanded,
-                                     View convertView, ViewGroup parent) {
-                LinearLayout ll = new LinearLayout(BasicAdapterViewActivity.this);
-                ImageView logo = new ImageView(BasicAdapterViewActivity.this);
-                logo.setImageResource(logos[groupPosition]);
-                ll.addView(logo);
-                ll.setPadding(60, 0, 0, 0);
-                TextView textView = getTextView();
-                textView.setText(getGroup(groupPosition).toString());
-                ll.addView(textView);
-                return ll;
-            }
-
-            @Override
-            public boolean isChildSelectable(int groupPosition,
-                                             int childPosition) {
-                return true;
-            }
-
-            @Override
-            public boolean hasStableIds() {
-                return true;
-            }
-        };
-        ExpandableListView expandListView = (ExpandableListView) findViewById(R.id.exlist);
-        expandListView.setAdapter(exadapter);
-        setListViewHeightBasedOnChildren(expandListView);
-        //父项点击监听事件
-        expandListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-            @Override
-            public boolean onGroupClick(ExpandableListView var1, View var2, int var3, long var4)
-            {
-                showMessage("第"+var3+"个父项被点击了");
-                Log.i(TAG, "OnGroupClick");
-                return false;
-            }
-        });
-        //子项点击监听事件
-        expandListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-                showMessage("第"+i1+"个子项被点击了");
-                Log.i(TAG, "onChildClick");
-                return false;
             }
         });
     }

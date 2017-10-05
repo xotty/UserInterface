@@ -75,6 +75,18 @@
         <activity
             android:name=".AdapterViewDemo.EfficentAdapterActivity"
             android:label="AdvancedAdapterView Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.SimpleExpandableActivity"
+            android:label="ExpandableListView Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.SimpleCursorTreeActivity"
+            android:label="ExpandableListView Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.BaseExpandableActivity"
+            android:label="ExpandableListView Demo" />
     </application>
 
 </manifest>
