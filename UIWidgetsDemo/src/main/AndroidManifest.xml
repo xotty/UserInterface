@@ -17,7 +17,6 @@
             android:theme="@android:style/Theme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -40,11 +39,42 @@
 
         <activity
             android:name=".AdapterViewDemo.AdapterViewActivity"
-            android:label="AdapterView Demo" />
+            android:label="AdapterView Demo"
+         />
         <activity
             android:name=".AdapterViewDemo.BasicAdapterViewActivity"
             android:label="BasicAdapterView Demo" />
-
+        <activity
+            android:name=".AdapterViewDemo.ActivatedItemsActivity"
+            android:label="AdvancedAdapterView Demo" />
+        <activity
+            android:name=".AdapterViewDemo.OverlayArrayActivity"
+            android:label="AdvancedAdapterView Demo" />
+        <activity
+            android:name=".AdapterViewDemo.ViewBinderActivity"
+            android:label="AdvancedAdapterView Demo" />
+        <activity
+            android:name=".AdapterViewDemo.TranscriptModeActivity"
+            android:label="AdvancedAdapterView Demo" />
+        <activity
+            android:name=".AdapterViewDemo.SelectionModeActivity"
+            android:label="AdvancedAdapterView Demo"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
+        <activity
+            android:name=".AdapterViewDemo.CustomerAdapterActivity1"
+            android:label="AdvancedAdapterView Demo"
+            android:theme="@android:style/Theme" />
+        <activity
+            android:name=".AdapterViewDemo.CustomerAdapterActivity2"
+            android:label="AdvancedAdapterView Demo"
+            android:theme="@style/AppTheme.NoActionBar"
+             />
+        <activity
+        android:name=".AdapterViewDemo.SlowAdapterActivity"
+        android:label="AdvancedAdapterView Demo" />
+        <activity
+            android:name=".AdapterViewDemo.EfficentAdapterActivity"
+            android:label="AdvancedAdapterView Demo" />
     </application>
 
 </manifest>

@@ -152,6 +152,14 @@ public class LifecycleActivity extends Activity {
         Log.d(TAG, "-------onStart------");
     }
 
+    //onStart()完成后调用
+    @Override
+    public void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        tv.append("-------onPostCreate------\n");
+        Log.d(TAG, "-------onPostCreate------");
+    }
+
     //Activity恢复可见时回调
     @Override
     public void onResume() {
@@ -160,6 +168,13 @@ public class LifecycleActivity extends Activity {
         Log.d(TAG, "-------onResume------");
     }
 
+    //onResume()完成后调用
+    @Override
+    public void onPostResume() {
+        super.onPostResume();
+        tv.append("-------onPostResume------\n");
+        Log.d(TAG, "-------onPostResume------");
+    }
     //Activity失去焦点时回调
     @Override
     public void onPause() {

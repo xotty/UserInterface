@@ -3,9 +3,10 @@
  * 1)不用Adapter，直接获取数组资源文件
  * 2)ArrayAdapter，单行TextView或其子类：文本，按钮、复选框.....
  * 3)SimpleAdapter，多行任意数据类型，可以带图片等
- * 4)BaseAdapter，本身是抽象类，需要实例化其子类（匿名的也行），
+ * 4)SimpleCursorAdapter，数据准备用Cursor代替ArrayList，其它功能和用法与3)相同
+ * 5)BaseAdapter，本身是抽象类，需要实例化其子类（匿名的也行），
  * 子类中要重写getCount(), getItem(), getItemId()和getView()方法，然后使用
- * 5)ExpandableListAdapter,扩展列表的专用适配器
+ * 6)ExpandableListAdapter,扩展列表的专用适配器
  * 其中最常用的2）3）实现步骤为：
  * 1）用Array或ArrayList定义要呈现的数据（文本、图片等）
  * 2）定义每一行Item的视图样式（xml布局文件或系统自带的ListItem布局）
@@ -84,16 +85,22 @@ public class BasicAdapterViewActivity extends Activity {
         //ArrayAdapter,可以呈现单行文本、按钮、复选框等TextView类型的数据
         ListView list1 = (ListView) findViewById(R.id.list1);
         //准备数据
-        String[] arr1 = {"孙悟空", "猪八戒", "牛魔王"};
+        String[] arr1 = new String[]{"唐僧","孙悟空", "猪八戒","沙和尚"};
         //将数据和Item视图包装为ArrayAdapter
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>
                 (this, android.R.layout.simple_list_item_1, arr1);
-                //上面使用了系统视图，也可以替换成自定义试图，如(this, R.layout.array_item, arr1);
-        // 为ListView设置Adapter
+
+                /*上面使用了系统视图，也可以替换成自定义试图，如(this, R.layout.array_item, arr1);
+                  还可以换成下列系统视图 ：android.R.layout.simple_list_item_single_choice
+                                      android.R.layout.simple_list_item_mutiple_choice
+                                      android.R.layout.simple_list_item_checked
+                 list1.setItemsCanFocus(false);
+                 list1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);*/
+
+        // 为ListView设置Adapter*/
         list1.setAdapter(adapter1);
         //设置自适应行高度，以便与ScrollView兼容
         setListViewHeightBasedOnChildren(list1);
-
         //ArrayAdapter,这里呈现的是CheckedTextView
         final ListView list2 = (ListView) findViewById(R.id.list2);
         final String[] arr2 = {"Java", "Android","Kotlin","Objective-C", "Swift"};
@@ -131,12 +138,15 @@ public class BasicAdapterViewActivity extends Activity {
             listItems.add(listItem);
         }
 
-        //创建Adapter，将数据和视图关联起来
+        //创建SimpleAdapter，将数据和视图关联起来
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, listItems,
-                R.layout.simple_item,
-                new String[]{"personName", "header", "desc"},
-                new int[]{R.id.name, R.id.header, R.id.desc});
-
+           android.R.layout.simple_list_item_2,
+           new String[]{"personName", "desc"},
+           new int[]{android.R.id.text1, android.R.id.text2});
+           /*也可以换成自定义的布局，例如：
+           R.layout.simple_item,
+           new String[]{"personName", "header", "desc"},
+           new int[]{R.id.name, R.id.header, R.id.desc});*/
         ListView list = (ListView) findViewById(R.id.mylist1);
         list.setAdapter(simpleAdapter);
         setListViewHeightBasedOnChildren(list);
@@ -161,7 +171,7 @@ public class BasicAdapterViewActivity extends Activity {
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,
                 R.layout.simple_item, cursor, new String[] { "name", "header","desc" },
                 new int[]{R.id.name, R.id.header, R.id.desc}, 0);
-        ListView listView = findViewById(R.id.mylist2);
+        ListView listView = (ListView)findViewById(R.id.mylist2);
         listView.setAdapter(simpleCursorAdapter);
         setListViewHeightBasedOnChildren(listView);
 
@@ -336,7 +346,6 @@ public class BasicAdapterViewActivity extends Activity {
                             {"小狗", "刺蛇", "飞龙", "自爆飞机"},
                             {"机枪兵", "护士MM", "幽灵"}
                     };
-
             // 获取指定组位置、指定子列表项处的子列表项数据
             @Override
             public Object getChild(int groupPosition, int childPosition) {
@@ -419,6 +428,25 @@ public class BasicAdapterViewActivity extends Activity {
         ExpandableListView expandListView = (ExpandableListView) findViewById(R.id.exlist);
         expandListView.setAdapter(exadapter);
         setListViewHeightBasedOnChildren(expandListView);
+        //父项点击监听事件
+        expandListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView var1, View var2, int var3, long var4)
+            {
+                showMessage("第"+var3+"个父项被点击了");
+                Log.i(TAG, "OnGroupClick");
+                return false;
+            }
+        });
+        //子项点击监听事件
+        expandListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+                showMessage("第"+i1+"个子项被点击了");
+                Log.i(TAG, "onChildClick");
+                return false;
+            }
+        });
     }
 
 

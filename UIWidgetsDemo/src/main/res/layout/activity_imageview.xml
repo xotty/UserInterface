@@ -117,6 +117,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:text="显示不同"
+            android:textColor="@color/green"
+            android:textSize="20sp"
             android:src="@drawable/imagebutton_selector" />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -126,6 +129,8 @@
         <ImageButton
             android:layout_width="100dip"
             android:layout_height="50dip"
+            android:text="显示AA不同"
+            android:textColor="@color/green"
             android:src="@android:drawable/sym_action_call" />
 
         <org.xottys.userinterface.MyImageButton

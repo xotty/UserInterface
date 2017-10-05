@@ -12,7 +12,7 @@ public class MyImageButton extends android.support.v7.widget.AppCompatImageButto
         super(context,attrs);
     }
     public void setText(String text){
-        this.text = text;       //设置文字
+        this.text = text;      //设置文字
     }
     public void setColor(int color){
         this.color = color;    //设置文字颜色

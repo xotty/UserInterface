@@ -13,8 +13,6 @@ import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 
-
-
 public class MyEditText extends
         EditText implements View.OnFocusChangeListener, TextWatcher {
 

@@ -144,6 +144,7 @@ public class ImageViewActivity extends Activity {
         btn2.setZoomSpeed(200);
         //ZoomButton的缩放功能需要自己在onClick中实现，此处实现缩小
         btn1.setOnClickListener(new View.OnClickListener() {
+              @Override
               public void onClick(View v) {
                 int x = imgButton.getWidth();
                 int y = imgButton.getHeight();
@@ -156,6 +157,7 @@ public class ImageViewActivity extends Activity {
 
         //ZoomButton的缩放功能需要自己在onClick中实现，此处实现放大
         btn2.setOnClickListener(new View.OnClickListener() {
+              @Override
               public void onClick(View v) {
                   int x = imgButton.getWidth();
                   int y = imgButton.getHeight();

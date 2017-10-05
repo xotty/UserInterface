@@ -72,7 +72,6 @@ public class AlertDialogFragment extends Fragment {
      * @param param1 Parameter 1.
      * @return A new instance of fragment AlertDialogFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static AlertDialogFragment newInstance(String param1) {
         AlertDialogFragment fragment = new AlertDialogFragment();
         Bundle args = new Bundle();
@@ -98,7 +97,6 @@ public class AlertDialogFragment extends Fragment {
         return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
