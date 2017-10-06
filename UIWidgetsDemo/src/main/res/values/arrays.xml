@@ -6,4 +6,27 @@
 		<item>万历十五年</item>
 		<item>文明的冲突</item>
 	</string-array>
+
+	<!-- Used in AdapterView/Spinner.java -->
+	<string-array name="colors">
+		<item>red</item>
+		<item>orange</item>
+		<item>yellow</item>
+		<item>green</item>
+		<item>blue</item>
+		<item>violet</item>
+	</string-array>
+
+	<!-- Used in AdapterView/Spinner.java -->
+	<string-array name="planets">
+		<item>Mercury</item>
+		<item>Venus</item>
+		<item>Earth</item>
+		<item>Mars</item>
+		<item>Jupiter</item>
+		<item>Saturn</item>
+		<item>Uranus</item>
+		<item>Neptune</item>
+		<item>Pluto</item>
+	</string-array>
 </resources>

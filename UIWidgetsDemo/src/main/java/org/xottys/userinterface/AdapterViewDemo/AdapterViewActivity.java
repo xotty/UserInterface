@@ -32,7 +32,7 @@ public class AdapterViewActivity extends ExpandableListActivity {
 
     private String[] groupArr = new String[]
             {"Basic AdapterView", "Advanced AdapterView", "Customer AdapterView" ,
-              "ExpandableListView","Spinner"
+              "ExpandableListView","Spinner","GridView"
              };
 
     private String[][] childArr = new String[][]
@@ -41,7 +41,8 @@ public class AdapterViewActivity extends ExpandableListActivity {
               { "Activated Items", "Overlay Array", "ViewBinder", "Transcript Mode","Selection Mode"},
               { "可伸缩","分组","延迟加载","即时加载" },
               { "SimpleExpandableListAdapter","SimpleCursorTreeAdapter","BaseExpandableListAdapter"},
-              {}
+              {},
+              {"SimpleAdapter GridView","BaseAdapter GridView","Selection Mode GridView"}
             };
 
     //定义各个Activity对应的实现类
@@ -49,7 +50,8 @@ public class AdapterViewActivity extends ExpandableListActivity {
             OverlayArrayActivity.class, ViewBinderActivity.class,TranscriptModeActivity.class,
             SelectionModeActivity.class,CustomerAdapterActivity1.class,CustomerAdapterActivity2.class,
             SlowAdapterActivity.class,EfficentAdapterActivity.class,SimpleExpandableActivity.class,
-            SimpleCursorTreeActivity.class,BaseExpandableActivity.class};
+            SimpleCursorTreeActivity.class,BaseExpandableActivity.class,SpinnerActivity.class,
+            GridViewActivity1.class,GridViewActivity2.class,GridViewActivity3.class};
 
     //将clazzs数组直接放入，系统将按顺序对应listview上的每一行，行点击后将跳转相应Intent的Activity
     public Intent intentForPosition(int position) {
@@ -161,9 +163,14 @@ public class AdapterViewActivity extends ExpandableListActivity {
 
             public boolean onGroupClick (ExpandableListView var1, View var2,int var3, long var4)
             {
-                Log.i(TAG, "OnGroupClick");
+                Log.i(TAG, "OnGroupClick:"+var3);
+                int l=0;
+                for (int i=0;i<var3;i++)
+                {
+                    l=l+(childArr[i].length==0?1:childArr[i].length);
+                }
                 if (childArr[var3].length==0)
-                    startActivity(intentForPosition(var3));
+                    startActivity(intentForPosition(l));
                 return false;
             }
         });

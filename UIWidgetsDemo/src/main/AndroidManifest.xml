@@ -87,6 +87,22 @@
         <activity
             android:name=".AdapterViewDemo.BaseExpandableActivity"
             android:label="ExpandableListView Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.SpinnerActivity"
+            android:label="Spinner Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.GridViewActivity1"
+            android:label="GridView Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.GridViewActivity2"
+            android:label="GridView Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.GridViewActivity3"
+            android:label="GridView Demo" />
     </application>
 
 </manifest>

@@ -153,4 +153,10 @@
 
     <string name="share">Share</string>
     <string name="expandable_list_sample_action">Sample action</string>
+
+    <string name="spinner_color">Color:</string>
+    <string name="spinner_planet">Planet:</string>
+    <string name="spinner_color_prompt">Choose a color</string>
+    <string name="spinner_planet_prompt">Choose a planet</string>
+    <string name="tip">请选择您喜欢的人物</string>
 </resources>

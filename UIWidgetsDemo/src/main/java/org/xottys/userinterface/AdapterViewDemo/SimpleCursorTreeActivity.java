@@ -1,8 +1,7 @@
 /**
  * 本例演示了SimpleCursorTreeAdapter的用法：
- * 1)使用ArrayList分别准备父项和子项的数据
- * 2)准备父项和子项的视图，可以是系统的，可以是xml，也可以是代码生成的
- * 3)将上述数据和视图装配成SimpleExpandableListAdapter
+ * 1)setGroupCursor:设置父项数据，setChildrenCursor设置子项数据
+ * 2)在onCrease和getChildrenCursor中分别启动AsyncQueryHandler查询父项和子项数据
  * <p>
  * <br/>Copyright (C), 2017-2018, Google
  * <br/>This program is protected by copyright laws.
@@ -23,6 +22,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
+import android.util.Log;
 import android.widget.CursorTreeAdapter;
 import android.widget.SimpleCursorTreeAdapter;
 
@@ -56,10 +56,11 @@ public class SimpleCursorTreeActivity extends ExpandableListActivity {
         @Override
         protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
             switch (token) {
+            //用查询结果设置父项数据
             case TOKEN_GROUP:
                 mAdapter.setGroupCursor(cursor);
                 break;
-
+            //用查询结果设置子项数据
             case TOKEN_CHILD:
                 int groupPosition = (Integer) cookie;
                 mAdapter.setChildrenCursor(groupPosition, cursor);
@@ -83,17 +84,16 @@ public class SimpleCursorTreeActivity extends ExpandableListActivity {
         @Override
         protected Cursor getChildrenCursor(Cursor groupCursor) {
             // Given the group, we return a cursor for all the children within that group 
-
             // Return a cursor that points to this contact's phone numbers
             Uri.Builder builder = Contacts.CONTENT_URI.buildUpon();
             ContentUris.appendId(builder, groupCursor.getLong(GROUP_ID_COLUMN_INDEX));
             builder.appendEncodedPath(Contacts.Data.CONTENT_DIRECTORY);
             Uri phoneNumbersUri = builder.build();
 
+            //用异步查询结果在onQueryComplete中设置子项数据
             mQueryHandler.startQuery(TOKEN_CHILD, groupCursor.getPosition(), phoneNumbersUri, 
                     PHONE_NUMBER_PROJECTION, Phone.MIMETYPE + "=?",
                     new String[] { Phone.CONTENT_ITEM_TYPE }, null);
-
             return null;
         }
     }
@@ -119,7 +119,7 @@ public class SimpleCursorTreeActivity extends ExpandableListActivity {
 
         mQueryHandler = new QueryHandler(this, mAdapter);
 
-        // Query for people
+        // Query for people，用异步查询结果在onQueryComplete中设置父项数据
         mQueryHandler.startQuery(TOKEN_GROUP, null, Contacts.CONTENT_URI, CONTACTS_PROJECTION,
                 Contacts.HAS_PHONE_NUMBER + "=1", null, null);
     }
