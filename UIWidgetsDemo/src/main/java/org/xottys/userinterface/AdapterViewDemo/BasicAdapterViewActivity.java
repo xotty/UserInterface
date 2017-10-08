@@ -1,5 +1,5 @@
 /**
- * 本例演示了基本型Listview及其三种常用Adapter的使用方法
+ * 本例演示了基本型Listview及其四种常用Adapter的使用方法
  * 1)不用Adapter，直接获取数组资源文件
  * 2)ArrayAdapter，单行TextView或其子类：文本，按钮、复选框.....
  * 3)SimpleAdapter，多行任意数据类型，可以带图片等

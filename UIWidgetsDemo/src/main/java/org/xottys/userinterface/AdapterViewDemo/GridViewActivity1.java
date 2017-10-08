@@ -30,6 +30,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.xottys.userinterface.R;
+
+
 public class GridViewActivity1 extends Activity {
 	private GridView gview;
 	private List<Map<String, Object>> data_list;

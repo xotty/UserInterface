@@ -1,7 +1,8 @@
 /**
  * 本例演示了常用AdapterView的各种用法：
- * 1)ListView的三种常用Adapter（ArrayAdapter、SimpleAdapter、BaseAdapter）及其各种变化
+ * 1)ListView的四种常用Adapter（ArrayAdapter、SimpleAdapter、SimpleCursorAdapter、BaseAdapter）及其各种变化
  * 2)Spinner
+ * 3)GridView
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
@@ -32,7 +33,7 @@ public class AdapterViewActivity extends ExpandableListActivity {
 
     private String[] groupArr = new String[]
             {"Basic AdapterView", "Advanced AdapterView", "Customer AdapterView" ,
-              "ExpandableListView","Spinner","GridView"
+              "ExpandableListView","Spinner","GridView","ViewPager"
              };
 
     private String[][] childArr = new String[][]
@@ -42,7 +43,8 @@ public class AdapterViewActivity extends ExpandableListActivity {
               { "可伸缩","分组","延迟加载","即时加载" },
               { "SimpleExpandableListAdapter","SimpleCursorTreeAdapter","BaseExpandableListAdapter"},
               {},
-              {"SimpleAdapter GridView","BaseAdapter GridView","Selection Mode GridView"}
+              {"SimpleAdapter GridView","BaseAdapter GridView","Selection Mode GridView"},
+              {"Basic ViewPager","Title ViewPager","Fragment ViewPager"}
             };
 
     //定义各个Activity对应的实现类
@@ -51,7 +53,9 @@ public class AdapterViewActivity extends ExpandableListActivity {
             SelectionModeActivity.class,CustomerAdapterActivity1.class,CustomerAdapterActivity2.class,
             SlowAdapterActivity.class,EfficentAdapterActivity.class,SimpleExpandableActivity.class,
             SimpleCursorTreeActivity.class,BaseExpandableActivity.class,SpinnerActivity.class,
-            GridViewActivity1.class,GridViewActivity2.class,GridViewActivity3.class};
+            GridViewActivity1.class,GridViewActivity2.class,GridViewActivity3.class,
+            BasicViewPagerActivity.class,TitleViewPagerActivity.class,FragmentViewPagerActivity.class};
+
 
     //将clazzs数组直接放入，系统将按顺序对应listview上的每一行，行点击后将跳转相应Intent的Activity
     public Intent intentForPosition(int position) {

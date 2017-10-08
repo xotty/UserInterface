@@ -10,10 +10,10 @@ import org.xottys.userinterface.DialogDemo.DialogActivity;
 
 public class MainActivity extends LauncherActivity {
     //定义要跳转的各个Activity的名称
-    String[] names = {"TextView Demo", "ImageView Demo", "ProgressBar Demo" ,"AdaterView Demo","Dialog Demo","WebView Demo"};
+    String[] names = {"TextView Demo", "ImageView Demo", "ProgressBar Demo" ,"AdaterView Demo","CustomView Demo","Dialog Demo","WebView Demo"};
 
     //定义各个Activity对应的实现类
-    Class<?>[] clazzs = {TextViewActivity.class, ImageViewActivity.class, ProgressBarActivity.class, AdapterViewActivity.class,DialogActivity.class, WebViewActivity.class};
+    Class<?>[] clazzs = {TextViewActivity.class, ImageViewActivity.class, ProgressBarActivity.class, AdapterViewActivity.class,CustomViewActivity.class,DialogActivity.class, WebViewActivity.class};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

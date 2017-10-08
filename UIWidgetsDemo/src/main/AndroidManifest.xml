@@ -103,6 +103,23 @@
         <activity
             android:name=".AdapterViewDemo.GridViewActivity3"
             android:label="GridView Demo" />
+        <activity
+            android:name=".AdapterViewDemo.BasicViewPagerActivity"
+            android:label="GridView Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.TitleViewPagerActivity"
+            android:label="GridView Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.FragmentViewPagerActivity"
+            android:label="GridView Demo" />
+
+        <activity
+            android:name=".CustomViewActivity"
+            android:label="CustomView Demo" />
+
+
     </application>
 
 </manifest>

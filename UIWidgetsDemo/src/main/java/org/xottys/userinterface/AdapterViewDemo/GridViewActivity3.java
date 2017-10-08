@@ -17,6 +17,7 @@
  */
 package org.xottys.userinterface.AdapterViewDemo;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -50,7 +51,6 @@ public class GridViewActivity3 extends Activity {
         super.onCreate(savedInstanceState);
 
         loadApps();
-        SlidingDrawer
         setContentView(R.layout.activity_grid);
         mGrid = (GridView) findViewById(R.id.myGrid);
         mGrid.setAdapter(new AppsAdapter());
