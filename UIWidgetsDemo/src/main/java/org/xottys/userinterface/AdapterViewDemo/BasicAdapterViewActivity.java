@@ -53,8 +53,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
 public class BasicAdapterViewActivity extends Activity {
     private static final String TAG = "BasicAdapterView";
 
@@ -173,10 +171,8 @@ public class BasicAdapterViewActivity extends Activity {
         setListViewHeightBasedOnChildren(listView);
         //BaseAdapter，完全自定义Listview内容和样式
         //准备数据
-        for (int i = 0; i < 20; i++
-                ) {
+        for (int i = 0; i < 20; i++) {
             strArr.add("第" + (i + 1) + "个列表项");
-
         }
 
         //BaseAdapter---------------------------------------------------------------------------
