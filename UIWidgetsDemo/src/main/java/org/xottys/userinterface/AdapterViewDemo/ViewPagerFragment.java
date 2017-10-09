@@ -14,6 +14,7 @@
  */
 package org.xottys.userinterface.AdapterViewDemo;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -49,17 +50,23 @@ public class ViewPagerFragment  extends Fragment {
         //设置每页显示的文本为当前标识编号:tag
         tv.setText(String.valueOf(tag));
 
-        //根据参数将背景设为不同颜色
+        //根据参数将背景设为不同颜色,这里同时展示了4种常用颜色代码设置方法
         int color=0;
         switch (tag) {
             case 1:
-                color=getResources().getColor(R.color.blue,null);
+                color=Color.BLUE;
                 break;
             case 2:
                 color=getResources().getColor(R.color.red,null);
                 break;
             case 3:
-                color=getResources().getColor(R.color.green,null);
+                color=0xFF8A2BE2;
+                break;
+            case 4:
+                color=Color.parseColor("green");
+                break;
+            case 5:
+                color=Color.parseColor("#FF00FFFF");
                 break;
         }
         ll.setBackgroundColor(color);
