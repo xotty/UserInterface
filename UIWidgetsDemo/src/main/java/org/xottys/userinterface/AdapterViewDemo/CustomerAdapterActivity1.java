@@ -50,7 +50,7 @@ public class CustomerAdapterActivity1 extends ListActivity
      *
      */
     private class SpeechListAdapter extends BaseAdapter {
-        public SpeechListAdapter(Context context)
+        private SpeechListAdapter(Context context)
         {
             mContext = context;
         }
@@ -106,7 +106,7 @@ public class CustomerAdapterActivity1 extends ListActivity
             return sv;
         }
 
-        public void toggle(int position) {
+        private void toggle(int position) {
             mExpanded[position] = !mExpanded[position];
             notifyDataSetChanged();
         }

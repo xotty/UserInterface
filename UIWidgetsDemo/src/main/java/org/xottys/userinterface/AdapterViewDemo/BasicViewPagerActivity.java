@@ -1,8 +1,20 @@
-package org.xottys.userinterface.AdapterViewDemo;
+/**
+ * 本例演示了ViewPager的基本用法：
+ * 1)准备视图数组：List<View>,这是每一页要显示的内容
+ * 2)自定义PagerAdapter子类，覆写其相关方法，在instantiateItem方法中，将View添加到ViewPager中
+ * 3)viewPager.setAdapter
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:LayoutDemo
+ * <br/>Date:Oct，2017
+ * @author xottys@163.com
+ * @version 1.0
+ */
+ package org.xottys.userinterface.AdapterViewDemo;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -18,15 +30,14 @@ import org.xottys.userinterface.R;
 public class BasicViewPagerActivity extends Activity {
 	private static final String TAG = "BasicViewPagerActivity";
 	private List<View> viewList;
-	private ViewPager viewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_viewpager1);
 
-		viewPager = (ViewPager) findViewById(R.id.viewpager);
-		viewList = new ArrayList<View>();
+		ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+		viewList = new ArrayList<>();
 
 		// 定义一个访问图片的数组
 		int[] images = new int[]{

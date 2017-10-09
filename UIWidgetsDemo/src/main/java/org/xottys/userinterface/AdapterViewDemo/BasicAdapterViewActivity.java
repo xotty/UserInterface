@@ -29,7 +29,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +36,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckedTextView;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -63,7 +58,7 @@ import java.util.Map;
 public class BasicAdapterViewActivity extends Activity {
     private static final String TAG = "BasicAdapterView";
 
-    private ArrayList<String> strArr = new ArrayList();
+    private ArrayList<String> strArr = new ArrayList<>();
     boolean reachToBottom;
 
     private String[] names = new String[]
@@ -78,33 +73,33 @@ public class BasicAdapterViewActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //直接在布局文件中用android:entries定义了第一组Listview的数据来源
         setContentView(R.layout.activity_basicadapterview);
 
-        //ArrayAdapter,可以呈现单行文本、按钮、复选框等TextView类型的数据
+        //ArrayAdapter-1---------------------------------------------------------------------------
+        //可以呈现单行文本、按钮、复选框等TextView类型的数据
         ListView list1 = (ListView) findViewById(R.id.list1);
         //准备数据
         String[] arr1 = new String[]{"唐僧","孙悟空", "猪八戒","沙和尚"};
         //将数据和Item视图包装为ArrayAdapter
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>
                 (this, android.R.layout.simple_list_item_1, arr1);
+        /*上面使用了系统视图，也可以替换成自定义试图，如(this, R.layout.array_item, arr1);
+         还可以换成下列系统视图 ：android.R.layout.simple_list_item_single_choice
+                             android.R.layout.simple_list_item_mutiple_choice
+                             android.R.layout.simple_list_item_checked
+        list1.setItemsCanFocus(false);
+        list1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);*/
 
-                /*上面使用了系统视图，也可以替换成自定义试图，如(this, R.layout.array_item, arr1);
-                  还可以换成下列系统视图 ：android.R.layout.simple_list_item_single_choice
-                                      android.R.layout.simple_list_item_mutiple_choice
-                                      android.R.layout.simple_list_item_checked
-                 list1.setItemsCanFocus(false);
-                 list1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);*/
-
-        // 为ListView设置Adapter*/
+        // 为ListView设置Adapter
         list1.setAdapter(adapter1);
         //设置自适应行高度，以便与ScrollView兼容
         setListViewHeightBasedOnChildren(list1);
-        //ArrayAdapter,这里呈现的是CheckedTextView
+        //ArrayAdapter-2---------------------------------------------------------------------------
+        //这里呈现的是CheckedTextView
         final ListView list2 = (ListView) findViewById(R.id.list2);
         final String[] arr2 = {"Java", "Android","Kotlin","Objective-C", "Swift"};
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>
                 (this, R.layout.checked_item, arr2);
         list2.setAdapter(adapter2);
         setListViewHeightBasedOnChildren(list2);
@@ -126,12 +121,12 @@ public class BasicAdapterViewActivity extends Activity {
                 }
             }
         });
-
-        // SimpleAdapter，可以在ListView中呈现任意布局的视图
+        // SimpleAdapter---------------------------------------------------------------------------
+        // 可以在ListView中呈现任意布局的视图
         // 创建一个List集合，List集合的元素是Map，在这里放入要呈现的各项图文数据
-        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> listItems = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
-            Map<String, Object> listItem = new HashMap<String, Object>();
+            Map<String, Object> listItem = new HashMap<>();
             listItem.put("header", imageIds[i]);
             listItem.put("personName", names[i]);
             listItem.put("desc", descs[i]);
@@ -151,7 +146,8 @@ public class BasicAdapterViewActivity extends Activity {
         list.setAdapter(simpleAdapter);
         setListViewHeightBasedOnChildren(list);
 
-        // SimpleCursorAdapter，数据来自直接数据库查询结果的Cursor
+        // SimpleCursorAdapter---------------------------------------------------------------------
+        // 数据来自直接数据库查询结果的Cursor
         SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(getFilesDir().toString() + "/myDB", null);
         //创建表
         db.execSQL("create table IF NOT EXISTS cursorAdapterTest(_id integer"
@@ -171,6 +167,7 @@ public class BasicAdapterViewActivity extends Activity {
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,
                 R.layout.simple_item, cursor, new String[] { "name", "header","desc" },
                 new int[]{R.id.name, R.id.header, R.id.desc}, 0);
+        cursor.close();
         ListView listView = (ListView)findViewById(R.id.mylist2);
         listView.setAdapter(simpleCursorAdapter);
         setListViewHeightBasedOnChildren(listView);
@@ -182,6 +179,7 @@ public class BasicAdapterViewActivity extends Activity {
 
         }
 
+        //BaseAdapter---------------------------------------------------------------------------
         //设置该Listview的高度
         final ListView myList = (ListView) findViewById(R.id.mylist3);
         ViewGroup.LayoutParams params = myList.getLayoutParams();
@@ -235,16 +233,6 @@ public class BasicAdapterViewActivity extends Activity {
             }
         };
         myList.setAdapter(adapter);
-
-        //解决listview和ScrollView滚动冲突
-        final ScrollView myScrollView = (ScrollView) findViewById(R.id.myScroll);
-        myList.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View arg0, MotionEvent arg1) {
-                myScrollView.requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });
 
         //为ListView的列表项绑定单击事件监听器
         myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -325,7 +313,17 @@ public class BasicAdapterViewActivity extends Activity {
                         Log.d("ListView", "------ 滚动到底部 ------");
                     }
                 }
+            }
+        });
 
+        //其它---------------------------------------------------------------------------
+        //解决listview和ScrollView滚动冲突
+        final ScrollView myScrollView = (ScrollView) findViewById(R.id.myScroll);
+        myList.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View arg0, MotionEvent arg1) {
+                myScrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
             }
         });
     }
@@ -334,7 +332,7 @@ public class BasicAdapterViewActivity extends Activity {
     /**
      * 动态设置ListView的高度,用于嵌套在ScrollView中时能正常显示
      *
-     * @param listView
+     * @param listView 需要设置自动行高的Listview
      */
     public void setListViewHeightBasedOnChildren(ListView listView) {
         if (listView == null) return;

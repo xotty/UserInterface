@@ -1,4 +1,17 @@
-
+/**
+ * 本例用于演示了装载Fragment的ViewPager，被FragmentViewPagerActivity调用
+ * 1)用static方法定义带参数Fragment构造器
+ * 2)将参数传递到onCreateView中以便建立不同视图的Fragment
+ * 3)此时不能使用内部嵌套的Fragment
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:LayoutDemo
+ * <br/>Date:Oct，2017
+ *
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface.AdapterViewDemo;
 
 import android.os.Bundle;
@@ -33,7 +46,8 @@ public class ViewPagerFragment  extends Fragment {
         RelativeLayout ll=(RelativeLayout) view.findViewById(R.id.ll);
         TextView tv=(TextView) view.findViewById(R.id.tv);
 
-        tv.setText(""+tag);
+        //设置每页显示的文本为当前标识编号:tag
+        tv.setText(String.valueOf(tag));
 
         //根据参数将背景设为不同颜色
         int color=0;
@@ -49,6 +63,7 @@ public class ViewPagerFragment  extends Fragment {
                 break;
         }
         ll.setBackgroundColor(color);
+
         Log.i("TAG", "onCreateView: "+tag);
         return view;
     }
