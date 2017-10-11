@@ -22,6 +22,7 @@ package org.xottys.userinterface;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
@@ -85,7 +86,7 @@ public class CustomLabelView extends View {
         mTextPaint.setAntiAlias(true);
         // Must manually scale the desired text size to match screen density
         mTextPaint.setTextSize(16 * getResources().getDisplayMetrics().density);
-        mTextPaint.setColor(0xFF000000);
+        mTextPaint.setColor(Color.WHITE);
         setPadding(3, 3, 3, 3);
     }
 

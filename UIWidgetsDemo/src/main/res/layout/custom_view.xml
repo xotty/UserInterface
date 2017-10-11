@@ -7,19 +7,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     
-    <com.example.android.apis.view.LabelView
+    <org.xottys.userinterface.CustomLabelView
             android:background="@color/red"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 
             app:text="Red"/>
-    
-    <com.example.android.apis.view.LabelView
+
+    <org.xottys.userinterface.CustomLabelView
             android:background="@color/blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 
-            app:text="Blue" app:textSize="20dp"/>
-    
-    <com.example.android.apis.view.LabelView
+            app:text="Blue" app:textSize="20sp"/>
+
+    <org.xottys.userinterface.CustomLabelView
             android:background="@color/green"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 

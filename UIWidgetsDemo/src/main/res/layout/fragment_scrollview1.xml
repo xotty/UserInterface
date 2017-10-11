@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="水平滚动视图:"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+       />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="40dip">
+
+         <TextView
+            android:layout_width="300dip"
+            android:layout_height="wrap_content"
+            android:text="@string/scrollbar_3_text"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"/>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="垂直滚动视图:"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text View 1" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BUTTON 1" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

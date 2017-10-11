@@ -92,9 +92,9 @@ public class AdapterViewActivity extends ExpandableListActivity {
                 TextView textView = new TextView(AdapterViewActivity.this);
                 textView.setLayoutParams(lp);
                 textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
-                textView.setPadding(36, 0, 0, 0);
-                textView.setTextSize(20);
-                textView.setTextColor(Color.BLACK);
+                textView.setPadding(20, 0, 0, 0);
+                textView.setTextSize(22);
+                textView.setTextColor(Color.WHITE);
 
                 return textView;
             }
@@ -106,9 +106,9 @@ public class AdapterViewActivity extends ExpandableListActivity {
                 TextView textView = new TextView(AdapterViewActivity.this);
                 textView.setLayoutParams(lp);
                 textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
-                textView.setPadding(100, 0, 0, 0);
-                textView.setTextSize(16);
-                textView.setTextColor(Color.DKGRAY);
+                textView.setPadding(80, 0, 0, 0);
+                textView.setTextSize(18);
+                textView.setTextColor(Color.LTGRAY);
 
                 return textView;
             }
@@ -178,7 +178,7 @@ public class AdapterViewActivity extends ExpandableListActivity {
                 return false;
             }
         });
-
+        getExpandableListView().setGroupIndicator(null);
         setListAdapter(adapter);
     }
 

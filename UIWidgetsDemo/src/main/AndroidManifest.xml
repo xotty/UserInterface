@@ -40,6 +40,7 @@
         <activity
             android:name=".AdapterViewDemo.AdapterViewActivity"
             android:label="AdapterView Demo"
+            android:theme="@android:style/Theme"
          />
         <activity
             android:name=".AdapterViewDemo.BasicAdapterViewActivity"
@@ -114,7 +115,10 @@
         <activity
             android:name=".AdapterViewDemo.FragmentViewPagerActivity"
             android:label="GridView Demo" />
-
+        <activity
+            android:name=".ScrollViewDemo.ScrollViewActivity"
+            android:label="ScrollView Demo"
+            android:theme="@android:style/Theme"/>
         <activity
             android:name=".CustomViewActivity"
             android:label="CustomView Demo" />
