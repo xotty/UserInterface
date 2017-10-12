@@ -120,6 +120,10 @@
             android:label="ScrollView Demo"
             android:theme="@android:style/Theme"/>
         <activity
+            android:name=".PickerActivity"
+            android:label="Picker Demo"
+            android:theme="@android:style/Theme.Holo" />
+        <activity
             android:name=".CustomViewActivity"
             android:label="CustomView Demo" />
 
