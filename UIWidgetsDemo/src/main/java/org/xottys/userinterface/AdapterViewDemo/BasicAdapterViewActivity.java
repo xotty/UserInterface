@@ -165,17 +165,17 @@ public class BasicAdapterViewActivity extends Activity {
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,
                 R.layout.simple_item, cursor, new String[] { "name", "header","desc" },
                 new int[]{R.id.name, R.id.header, R.id.desc}, 0);
-        cursor.close();
+
         ListView listView = (ListView)findViewById(R.id.mylist2);
         listView.setAdapter(simpleCursorAdapter);
         setListViewHeightBasedOnChildren(listView);
-        //BaseAdapter，完全自定义Listview内容和样式
+
+        //BaseAdapter,完全自定义Listview内容和样式---------------------------------------------------------------------------
         //准备数据
         for (int i = 0; i < 20; i++) {
             strArr.add("第" + (i + 1) + "个列表项");
         }
 
-        //BaseAdapter---------------------------------------------------------------------------
         //设置该Listview的高度
         final ListView myList = (ListView) findViewById(R.id.mylist3);
         ViewGroup.LayoutParams params = myList.getLayoutParams();
@@ -312,7 +312,7 @@ public class BasicAdapterViewActivity extends Activity {
             }
         });
 
-        //其它---------------------------------------------------------------------------
+        //其它-------------------------------------------------------------------------------------
         //解决listview和ScrollView滚动冲突
         final ScrollView myScrollView = (ScrollView) findViewById(R.id.myScroll);
         myList.setOnTouchListener(new View.OnTouchListener() {
@@ -335,7 +335,6 @@ public class BasicAdapterViewActivity extends Activity {
 
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
-            // pre-condition
             return;
         }
         int totalHeight = 0;
