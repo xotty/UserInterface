@@ -32,7 +32,6 @@ import java.util.Map;
 public class MyHorizontalScrollView extends HorizontalScrollView implements OnClickListener {
     private static final String TAG = "MyHorizontalScrollView";
     private OnImageChangeListener mOnImageChangeListener;
-
     private OnItemClickListener mOnClickListener;
     private float downX;    //按下时 的X坐标
     private float downY;    //按下时 的Y坐标
@@ -54,6 +53,10 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements OnCl
     private int mScreenWitdh;
     //保存View与位置的键值对
     private Map<View, Integer> mViewPos = new HashMap<>();
+
+    //已经滑动设为true，滑动结束设为false，避免一次操作产生连续滑动的负面效果
+    private boolean scrolledFlag=false;
+
     public MyHorizontalScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
         //获得屏幕宽度
@@ -70,30 +73,28 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements OnCl
         mContainer = (LinearLayout) getChildAt(0);
     }
 
+/*  另外一种用onTouchListener判断滑动方向的方法
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent event) {
-        return true;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
+    public boolean onTouch(View v, MotionEvent ev) {
         float x = ev.getX();
         float y = ev.getY();
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                Log.i(TAG, "onTouch: DOWN");
                 //将按下时的坐标存储
                 downX = x;
                 downY = y;
                 Log.i(TAG, "按下时X：" + x + "按下时Y：" + y);
                 break;
-            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_MOVE:
+                Log.i(TAG, "onTouch:MOVE");
                 Log.i(TAG, "抬起时X：" + x + "抬起时Y：" + y);
                 //获取到距离差
                 float dx = x - downX;
                 float dy = y - downY;
                 Log.i(TAG, "dx：" + dx + "dy：" + dy);
                 //防止简单误操作判断为滑动
-                if (Math.abs(dx) > 25) {
+                if (Math.abs(dx) > 5) {
                     //通过距离差判断方向
                     int orientation = getOrientation(dx, dy);
                     Log.i(TAG, "orientation: " + (char) orientation);
@@ -114,17 +115,55 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements OnCl
                             break;
                     }
                 }
-                else
-                  //  mOnClickListener.onClick(v, mViewPos.get(v));
-                    Log.i(TAG, "onTouchEvent: xxxxxxx");
                 break;
+            case MotionEvent.ACTION_UP:
+                Log.i(TAG, "抬起时X：" + x + "抬起时Y：" + y);
+                //获取到距离差
+                 dx = x - downX;
+                 dy = y - downY;
+                Log.i(TAG, "dx：" + dx + "dy：" + dy);
+                //防止简单误操作判断为滑动
+                if (Math.abs(dx) <= 5)
+                {
+                    if (mOnClickListener != null) {
+                        //ScrollView点击时将mContainer所含的所有view背景设为白色
+                        for (int i = 0; i < mContainer.getChildCount(); i++) {
+                            mContainer.getChildAt(i).setBackgroundColor(Color.WHITE);
+                        }
+                        //从view反向获取其position
+                        mOnClickListener.onClick(v, mViewPos.get(v));
+                    }
+                }
+                    Log.i(TAG, "onTouch: UP");
+                break;
+        }
+        return true;
+    }*/
+    @Override
+    public boolean onTouchEvent(MotionEvent ev)
+    {
+        switch (ev.getAction())
+        {
+            case MotionEvent.ACTION_UP:
+                  scrolledFlag=false;
             case MotionEvent.ACTION_MOVE:
+                if (!scrolledFlag) {
+                    Log.e(TAG, "getScrollX():"+getScrollX() );
+                    scrolledFlag=true;
+                    int scrollX = getScrollX();
+                    if (scrollX >= 5) {
+                        scrollToLeft();
+                    }
+                    else if (scrollX == 0) {
+                        scrollToRight();
+                    }
+                }
                 break;
         }
         return super.onTouchEvent(ev);
     }
 
-    /**
+    /*
      * 根据距离差判断 滑动方向
      *
      * @param dx X轴的距离差
@@ -144,6 +183,8 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements OnCl
     //OnClickListener接口的实现
     @Override
     public void onClick(View v) {
+        Log.i(TAG, "onClick:");
+
         if (mOnClickListener != null) {
             //ScrollView点击时将mContainer所含的所有view背景设为白色
             for (int i = 0; i < mContainer.getChildCount(); i++) {
@@ -180,6 +221,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements OnCl
             mViewPos.put(view, mCurrentIndex);
 
             view.setOnClickListener(this);
+            //view.setOnTouchListener(this);
 
             //当前第一张图片下标+1
             mFristIndex++;
@@ -214,6 +256,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements OnCl
             mContainer.addView(view, 0);
 
             view.setOnClickListener(this);
+            //view.setOnTouchListener(this);
 
             //当前位置-1，当前第一个显示的下标-1
             mCurrentIndex--;
@@ -281,6 +324,7 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements OnCl
         for (int i = 0; i < mCountOneScreen; i++) {
             View view = mAdapter.getView(i, null, mContainer);
             view.setOnClickListener(this);
+            //view.setOnTouchListener(this);
             mContainer.addView(view);
             mViewPos.put(view, i);
         }
