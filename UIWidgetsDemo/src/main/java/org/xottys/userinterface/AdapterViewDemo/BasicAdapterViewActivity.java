@@ -55,10 +55,8 @@ import java.util.List;
 import java.util.Map;
 public class BasicAdapterViewActivity extends Activity {
     private static final String TAG = "BasicAdapterView";
-
-    private ArrayList<String> strArr = new ArrayList<>();
     boolean reachToBottom;
-
+    private ArrayList<String> strArr = new ArrayList<>();
     private String[] names = new String[]
             {"虎头", "弄玉", "李清照", "李白"};
     private String[] descs = new String[]

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/myScroll"
-	android:orientation="vertical"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	android:orientation="vertical">
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
@@ -12,22 +12,22 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="直接使用数组资源给出列表项:"
-			android:textSize="20sp"
-			android:textColor="#2f6dea" />
+			android:textColor="#2f6dea"
+			android:textSize="20sp" />
 	<!-- 直接使用数组资源给出列表项,不使用Adapter，设置使用红色的分隔条 -->
 	<ListView
 		android:layout_width="match_parent"
 		android:layout_height="200dp"
-		android:entries="@array/books"
 		android:divider="#f00"
 		android:dividerHeight="2px"
+		android:entries="@array/books"
 		android:headerDividersEnabled="false"/>
 	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="ArrayAdapter ListView:"
-		android:textSize="20sp"
-		android:textColor="#2f6dea" />
+		android:textColor="#2f6dea"
+		android:textSize="20sp" />
 	<!-- ArrayAdapter ListView,设置使用红色的分隔条 -->
 	<ListView
 		android:id="@+id/list1"
@@ -42,17 +42,17 @@
 		android:id="@+id/list2"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:descendantFocusability="blocksDescendants"
 		android:divider="#0f0"
 		android:dividerHeight="2px"
-		android:descendantFocusability="blocksDescendants"
 		android:headerDividersEnabled="false"/>
 
 	<TextView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="SimpleAdapter ListView:"
-		android:textSize="20sp"
-		android:textColor="#2f6dea" />
+		android:textColor="#2f6dea"
+		android:textSize="20sp" />
 	<!-- SimpleAdapter ListView -->
 	<ListView android:id="@+id/mylist1"
 		android:layout_width="match_parent"
@@ -62,8 +62,8 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="SimpleCursorAdapter ListView:"
-		android:textSize="20sp"
-		android:textColor="#2f6dea" />
+		android:textColor="#2f6dea"
+		android:textSize="20sp" />
 	<!-- SimpleCursorAdapter ListView -->
 	<ListView android:id="@+id/mylist2"
 		android:layout_width="match_parent"
@@ -73,8 +73,8 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="BaseAdapter ListView:"
-		android:textSize="20sp"
-		android:textColor="#2f6dea" />
+		android:textColor="#2f6dea"
+		android:textSize="20sp" />
 	<!-- BaseAdapter ListView -->
 	<ListView
 		android:id="@+id/mylist3"
