@@ -123,6 +123,11 @@
             android:name=".PickerActivity"
             android:label="Picker Demo"
             android:theme="@android:style/Theme.Holo" />
+
+        <activity
+            android:name=".MenuActivity"
+            android:label="Menu Demo"
+            android:theme="@android:style/Theme.Holo" />
         <activity
             android:name=".CustomViewActivity"
             android:label="CustomView Demo" />

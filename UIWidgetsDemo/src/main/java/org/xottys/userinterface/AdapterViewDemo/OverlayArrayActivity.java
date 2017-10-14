@@ -37,19 +37,14 @@ import org.xottys.userinterface.R;
  */
 public class OverlayArrayActivity extends ListActivity implements ListView.OnScrollListener {
 
-    private final class RemoveWindow implements Runnable {
-        public void run() {
-            removeWindow();
-        }
-    }
-
-    private RemoveWindow mRemoveWindow = new RemoveWindow();
     Handler mHandler = new Handler();
+    private RemoveWindow mRemoveWindow = new RemoveWindow();
     private WindowManager mWindowManager;
     private TextView mDialogText;
     private boolean mShowing;
     private boolean mReady;
     private char mPrevLetter = Character.MIN_VALUE;
+    private String[] mStrings = Cheeses.sCheeseStrings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -136,5 +131,9 @@ public class OverlayArrayActivity extends ListActivity implements ListView.OnScr
         }
     }
 
-    private String[] mStrings = Cheeses.sCheeseStrings;
+    private final class RemoveWindow implements Runnable {
+        public void run() {
+            removeWindow();
+        }
+    }
 }

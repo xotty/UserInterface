@@ -20,23 +20,25 @@ import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import java.util.Calendar;
 
 public class PickerActivity extends Activity {
+    TextView tv;
     // 定义5个记录当前时间的变量
     private int year;
     private int month;
     private int day;
     private int hour;
     private int minute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picker);
-
+        tv = (TextView) findViewById(R.id.tv);
         DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
         TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
         CalendarView cv = (CalendarView) findViewById(R.id.calendarView);
@@ -130,6 +132,6 @@ public class PickerActivity extends Activity {
     }
 
     private void showMessage(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        tv.setText(msg);
     }
 }
