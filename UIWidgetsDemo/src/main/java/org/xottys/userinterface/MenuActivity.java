@@ -191,8 +191,7 @@ public class MenuActivity extends Activity {
             case R.id.intent_item:
                 startActivity(new Intent(this, ImageViewActivity.class));
                 break;
-            // For "Groups": Toggle visibility of grouped menu items with
-            //               nongrouped menu items
+            // For "Groups": Toggle visibility of grouped menu items with nongrouped menu items
             case R.id.browser_visibility:
                 // The refresh item is part of the browser group
                 final boolean shouldShowBrowser = !mMenu.findItem(R.id.refresh).isVisible();
@@ -210,7 +209,7 @@ public class MenuActivity extends Activity {
                 // Don't toast text when a submenu is clicked
                 if (!menuItem.hasSubMenu()) {
                     showMessage(menuItem.getTitle().toString());
-                    // return true;
+
                 }
                 break;
         }

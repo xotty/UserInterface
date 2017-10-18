@@ -45,4 +45,37 @@
         <item name="android:minHeight">48dip</item>
         <item name="android:maxHeight">48dip</item>
     </style>
+
+
+    <!-- Base application theme. -->
+    <style name="MyAppTheme" parent="AppTheme.Base"></style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="colorPrimary">@color/material_blue_grey_800</item>
+        <item name="colorPrimaryDark">@color/accent_material_light</item>
+        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
+        <!-- 添加这一句， 即可改变overflow图标的颜色-->
+        <item name="android:textColorSecondary">#ea2222</item>
+    </style>
+
+    <!--可以设置menu中的各项属性-->
+    <style name="Theme.Popup" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColorPrimary">@color/red</item>
+        <item name="android:colorBackground">#749b93</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+
+    </style>
+
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--设置不覆盖锚点-->
+    </style>
+
+    <style name="Theme.ToolBar.Subtitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#22d6ea</item>
+    </style>
 </resources>

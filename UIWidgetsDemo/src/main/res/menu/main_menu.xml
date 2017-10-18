@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:icon="@drawable/font"
+        android:showAsAction="always"
         android:title="@string/font_size">
         <menu>
             <!-- 定义一组单选菜单项 -->
@@ -28,6 +29,7 @@
     <!-- 定义一个普通菜单项 -->
     <item
         android:id="@+id/plain_item"
+        app:showAsAction="always"
         android:title="@string/plain_item"></item>
     <item
         android:icon="@drawable/color"
