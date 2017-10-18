@@ -17,7 +17,7 @@
         android:id="@+id/action_setting"
         android:actionProviderClass="org.xottys.userinterface.AppBarDemo.AppBarActivity$SettingsActionProvider"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:showAsAction="always"
+        android:showAsAction="ifRoom"
         android:title="@string/action_bar_settings" />
     />
     <item

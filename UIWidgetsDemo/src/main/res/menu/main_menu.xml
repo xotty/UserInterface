@@ -64,6 +64,7 @@
     <!-- 定义一个启动菜单项 -->
     <item
         android:id="@+id/intent_item"
+        android:showAsAction="always"
         android:title="启动程序二"></item>
     <item
         android:id="@+id/disabled_item"

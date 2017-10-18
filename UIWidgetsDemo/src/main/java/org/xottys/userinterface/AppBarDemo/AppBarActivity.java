@@ -3,7 +3,7 @@
  * 1)ActionBar：在屏幕上方固定位置显示OptiionMenu，可以起到导航和常用操作入口作用
  * 2)ToolBar：
  * 3)PActionMode：
- * ActionBar使用要点如下：
+ * 一、ActionBar使用要点如下：
  * 1）位置固定在屏幕上方状态栏之下，组件有：返回箭头、Logo、Title、自定义视图和MenuItem
  * 2）定义菜单项内容：在onCreateOptionsMenu中用代码或xml方式定义菜单项，并定义showAsAction属性
  * 3）定义ActionBar的选项属性：用setDisplayOptions或xml来实现不同的的视图和功能
@@ -11,7 +11,12 @@
  * 5）如果用ActionProvider完成动作，则要提供ActionProvider的功能实现
  * 6）通过菜单xml中actionViewClass设置可以在Action Bar点击后呈现一些简单视图，如搜索框
  * 7) Menu中定义的onClick优先于onOptionsItemSelected
- * <p>
+ * 二、ActionMode使用要点如下：
+ * 1）临时占据了ActionBar的位置，将Menu中的全部MenuItem摆放其中，
+ * 2）通过startActionMode(actionModeCallback)启动，通过点击左侧内置导航按钮或actionMode.finish()方法取消
+ * 3）覆写actionModeCallback的四个方法，在onCreateActionMode中启用Menu，在onActionItemClicked中处理点击事件
+ * 4）在AppTheme中定义其各种组件的样式
+ *  <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
  * <br/>Program Name:LayoutDemo
@@ -31,6 +36,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.ActionProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,6 +51,7 @@ import android.widget.Toast;
 
 import org.xottys.userinterface.R;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -61,6 +68,57 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
     private static final String SHARED_FILE_NAME = "mshared.png";
     TextView mSearchText;
     int mSortMode = -1;
+    private ActionMode.Callback mCallback = new ActionMode.Callback() {
+        //在初始创建的时候调用
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            Log.i(TAG, "onCreateActionMode: ");
+            MenuInflater inflater = mode.getMenuInflater();
+            inflater.inflate(R.menu.menu_toolbar, menu);
+            mode.setTitle("Title");
+            mode.setSubtitle("SubTitle");
+//            MenuItem item = menu.findItem( R.id.action_text );
+//            View v = item.getActionView();
+//            if( v instanceof TextView )
+//            {
+//                ((TextView)v).setText( R.string.actionmode_title );
+//            }
+            return true;
+        }
+
+        //准备绘制的时候调用
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            Log.i(TAG, "onPrepareActionMode: ");
+            return false;
+        }
+
+        //点击 ActionMode 菜单选项的时候调用
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.action_edit:
+                    Log.i(TAG, "onActionItemClicked: Edit");
+                    break;
+                case R.id.action_share:
+                    Log.i(TAG, "onActionItemClicked: Share");
+                    break;
+                case R.id.action_settings:
+                    Log.i(TAG, "onActionItemClicked: Back");
+                    mode.finish();
+                    break;
+            }
+            return true;
+        }
+
+        //退出 ActionMode 的时候调用
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+
+            Log.i(TAG, "onDestroyActionMode: ");
+        }
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +127,7 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
         setContentView(mSearchText);
         // 设置是否显示应用程序图标
         getActionBar().setDisplayShowHomeEnabled(false);
-        //copyPrivateRawResuorceToPubliclyAccessibleFile();
+        copyPrivateRawResuorceToPubliclyAccessibleFile();
     }
 
     @Override
@@ -112,11 +170,13 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
             case R.id.toolbar:
                 intent = new Intent(this, ToolBarActivity.class);
                 break;
+            case R.id.actionmode:
+                startActionMode(mCallback);
+                return true;
             default:
                 return true;
         }
         startActivity(intent);
-
         return true;
     }
 
@@ -142,7 +202,6 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
         return true;
     }
 
-
     // 将要分享的图片文件名以Uri形式放到Intent的Extra域中
     private Intent createShareIntent() {
         //将所有intent-filter为ACTION_SEND的App均列为可接收分享内容的程序
@@ -155,9 +214,13 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
         return shareIntent;
     }
 
-
     //将要分享的图片R.raw.robot挪到shared.png
     private void copyPrivateRawResuorceToPubliclyAccessibleFile() {
+        try {
+            File f = new File(SHARED_FILE_NAME);
+            if (!f.exists()) {
+
+
         InputStream inputStream = null;
         FileOutputStream outputStream = null;
         try {
@@ -187,6 +250,12 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
             } catch (IOException ioe) {
                /* ignore */
             }
+        }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

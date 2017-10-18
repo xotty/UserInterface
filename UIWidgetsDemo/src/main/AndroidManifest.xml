@@ -133,7 +133,7 @@
         <activity
             android:name=".AppBarDemo.AppBarActivity"
             android:label="ActionBar Demo"
-            android:theme="@android:style/Theme.Holo" />
+            android:theme="@style/MyActionBarTheme" />
         <activity
             android:name=".AppBarDemo.ActionBarDisplayOptions"
             android:label="ActionBarDisplayOptions"
@@ -141,7 +141,7 @@
         <activity
             android:name=".AppBarDemo.ToolBarActivity"
             android:label="ToolBar Demo"
-            android:theme="@style/MyAppTheme" />
+            android:theme="@style/MyToolBarTheme" />
         <activity
             android:name=".CustomViewActivity"
             android:label="CustomView Demo" />
