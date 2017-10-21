@@ -14,8 +14,6 @@
  */
 package org.xottys.userinterface.AdapterViewDemo;
 
-import java.util.List;
-
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -27,9 +25,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import org.xottys.userinterface.R;
 import org.xottys.userinterface.AdapterViewDemo.binding.Bind;
 import org.xottys.userinterface.AdapterViewDemo.binding.ViewBinder;
+import org.xottys.userinterface.R;
+
+import java.util.List;
 
 
 public class CustomerAdapter2 extends BaseAdapter {

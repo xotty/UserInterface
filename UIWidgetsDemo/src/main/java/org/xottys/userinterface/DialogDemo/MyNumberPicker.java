@@ -21,7 +21,6 @@ import android.widget.NumberPicker;
 import org.xottys.userinterface.R;
 
 import java.lang.reflect.Field;
-
 public class MyNumberPicker extends NumberPicker {
     public MyNumberPicker(Context context) {
         super(context);

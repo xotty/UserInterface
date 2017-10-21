@@ -29,14 +29,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import org.xottys.userinterface.AdapterViewDemo.binding.Bind;
+import org.xottys.userinterface.AdapterViewDemo.binding.ViewBinder;
+import org.xottys.userinterface.R;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.xottys.userinterface.AdapterViewDemo.binding.ViewBinder;
-import org.xottys.userinterface.R;
-import org.xottys.userinterface.AdapterViewDemo.binding.Bind;
 
 public class CustomerAdapterActivity2 extends Activity implements OnItemClickListener, IndexBar.OnIndexChangedListener {
     private static final String TAG  = "CustomerAdapterActivity";

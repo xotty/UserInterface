@@ -28,7 +28,6 @@ import android.widget.TextView;
 
 import org.xottys.userinterface.R;
 
-
 /**
  * Demonstrates how a list can avoid expensive operations during scrolls or flings. In this
  * case, we pretend that binding a view to its data is slow (even though it really isn't). When
@@ -38,9 +37,57 @@ import org.xottys.userinterface.R;
  */
 public class SlowAdapterActivity extends ListActivity implements ListView.OnScrollListener {
 
+    private static final String[] mStrings = Cheeses.sCheeseStrings;
     private TextView mStatus;
-
     private boolean mBusy = false;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_slowadapter);
+        mStatus = (TextView) findViewById(R.id.status);
+        mStatus.setText("~~~~~Idle~~~~~");
+
+        // Use an existing ListAdapter that will map an array
+        // of strings to TextViews
+        setListAdapter(new SlowAdapter(this));
+
+        getListView().setOnScrollListener(this);
+    }
+
+
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+                         int totalItemCount) {
+    }
+
+
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+        switch (scrollState) {
+            case OnScrollListener.SCROLL_STATE_IDLE:
+                mBusy = false;
+
+                int first = view.getFirstVisiblePosition();
+                int count = view.getChildCount();
+                for (int i = 0; i < count; i++) {
+                    TextView t = (TextView) view.getChildAt(i);
+                    if (t.getTag() != null) {
+                        t.setText(mStrings[first + i]);
+                        t.setTag(null);
+                    }
+                }
+
+                mStatus.setText("~~~~~Idle~~~~~");
+                break;
+            case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+                mBusy = true;
+                mStatus.setText("~~~~~Touch Scroll~~~~~");
+                break;
+            case OnScrollListener.SCROLL_STATE_FLING:
+                mBusy = true;
+                mStatus.setText("~~~~~Fling~~~~~");
+                break;
+        }
+    }
 
     /**
      * Will not bind views while the list is scrolling
@@ -92,7 +139,7 @@ public class SlowAdapterActivity extends ListActivity implements ListView.OnScro
          */
         public View getView(int position, View convertView, ViewGroup parent) {
             TextView text;
-            
+
             if (convertView == null) {
                 text = (TextView)mInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
             } else {
@@ -112,54 +159,5 @@ public class SlowAdapterActivity extends ListActivity implements ListView.OnScro
             return text;
         }
     }
-    
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_slowadapter);
-        mStatus = (TextView) findViewById(R.id.status);
-        mStatus.setText("~~~~~Idle~~~~~");
-        
-        // Use an existing ListAdapter that will map an array
-        // of strings to TextViews
-        setListAdapter(new SlowAdapter(this));
-        
-        getListView().setOnScrollListener(this);
-    }
-    
-    
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-                         int totalItemCount) {
-    }
-    
-
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-        switch (scrollState) {
-        case OnScrollListener.SCROLL_STATE_IDLE:
-            mBusy = false;
-            
-            int first = view.getFirstVisiblePosition();
-            int count = view.getChildCount();
-            for (int i=0; i<count; i++) {
-                TextView t = (TextView)view.getChildAt(i);
-                if (t.getTag() != null) {
-                    t.setText(mStrings[first + i]);
-                    t.setTag(null);
-                }
-            }
-            
-            mStatus.setText("~~~~~Idle~~~~~");
-            break;
-        case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
-            mBusy = true;
-            mStatus.setText("~~~~~Touch Scroll~~~~~");
-            break;
-        case OnScrollListener.SCROLL_STATE_FLING:
-            mBusy = true;
-            mStatus.setText("~~~~~Fling~~~~~");
-            break;
-        }
-    }
-    private static final String[] mStrings = Cheeses.sCheeseStrings;
 
 }

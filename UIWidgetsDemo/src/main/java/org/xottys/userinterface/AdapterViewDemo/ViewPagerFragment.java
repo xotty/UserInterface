@@ -70,7 +70,6 @@ public class ViewPagerFragment  extends Fragment {
                 break;
         }
         ll.setBackgroundColor(color);
-
         Log.i("TAG", "onCreateView: "+tag);
         return view;
     }

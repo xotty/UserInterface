@@ -34,7 +34,6 @@ import android.widget.TextView;
 import org.xottys.userinterface.R;
 
 import static android.app.ProgressDialog.show;
-
 public class ProgressDialogFragment extends Fragment {
 
     final static int MAX_PROGRESS = 80;

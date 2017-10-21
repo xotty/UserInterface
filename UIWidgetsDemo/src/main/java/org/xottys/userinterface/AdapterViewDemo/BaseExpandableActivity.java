@@ -34,7 +34,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.xottys.userinterface.R;
-
 /**
  * Demonstrates expandable lists using a custom {@link ExpandableListAdapter}
  * from {@link BaseExpandableListAdapter}.

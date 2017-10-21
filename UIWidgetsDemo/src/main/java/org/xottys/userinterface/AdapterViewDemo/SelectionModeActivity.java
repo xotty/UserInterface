@@ -28,7 +28,6 @@ import android.widget.Toast;
 
 import org.xottys.userinterface.R;
 
-
 /**
  * This demo illustrates the use of CHOICE_MODE_MULTIPLE_MODAL, a.k.a. selection mode on ListView.
  */

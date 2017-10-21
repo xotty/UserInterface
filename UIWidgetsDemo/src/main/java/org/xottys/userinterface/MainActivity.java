@@ -8,18 +8,20 @@ import android.widget.ArrayAdapter;
 import org.xottys.userinterface.AdapterViewDemo.AdapterViewActivity;
 import org.xottys.userinterface.AppBarDemo.AppBarActivity;
 import org.xottys.userinterface.DialogDemo.DialogActivity;
+import org.xottys.userinterface.MaterialDesignDemo.MaterialDesignActivity;
 import org.xottys.userinterface.ScrollViewDemo.ScrollViewActivity;
 
 public class MainActivity extends LauncherActivity {
     //定义要跳转的各个Activity的名称
     String[] names = {"TextView Demo", "ImageView Demo", "ProgressBar Demo", "AdaterView Demo",
             "ScrollView Demo", "Picker Demo", "Menu Demo", "AppBar Demo", "WebView Demo", "CustomView Demo",
-            "Dialog Demo"};
+            "Dialog Demo", "MaterialDesign Demo"};
 
     //定义各个Activity对应的实现类
     Class<?>[] clazzs = {TextViewActivity.class, ImageViewActivity.class, ProgressBarActivity.class,
             AdapterViewActivity.class, ScrollViewActivity.class, PickerActivity.class,
-            MenuActivity.class, AppBarActivity.class, WebViewActivity.class, CustomViewActivity.class, DialogActivity.class};
+            MenuActivity.class, AppBarActivity.class, WebViewActivity.class, CustomViewActivity.class,
+            DialogActivity.class, MaterialDesignActivity.class};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

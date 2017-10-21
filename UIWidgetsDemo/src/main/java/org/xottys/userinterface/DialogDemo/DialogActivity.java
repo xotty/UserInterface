@@ -22,7 +22,6 @@ import android.view.Window;
 import android.widget.TabHost;
 
 import org.xottys.userinterface.R;
-
 public class DialogActivity extends TabActivity implements TabHost.TabContentFactory {
     Fragment fragment=null;
     @Override

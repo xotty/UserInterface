@@ -17,7 +17,6 @@
  */
 package org.xottys.userinterface.AdapterViewDemo;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -33,7 +32,6 @@ import android.widget.Checkable;
 import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.SlidingDrawer;
 
 import org.xottys.userinterface.R;
 
@@ -45,6 +43,7 @@ import java.util.List;
 public class GridViewActivity3 extends Activity {
 
     GridView mGrid;
+    private List<ResolveInfo> mApps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +68,6 @@ public class GridViewActivity3 extends Activity {
         });*/
 
     }
-
-    private List<ResolveInfo> mApps;
 
     private void loadApps() {
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
@@ -126,6 +123,12 @@ public class GridViewActivity3 extends Activity {
         public CheckableLayout(Context context) {
             super(context);
         }
+
+        @Override
+        public boolean isChecked() {
+            return mChecked;
+        }
+
         @Override
         public void setChecked(boolean checked) {
             mChecked = checked;
@@ -133,10 +136,7 @@ public class GridViewActivity3 extends Activity {
                     getResources().getDrawable(R.color.blue,null)
                     : null);
         }
-        @Override
-        public boolean isChecked() {
-            return mChecked;
-        }
+
         @Override
         public void toggle() {
             setChecked(!mChecked);

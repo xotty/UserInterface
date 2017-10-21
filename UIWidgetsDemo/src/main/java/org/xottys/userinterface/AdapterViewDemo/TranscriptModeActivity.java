@@ -26,7 +26,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
-
 import org.xottys.userinterface.R;
 
 public class TranscriptModeActivity extends ListActivity implements OnClickListener, OnKeyListener {

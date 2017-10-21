@@ -145,8 +145,16 @@
         <activity
             android:name=".CustomViewActivity"
             android:label="CustomView Demo" />
-
-
+        <activity
+            android:name=".MaterialDesignDemo.MaterialDesignActivity"
+            android:label="MaterialDesign Demo"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".MaterialDesignDemo.RecyclerViewActivity"
+            android:label="@string/title_activity_recycler_view"
+            android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
     </application>
 
 </manifest>

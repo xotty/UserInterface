@@ -28,7 +28,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.xottys.userinterface.R;
-
 /**
  * Another variation of the list of cheeses. In this case, we use
  * {@link AbsListView#setOnScrollListener(AbsListView.OnScrollListener) 

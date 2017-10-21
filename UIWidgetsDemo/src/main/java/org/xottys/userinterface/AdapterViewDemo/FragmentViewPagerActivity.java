@@ -28,10 +28,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import org.xottys.userinterface.R;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.xottys.userinterface.R;
 
 public class FragmentViewPagerActivity extends FragmentActivity {
 

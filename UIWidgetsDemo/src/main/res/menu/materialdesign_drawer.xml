@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><!--侧滑控件的内容来自此菜单，需要给group设置id，才会出现分割线-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_recycler_and_swipe_refresh"
+            android:icon="@drawable/ic_format_list_bulleted_black_24dp"
+            android:title="@string/nav_recycler_view" />
+    </group>
+
+    <group android:id="@+id/group_about">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/nav_settings" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="@string/nav_about" />
+    </group>
+
+</menu>

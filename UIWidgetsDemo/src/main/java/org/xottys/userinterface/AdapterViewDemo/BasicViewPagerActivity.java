@@ -22,10 +22,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import org.xottys.userinterface.R;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import org.xottys.userinterface.R;
 
 public class BasicViewPagerActivity extends Activity {
 	private static final String TAG = "BasicViewPagerActivity";

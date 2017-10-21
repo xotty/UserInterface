@@ -42,7 +42,6 @@ import java.util.ArrayList;
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static android.content.DialogInterface.BUTTON_POSITIVE;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the

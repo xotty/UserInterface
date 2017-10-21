@@ -25,11 +25,12 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import org.xottys.userinterface.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.xottys.userinterface.R;
 
 
 public class GridViewActivity1 extends Activity {

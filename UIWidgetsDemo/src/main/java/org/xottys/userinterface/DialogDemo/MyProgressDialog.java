@@ -25,7 +25,6 @@ import android.widget.TextView;
 import org.xottys.userinterface.R;
 
 import java.text.NumberFormat;
-
 public class MyProgressDialog extends AlertDialog {
     private ProgressBar mProgress;
     private TextView mProgressNumber;
