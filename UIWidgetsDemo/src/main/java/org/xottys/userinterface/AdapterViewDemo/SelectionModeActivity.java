@@ -1,6 +1,6 @@
 /**
  * 本例演示了ListView的下列要点：
- * 1)CHOICE_MODE_MULTIPLE_MODAL,一旦有一个item被选中，即进入到多选状态，item的onclick事件被屏蔽
+ * 1)CHOICE_MODE_MULTIPLE_MODAL,一旦有一个item被选中，即进入到多选状态(其后item点击即可选择)，item的onclick事件将被系统屏蔽
  * 2)ActionMode的使用，自动启动，可直接操作
  * 启用多选操作，只有两种办法：
  * 1)长按Item

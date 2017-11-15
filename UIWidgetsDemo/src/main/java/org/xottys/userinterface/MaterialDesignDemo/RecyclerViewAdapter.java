@@ -84,7 +84,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         if (holder instanceof RecyclerViewHolder) {
             final RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder) holder;
-
             Animation animation = AnimationUtils.loadAnimation(context, R.anim.anim_recycler_item_show);
             recyclerViewHolder.mView.startAnimation(animation);
 

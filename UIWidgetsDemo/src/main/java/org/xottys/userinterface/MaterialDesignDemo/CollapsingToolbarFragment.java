@@ -10,12 +10,13 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 
@@ -79,9 +80,9 @@ public class CollapsingToolbarFragment extends Fragment {
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-        getActivity().setActionBar(toolbar);
-        if (getActivity().getActionBar() != null) {
-            getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab_scrolling);

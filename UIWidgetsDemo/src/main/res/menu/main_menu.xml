@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:icon="@drawable/font"
-        android:showAsAction="always"
-        android:title="@string/font_size">
+        android:title="@string/font_size"
+        app:showAsAction="always">
         <menu>
-            <!-- 定义一组单选菜单项 -->
-            <group android:checkableBehavior="single">
+            <!--&lt;!&ndash; 定义一组单选菜单项 &ndash;&gt;-->
+            <group
+                android:checkableBehavior="single"
+                android:title="@string/font_size">
                 <!-- 定义多个菜单项 -->
                 <item
                     android:id="@+id/font_10"
@@ -64,8 +67,8 @@
     <!-- 定义一个启动菜单项 -->
     <item
         android:id="@+id/intent_item"
-        android:showAsAction="always"
-        android:title="启动程序二"></item>
+        android:title="启动程序二"
+        app:showAsAction="always"></item>
     <item
         android:id="@+id/disabled_item"
         android:enabled="false"

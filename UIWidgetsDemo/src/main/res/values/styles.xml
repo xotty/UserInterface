@@ -17,8 +17,9 @@
 
     <style name="AppTheme" parent="AppBaseTheme" />
 
-    <style name="AppTheme.NoActionBar" parent="AppBaseTheme.NoActionBar" />
-
+    <style name="AppTheme.NoActionBar" parent="AppBaseTheme.NoActionBar">
+        <item name="actionBarSize">80dip</item>
+    </style>
     <style name="AppTheme.Dialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>

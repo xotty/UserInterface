@@ -125,18 +125,18 @@ public class BasicAdapterViewActivity extends Activity {
             Map<String, Object> listItem = new HashMap<>();
             listItem.put("header", imageIds[i]);
             listItem.put("personName", names[i]);
-            listItem.put("desc", descs[i]);
+            listItem.put("descp", descs[i]);
             listItems.add(listItem);
         }
 
         //创建SimpleAdapter，将数据和视图关联起来
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, listItems,
            android.R.layout.simple_list_item_2,
-           new String[]{"personName", "desc"},
+                new String[]{"personName", "descp"},
            new int[]{android.R.id.text1, android.R.id.text2});
            /*也可以换成自定义的布局，例如：
            R.layout.simple_item,
-           new String[]{"personName", "header", "desc"},
+           new String[]{"personName", "header", "descp"},
            new int[]{R.id.name, R.id.header, R.id.desc});*/
         ListView list = (ListView) findViewById(R.id.mylist1);
         list.setAdapter(simpleAdapter);
@@ -150,18 +150,18 @@ public class BasicAdapterViewActivity extends Activity {
                 + " primary key autoincrement,"
                 + " name text not null,"
                 + " header int not null,"
-                + " desc text)");
+                + " descp text)");
         //插入数据
         db.execSQL("replace into cursorAdapterTest values(1,'武松',"+imageIds[0]+",'打虎英雄'),(2,'林冲'," +
                 ""+imageIds[1]+",'豹子头，八十万禁军教头'),(3,'李逵',"+imageIds[2]+",'黑旋风')");
         //sql语句查询数据库得到Cursor
-        String sql = "select _id,name,header,desc from cursorAdapterTest";
+        String sql = "select _id,name,header,descp from cursorAdapterTest";
         Cursor cursor = db.rawQuery(sql,null);
         // 用Cursor构造适配器
         // 最后一个参数flags是一个标识，标识当数据改变调用onContentChanged()的时候，是
         // 否通知ContentProvider数据的改变，如果无需监听ContentProvider的改变，则可以传0。
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,
-                R.layout.simple_item, cursor, new String[] { "name", "header","desc" },
+                R.layout.simple_item, cursor, new String[]{"name", "header", "descp"},
                 new int[]{R.id.name, R.id.header, R.id.desc}, 0);
 
         ListView listView = (ListView)findViewById(R.id.mylist2);

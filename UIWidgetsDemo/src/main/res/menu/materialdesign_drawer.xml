@@ -6,7 +6,6 @@
             android:icon="@drawable/ic_format_list_bulleted_black_24dp"
             android:title="@string/nav_recycler_view" />
     </group>
-
     <group android:id="@+id/group_about">
         <item
             android:id="@+id/nav_settings"
@@ -17,5 +16,20 @@
             android:icon="@drawable/ic_info_black_24dp"
             android:title="@string/nav_about" />
     </group>
+    <item
+        android:id="@+id/section"
+        android:title="分组">
+        <menu>
+            <item
+                android:id="@+id/drawer_favourite"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="喜爱" />
+
+            <item
+                android:id="@+id/drawer_downloaded"
+                android:icon="@drawable/ic_file_download_black_24dp"
+                android:title="下载" />
+        </menu>
+    </item>
 
 </menu>

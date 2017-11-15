@@ -19,6 +19,7 @@ package org.xottys.userinterface;
 
 import android.app.Activity;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.Editable;
@@ -56,13 +57,55 @@ import static org.xottys.userinterface.R.string.styled_12_hour_clock2;
 import static org.xottys.userinterface.R.string.styled_24_hour_clock2;
 
 public class TextViewActivity extends Activity {
+    //供AutoCompleteTextView使用的国家名称
+    static final String[] COUNTRIES = new String[]{
+            "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
+            "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
+            "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan",
+            "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
+            "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia",
+            "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory",
+            "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+            "Cote d'Ivoire", "Cambodia", "Cameroon", "Canada", "Cape Verde",
+            "Cayman Islands", "Central African Republic", "Cemtral African Republic of ", "Chad", "Chile", "China",
+            "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo",
+            "Cook Islands", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
+            "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+            "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea",
+            "Estonia", "Ethiopia", "Faeroe Islands", "Falkland Islands", "Fiji", "Finland",
+            "Former Yugoslav Republic of Macedonia", "France", "French Guiana", "French Polynesia",
+            "French Southern Territories", "Gabon", "Georgia", "Germany", "Ghana", "Gibraltar",
+            "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau",
+            "Guyana", "Haiti", "Heard Island and McDonald Islands", "Honduras", "Hong Kong", "Hungary",
+            "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica",
+            "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos",
+            "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+            "Macau", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
+            "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova",
+            "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia",
+            "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand",
+            "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "Northern Marianas",
+            "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru",
+            "Philippines", "Pitcairn Islands", "Poland", "Portugal", "Puerto Rico", "Qatar",
+            "Reunion", "Romania", "Russia", "Rwanda", "Sqo Tome and Principe", "Saint Helena",
+            "Saint Kitts and Nevis", "Saint Lucia", "Saint Pierre and Miquelon",
+            "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Saudi Arabia", "Senegal",
+            "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
+            "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "South Korea",
+            "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", "Swaziland", "Sweden",
+            "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "The Bahamas",
+            "The Gambia", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey",
+            "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Virgin Islands", "Uganda",
+            "Ukraine", "United Arab Emirates", "United Kingdom",
+            "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan",
+            "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Wallis and Futuna", "Western Sahara",
+            "Yemen", "Yugoslavia", "Zambia", "Zimbabwe", "中国", "中非"
+    };
     private static final String TAG = "TextViewActivity";
     //存放单选CheckedTextView的id
     int[] singleCheckedTextViewId = new int[3];
-
     //存放计时器的秒数
     int countSecond=0;
-
     //多选checkedTextView点击方法，将现有图标状态反转
     View.OnClickListener multiListener = new View.OnClickListener() {
         @Override
@@ -71,7 +114,6 @@ public class TextViewActivity extends Activity {
             checkedTextView.toggle();    // 反转状态
         }
     };
-
     //单选checkedTextView点击方法，每次点击都要将全部checkedTextView一一处理
     View.OnClickListener singleListener = new View.OnClickListener() {
         @Override
@@ -231,6 +273,12 @@ public class TextViewActivity extends Activity {
                 showMessage("当前选择了：" + rb.getText());
             }
         });
+        TextView text = (TextView) findViewById(R.id.text);
+
+        //在TextView上下左右设置图片
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_favorite_black_24dp, null);
+        drawable.setBounds(0, 0, 50, 50);   //必须设置图片大小，否则不显示
+        text.setCompoundDrawables(null, null, drawable, null);
 
         //左侧除最下面的test3外，皆为普通TextView，属性主要是字体大小、颜色和背景
         //跑马灯效果也可以在这个点击事件里强制获取焦点而呈现
@@ -324,7 +372,7 @@ public class TextViewActivity extends Activity {
         });
 
         //启动计时器
-        ((Button) findViewById(R.id.start)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mChronometer1.start();
                 countSecond=0;
@@ -334,7 +382,7 @@ public class TextViewActivity extends Activity {
         });
 
         //暂停计时器
-        ((Button) findViewById(R.id.stop)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.stop).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mChronometer1.stop();
                 mChronometer2.stop();
@@ -343,7 +391,7 @@ public class TextViewActivity extends Activity {
         });
 
         //计时器清零，回到初始计时基准时间
-        ((Button) findViewById(R.id.reset)).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.reset).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //设置基准时间为当前时间
                 mChronometer1.setBase(SystemClock.elapsedRealtime());
@@ -371,51 +419,6 @@ public class TextViewActivity extends Activity {
         textView2.setAdapter(adapter2);
         textView2.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
     }
-
-    //供AutoCompleteTextView使用的国家名称
-    static final String[] COUNTRIES = new String[] {
-            "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
-            "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina",
-            "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan",
-            "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
-            "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia",
-            "Bosnia and Herzegovina", "Botswana", "Bouvet Island", "Brazil", "British Indian Ocean Territory",
-            "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
-            "Cote d'Ivoire", "Cambodia", "Cameroon", "Canada", "Cape Verde",
-            "Cayman Islands", "Central African Republic", "Cemtral African Republic of ","Chad", "Chile", "China",
-            "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo",
-            "Cook Islands", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
-            "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
-            "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea",
-            "Estonia", "Ethiopia", "Faeroe Islands", "Falkland Islands", "Fiji", "Finland",
-            "Former Yugoslav Republic of Macedonia", "France", "French Guiana", "French Polynesia",
-            "French Southern Territories", "Gabon", "Georgia", "Germany", "Ghana", "Gibraltar",
-            "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau",
-            "Guyana", "Haiti", "Heard Island and McDonald Islands", "Honduras", "Hong Kong", "Hungary",
-            "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica",
-            "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos",
-            "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
-            "Macau", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
-            "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova",
-            "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia",
-            "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand",
-            "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "Northern Marianas",
-            "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru",
-            "Philippines", "Pitcairn Islands", "Poland", "Portugal", "Puerto Rico", "Qatar",
-            "Reunion", "Romania", "Russia", "Rwanda", "Sqo Tome and Principe", "Saint Helena",
-            "Saint Kitts and Nevis", "Saint Lucia", "Saint Pierre and Miquelon",
-            "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Saudi Arabia", "Senegal",
-            "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
-            "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "South Korea",
-            "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard and Jan Mayen", "Swaziland", "Sweden",
-            "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "The Bahamas",
-            "The Gambia", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey",
-            "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Virgin Islands", "Uganda",
-            "Ukraine", "United Arab Emirates", "United Kingdom",
-            "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan",
-            "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Wallis and Futuna", "Western Sahara",
-            "Yemen", "Yugoslavia", "Zambia", "Zimbabwe","中国","中非"
-    };
 
     private void showMessage(final String msg) {
         Toast.makeText(TextViewActivity.this, msg, Toast.LENGTH_LONG).show();

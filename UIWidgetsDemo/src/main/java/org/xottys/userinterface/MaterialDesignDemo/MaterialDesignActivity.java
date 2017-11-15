@@ -1,6 +1,6 @@
 /**
  * 本例演示了Material Designd的八个新控件：
- * 1)TextInputLayout
+ * 1)TextInputLayout/TextInputEditText
  * 2)FloatingActionButton
  * 3)Snackbar
  * 4)TabLayout
@@ -28,10 +28,9 @@
 package org.xottys.userinterface.MaterialDesignDemo;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -48,9 +47,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.xottys.userinterface.R;
 
@@ -59,46 +57,9 @@ import java.util.List;
 
 public class MaterialDesignActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "MaterialDesignActivity";
-    private static boolean isShowPageStart = true;
-    private final int MESSAGE_SHOW_DRAWER_LAYOUT = 0x001;
-    private final int MESSAGE_SHOW_START_PAGE = 0x002;
     private DrawerLayout drawer;
-    public Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MESSAGE_SHOW_DRAWER_LAYOUT:
-                    drawer.openDrawer(GravityCompat.START);
-                    SharedPreferences sharedPreferences = getSharedPreferences("app", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("isFirst", false);
-                    editor.apply();
-                    break;
-
-                case MESSAGE_SHOW_START_PAGE:
-                    AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
-                    alphaAnimation.setDuration(300);
-                    alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
-                        @Override
-                        public void onAnimationStart(Animation animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animation animation) {
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animation animation) {
-
-                        }
-                    });
-                    break;
-            }
-        }
-    };
     private FloatingActionButton fab;
-
+    private ActionBarDrawerToggle mToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,25 +69,24 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
     }
 
     private void initView() {
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        //侧滑抽屉控件drawer与toolbar同步
+        //侧滑抽屉控件drawer与toolbar同步,
+        //ActionBarDrawerToggl实现用Home按钮完成Drawer拉出/隐藏，并带有动画效果
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        mToggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        drawer.addDrawerListener(mToggle);
+        mToggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //给MenuItem设置点击监听
         navigationView.setNavigationItemSelectedListener(this);
-
-        //给MenuItem图标设置颜色
+        //给MenuItem图标设置颜色，null表示原色
         navigationView.setItemIconTintList(null);
 
         //设置HedaerView点击事件
@@ -136,43 +96,108 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "onClick: Header");
+
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                //关闭侧滑抽屉控件
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
 
-        //设置FloatingActionButton点击事件
+        //一个页面中最主要的操作，个页面最好只有一个FAB
         fab = (FloatingActionButton) findViewById(R.id.fab_main);
+        //设置FloatingActionButton点击事件
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Snackbar.LENGTH_INDEFINITE:不消失显示，除非手动取消
+                final Snackbar sb = Snackbar.make(view, getString(R.string.main_snack_bar), Snackbar.LENGTH_INDEFINITE);
+                //设置动作事件
+                sb.setAction(getString(R.string.main_snack_bar_action), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        sb.dismiss();
+                        Log.i(TAG, "onClick: Floating ActionBAr");
+                    }
+                });
 
-                Snackbar.make(view, getString(R.string.main_snack_bar), Snackbar.LENGTH_LONG)
-                        //设置动作事件
-                        .setAction(getString(R.string.main_snack_bar_action), new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Log.i(TAG, "onClick: Floating ActionBAr");
-                            }
-                        })
-                        .show();
+
+                sb.addCallback(new Snackbar.Callback() {
+                    //Snackbar关闭时回调
+                    @Override
+                    public void onDismissed(Snackbar snackbar, int event) {
+                        super.onDismissed(snackbar, event);
+                        Log.i(TAG, "Snackbar关闭 !");
+                    }
+
+                    // Snackbar打开时回调
+                    @Override
+                    public void onShown(Snackbar snackbar) {
+                        super.onShown(snackbar);
+                        Log.i(TAG, "Snackbar打开 !");
+
+                    }
+                });
+
+                sb.setActionTextColor(Color.YELLOW);      //改变按钮的文字颜色
+                View mView = sb.getView();
+                mView.setBackgroundColor(Color.LTGRAY);   //改变消息内容的背景
+                TextView tv = (TextView) mView.findViewById(R.id.snackbar_text);
+                tv.setTextColor(Color.RED);               //改变消息内容的文字颜色
+                sb.show();
             }
         });
     }
 
     private void initViewPager() {
-
         TabLayout mTabLayout = (TabLayout) findViewById(R.id.tab_layout_main);
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            //选中了tab的逻辑
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Log.i(TAG, "onTabSelected: " + tab.getText());
+            }
+
+            //未选中tab的逻辑
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                Log.i(TAG, "onTabUnselected: " + tab.getText());
+
+            }
+
+            //再次选中tab的逻辑
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+                Log.i(TAG, "onTabReselected: " + tab.getText());
+            }
+        });
 
         List<String> titles = new ArrayList<>();
         titles.add(getString(R.string.tab_title_main_1));
         titles.add(getString(R.string.tab_title_main_2));
         titles.add(getString(R.string.tab_title_main_3));
-        //为TabLayout添加Tab
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(0)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(1)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)));
 
+        /*也可以用代码为TabLayout添加TabItem，其Title可以是文字和/或图标
+        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(0)));
+        mTabLayout.addTab(mTabLayout.newTab().setIcon(R.drawable.ic_file_download_black_24dp));
+        mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)).setIcon(R.drawable.ic_shop_black_24dp));
+        */
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                //选中了tab的逻辑
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                //未选中tab的逻辑
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                //再次选中tab的逻辑
+            }
+        });
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new MatrialWidgetsFragment());
         fragments.add(new CollapsingToolbarFragment());
@@ -206,7 +231,10 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
             }
         });
 
-        //将TabLayout与ViewPager关联
+        //将TabLayout与ViewPager关联，使二者联动
+        //联动后Tab就同时具备了点击和滑动效果，
+        //联动后，相关的Fragment通过Viewpager的适配器自动切换，Tab的点击事件也不用再写了
+        //联动后，ViewPager的Title代替了Tab的Title
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
@@ -217,6 +245,7 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
         } else {
             super.onBackPressed();
         }
+        Log.i(TAG, "onBackPressed: ");
     }
 
     @Override
@@ -249,14 +278,25 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
             case R.id.nav_settings:
                 Log.i(TAG, "onNavigationItemSelected: Settins");
                 break;
-
             case R.id.nav_about:
                 Log.i(TAG, "onNavigationItemSelected: About");
                 break;
         }
         //关闭抽屉
-        drawer.closeDrawer(GravityCompat.START);
+        drawer.closeDrawers();
         return true;
     }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mToggle.onConfigurationChanged(newConfig);
+    }
 }

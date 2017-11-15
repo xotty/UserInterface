@@ -1,36 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/exit"
-        android:orderInCategory="5"
-        android:title="隐藏菜单" />
-    <item
-        android:id="@+id/order"
-        android:icon="@android:drawable/ic_menu_edit"
-        android:orderInCategory="4"
-        android:title="Category and Order" />
+    <group
+        android:id="@+id/group"
+        android:checkableBehavior="all"
+        android:title="分组2">
+        <item
+            android:id="@+id/exit"
+            android:orderInCategory="5"
+            android:title="隐藏菜单" />
+        <item
+            android:id="@+id/order"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:orderInCategory="4"
+            android:title="Category and Order" />
 
+        <item
+            android:id="@+id/shortcuts"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:orderInCategory="3"
+            android:title="Shortcuts" />
+    </group>
     <item
-        android:id="@+id/shortcuts"
-        android:icon="@android:drawable/ic_menu_edit"
-        android:orderInCategory="3"
-        android:title="Shortcuts" />
-
+        android:id="@+id/section1"
+        android:title="分组1">
+        <menu>
     <item
         android:id="@+id/basic"
         android:icon="@android:drawable/ic_menu_search"
         android:orderInCategory="0"
         android:title="Basic" />
+
     <item
         android:id="@+id/groups"
         android:icon="@android:drawable/ic_menu_search"
         android:orderInCategory="1"
         android:title="Groups" />
+        </menu>
+    </item>
     <item
         android:id="@+id/checkable"
         android:icon="@android:drawable/ic_menu_add"
         android:orderInCategory="2"
         android:title="Checkable" />
-
-
 </menu>
