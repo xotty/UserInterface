@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btn"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonBasicArrange"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_pressed"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="Basic\nArrange"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonBasicSize"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_pressed"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="Basic\nSize"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonAdvancedArrange"
+
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_pressed"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="Advanced\nArrange"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonGuideline"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_pressed"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="Guidline"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonChainStyle"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_pressed"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="ChainStyle"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonPlaceholder"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_pressed"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="Placeholder"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/constraint_layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_editor_absoluteX="0dp"
+        app:layout_editor_absoluteY="60dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="60dp">
+
+        <ImageView
+            android:id="@+id/header"
+            android:layout_width="430dp"
+            android:layout_height="176dp"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/placeholder"
+            android:scaleType="centerCrop"
+            android:src="@drawable/singapore"
+            app:layout_constraintBottom_creator="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/constraint_layout_main"
+            app:layout_constraintRight_creator="1"
+            app:layout_constraintTop_creator="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_editor_absoluteX="0dp"
+            app:layout_editor_absoluteY="0dp"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1" />
+
+        <ImageView
+            android:id="@+id/favorite"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="160dp"
+            android:background="@drawable/info_background"
+            android:contentDescription="@string/placeholder"
+            android:padding="5dp"
+            android:src="@drawable/ic_star"
+            app:layout_constraintBottom_creator="0"
+            app:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="@+id/constraint_layout_main"
+            app:layout_constraintTop_creator="1"
+            app:layout_constraintTop_toTopOf="@+id/constraint_layout_main"
+            app:layout_editor_absoluteX="359dp"
+            app:layout_editor_absoluteY="104dp"
+            tools:layout_constraintBottom_creator="0"
+            tools:layout_constraintRight_creator="0"
+            tools:layout_constraintTop_creator="0" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/singapore"
+            android:textSize="18sp"
+            app:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/constraint_layout_main"
+            app:layout_constraintTop_creator="0"
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            app:layout_editor_absoluteX="16dp"
+            app:layout_editor_absoluteY="140dp"
+            tools:layout_constraintLeft_creator="0"
+            tools:layout_constraintTop_creator="0"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="140dp" />
+
+        <EditText
+            android:id="@+id/cameraType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/camera_value"
+            app:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/settings"
+            app:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="@+id/settings"
+            app:layout_constraintStart_toEndOf="@+id/labelBarrier"
+            app:layout_constraintTop_creator="1"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_editor_absoluteX="73dp"
+            app:layout_editor_absoluteY="176dp"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="0" />
+
+        <TextView
+            android:id="@+id/cameraLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:labelFor="@+id/cameraType"
+            android:text="@string/camera"
+            app:layout_constraintBaseline_creator="1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/cameraType"
+            app:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/constraint_layout_main"
+            app:layout_editor_absoluteX="16dp"
+            app:layout_editor_absoluteY="189dp"
+            tools:layout_constraintBaseline_creator="0"
+            tools:layout_constraintLeft_creator="0"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="189dp" />
+
+        <TextView
+            android:id="@+id/settingsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:labelFor="@+id/settings"
+            android:text="@string/settings"
+            app:layout_constraintBaseline_creator="1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/settings"
+            app:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/constraint_layout_main"
+            app:layout_editor_absoluteX="16dp"
+            app:layout_editor_absoluteY="238dp"
+            tools:layout_constraintBaseline_creator="0"
+            tools:layout_constraintLeft_creator="0"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="238dp" />
+
+        <android.support.constraint.Barrier
+            android:id="@+id/labelBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="cameraLabel,settingsLabel"
+            tools:layout_editor_absoluteX="68dp" />
+
+        <EditText
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/camera_settings"
+            app:layout_constraintLeft_creator="1"
+            app:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="@+id/description"
+            app:layout_constraintStart_toEndOf="@+id/labelBarrier"
+            app:layout_constraintTop_creator="1"
+            app:layout_constraintTop_toBottomOf="@+id/cameraType"
+            app:layout_editor_absoluteX="73dp"
+            app:layout_editor_absoluteY="225dp"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="0" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:ellipsize="end"
+            android:fadingEdge="vertical"
+            android:text="@string/singapore_description"
+
+
+            android:textSize="15sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/constraint_layout_main"
+            app:layout_constraintRight_toRightOf="@+id/constraint_layout_main" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

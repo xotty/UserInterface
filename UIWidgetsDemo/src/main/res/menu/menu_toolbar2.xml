@@ -15,12 +15,12 @@
         android:icon="@drawable/ab_share"
         android:orderInCategory="90"
         android:title="@string/action_share"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_back"
         android:icon="@drawable/ic_drawer_home"
         android:orderInCategory="100"
         android:title="Back"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 </menu>

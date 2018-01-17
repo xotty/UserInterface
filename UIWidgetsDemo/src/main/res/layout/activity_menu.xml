@@ -10,9 +10,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="可通过菜单修改字体大小和背景色"
+        android:text="上下文菜单：可通过菜单修改字体大小和背景色"
         android:textSize="15sp" />
 
+    <TextView
+        android:id="@+id/tvam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="上下文操作模式："
+        android:textSize="15sp" />
     <Button
         android:id="@+id/btn"
         android:layout_width="wrap_content"
@@ -20,5 +28,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:text="PopupMenu" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp" />
 
 </LinearLayout>

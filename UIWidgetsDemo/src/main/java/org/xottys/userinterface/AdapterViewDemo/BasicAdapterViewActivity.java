@@ -74,7 +74,7 @@ public class BasicAdapterViewActivity extends Activity {
 
         //ArrayAdapter-1---------------------------------------------------------------------------
         //可以呈现单行文本、按钮、复选框等TextView类型的数据
-        ListView list1 = (ListView) findViewById(R.id.list1);
+        ListView list1 = findViewById(R.id.list1);
         //准备数据
         String[] arr1 = new String[]{"唐僧","孙悟空", "猪八戒","沙和尚"};
         //将数据和Item视图包装为ArrayAdapter
@@ -82,7 +82,7 @@ public class BasicAdapterViewActivity extends Activity {
                 (this, android.R.layout.simple_list_item_1, arr1);
         /*上面使用了系统视图，也可以替换成自定义试图，如(this, R.layout.array_item, arr1);
          还可以换成下列系统视图 ：android.R.layout.simple_list_item_single_choice
-                             android.R.layout.simple_list_item_mutiple_choice
+                             android.R.layout.simple_list_item_multiple_choice
                              android.R.layout.simple_list_item_checked
         list1.setItemsCanFocus(false);
         list1.setChoiceMode(ListView.CHOICE_MODE_SINGLE);*/
@@ -93,7 +93,7 @@ public class BasicAdapterViewActivity extends Activity {
         setListViewHeightBasedOnChildren(list1);
         //ArrayAdapter-2---------------------------------------------------------------------------
         //这里呈现的是CheckedTextView
-        final ListView list2 = (ListView) findViewById(R.id.list2);
+        final ListView list2 = findViewById(R.id.list2);
         final String[] arr2 = {"Java", "Android","Kotlin","Objective-C", "Swift"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>
                 (this, R.layout.checked_item, arr2);
@@ -138,7 +138,7 @@ public class BasicAdapterViewActivity extends Activity {
            R.layout.simple_item,
            new String[]{"personName", "header", "descp"},
            new int[]{R.id.name, R.id.header, R.id.desc});*/
-        ListView list = (ListView) findViewById(R.id.mylist1);
+        ListView list = findViewById(R.id.mylist1);
         list.setAdapter(simpleAdapter);
         setListViewHeightBasedOnChildren(list);
 
@@ -164,7 +164,7 @@ public class BasicAdapterViewActivity extends Activity {
                 R.layout.simple_item, cursor, new String[]{"name", "header", "descp"},
                 new int[]{R.id.name, R.id.header, R.id.desc}, 0);
 
-        ListView listView = (ListView)findViewById(R.id.mylist2);
+        ListView listView = findViewById(R.id.mylist2);
         listView.setAdapter(simpleCursorAdapter);
         setListViewHeightBasedOnChildren(listView);
 
@@ -175,7 +175,7 @@ public class BasicAdapterViewActivity extends Activity {
         }
 
         //设置该Listview的高度
-        final ListView myList = (ListView) findViewById(R.id.mylist3);
+        final ListView myList = findViewById(R.id.mylist3);
         ViewGroup.LayoutParams params = myList.getLayoutParams();
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
         params.height = 800;
@@ -312,7 +312,7 @@ public class BasicAdapterViewActivity extends Activity {
 
         //其它-------------------------------------------------------------------------------------
         //解决listview和ScrollView滚动冲突
-        final ScrollView myScrollView = (ScrollView) findViewById(R.id.myScroll);
+        final ScrollView myScrollView = findViewById(R.id.myScroll);
         myList.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View arg0, MotionEvent arg1) {

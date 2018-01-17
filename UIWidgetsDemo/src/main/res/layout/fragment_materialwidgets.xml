@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_user_name_password"
-                android:imeActionId="@+id/login"
+                android:imeActionId="@integer/customImeActionId"
                 android:imeActionLabel="@string/action_sign_in"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
@@ -121,4 +121,5 @@
             android:background="?android:attr/windowBackground"
             app:menu="@menu/bottom_navigation" />
     </LinearLayout>
+
 </android.support.v4.widget.NestedScrollView>

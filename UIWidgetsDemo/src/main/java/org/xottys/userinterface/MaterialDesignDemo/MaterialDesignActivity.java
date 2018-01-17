@@ -91,7 +91,7 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
 
         //设置HedaerView点击事件
         View headerView = navigationView.getHeaderView(0);
-        LinearLayout nav_header = (LinearLayout) headerView.findViewById(R.id.nav_header);
+        LinearLayout nav_header = headerView.findViewById(R.id.nav_header);
         nav_header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,10 +138,10 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
                     }
                 });
 
-                sb.setActionTextColor(Color.YELLOW);      //改变按钮的文字颜色
+                sb.setActionTextColor(Color.BLUE);      //改变按钮的文字颜色
                 View mView = sb.getView();
                 mView.setBackgroundColor(Color.LTGRAY);   //改变消息内容的背景
-                TextView tv = (TextView) mView.findViewById(R.id.snackbar_text);
+                TextView tv = mView.findViewById(R.id.snackbar_text);
                 tv.setTextColor(Color.RED);               //改变消息内容的文字颜色
                 sb.show();
             }
@@ -200,9 +200,8 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
         });
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new MatrialWidgetsFragment());
-        fragments.add(new CollapsingToolbarFragment());
         fragments.add(new CardViewFragment());
-
+        fragments.add(new RippleDrawableFragment());
         //定义ViewPager及其适配器
         ViewPager mViewPager = (ViewPager) findViewById(R.id.view_pager_main);
         mViewPager.setOffscreenPageLimit(2);
@@ -218,10 +217,10 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
             @Override
             public void onPageSelected(int position) {
                 //适时显示FloatingActionButton
-                if (position == 1) {
-                    fab.hide();
-                } else {
+                if (position != 2) {
                     fab.show();
+                } else {
+                    fab.hide();
                 }
             }
 
@@ -275,6 +274,13 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
                 startActivity(intent);
                 Log.i(TAG, "onNavigationItemSelected:recycler_and_swipe_refresh ");
                 break;
+            case R.id.nav_collapsing_toolbar:
+                intent.setClass(this, CollapsingToolbarActivity.class);
+                startActivity(intent);
+            case R.id.nav_constraint_layout:
+                intent.setClass(this, ConstraintLayoutActivity.class);
+                startActivity(intent);
+
             case R.id.nav_settings:
                 Log.i(TAG, "onNavigationItemSelected: Settins");
                 break;

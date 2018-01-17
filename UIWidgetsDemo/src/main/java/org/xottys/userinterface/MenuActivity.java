@@ -1,15 +1,21 @@
 /**
  * 本例演示了三种Menu的用法：
  * 1)OptionsMenu：用手机Menu键弹出或显示在屏幕右上角位置，点击后弹出
- * 2)ContextMenu：用registerForContextMenu与某个view关联,长按弹出菜单项
+ * 2)ContextMenu：上下文操作的一种方法，用registerForContextMenu与某个view关联,长按弹出菜单项
  * 3)PopupMenu：初始化new PopupMenu时与某个view关联,点击弹出菜单项
- * 使用要点如下：
+ * 4)ActionMode：上下文操作的又一种方法，会临时借用ActionBar位置展示菜单，完成当前上下文的重要操作
+ * 一、Menu使用要点如下：
  * 1）定义菜单项内容：代码或xml方式均可，建议后者。在下列位置定义：onCreateOptionsMenu、onCreateContextMenu、onClick
  * 2）定义菜单项点击事件处理：onOptionsItemSelected、onContextItemSelected、onMenuItemClick
  * 3）关联相关View
  * 4）invalidateOptionsMenu()会再次启动onCreateOptionsMenu和onPrepareOptionsMenu
  * 5）menu.findItem可以从xml中获取菜单的item
  * 6）item.setIntent可以直接跳转到新的Activity，此时onOptionsItemSelected和onContextItemSelected必须返回false
+ * 二、ActionMode使用要点如下：
+ * 1）临时占据了ActionBar的位置，将Menu中的全部MenuItem摆放其中，
+ * 2）通过startActionMode(actionModeCallback)启动，通过点击左侧内置导航按钮或actionMode.finish()方法取消
+ * 3）覆写actionModeCallback的四个方法，在onCreateActionMode中启用Menu，在onActionItemClicked中处理点击事件
+ * 4）在AppTheme中定义其各种组件的样式
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
@@ -26,13 +32,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,8 +78,9 @@ public class MenuActivity extends Activity {
     final int FONT_GREEN = 0x118;
     // 定义启动菜单项的标识
     final int INTENT_ITEM = 0x11c;
-    private TextView textview;
+    private TextView textview1, textview2;
     private Button button;
+    private ActionMode mActionMode;
     private PopupMenu popup = null;
     private int position = 0;
     /**
@@ -78,12 +88,60 @@ public class MenuActivity extends Activity {
      */
     private Menu mMenu;
 
+    private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
+        //在初始创建的时候调用
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            Log.i(TAG, "onCreateActionMode: ");
+            MenuInflater inflater = mode.getMenuInflater();
+            inflater.inflate(R.menu.menu_toolbar1, menu);
+            mode.setTitle("Title");
+            mode.setSubtitle("SubTitle");
+            return true;
+        }
+
+        //准备绘制的时候调用
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            Log.i(TAG, "onPrepareActionMode: ");
+            return false;
+        }
+
+        //点击 ActionMode 菜单选项的时候调用
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.action_edit:
+                    Log.i(TAG, "onActionItemClicked: Edit");
+                    break;
+                case R.id.action_share:
+                    Log.i(TAG, "onActionItemClicked: Share");
+                    break;
+                case R.id.action_back:
+                    Log.i(TAG, "onActionItemClicked: Back");
+                    mode.finish();
+                    break;
+            }
+            return true;
+        }
+
+        //退出 ActionMode 的时候调用
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+
+            Log.i(TAG, "onDestroyActionMode: ");
+        }
+
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        textview = (TextView) findViewById(R.id.tv);
-        button = (Button) findViewById(R.id.btn);
+        textview1 = findViewById(R.id.tv);
+        textview2 = findViewById(R.id.tvam);
+        button = findViewById(R.id.btn);
         //PopupMenu----------------------------------------------------------------
         button.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -118,11 +176,82 @@ public class MenuActivity extends Activity {
         });
 
         // 为文本框注册上下文菜单
-        registerForContextMenu(textview);
+        registerForContextMenu(textview1);
+
+        textview2.setOnLongClickListener(new View.OnLongClickListener() {
+            // Called when the user long-clicks on someView
+            public boolean onLongClick(View view) {
+                // Start the CAB using the ActionMode.Callback defined above
+                mActionMode = startActionMode(mActionModeCallback);
+                view.setSelected(true);
+                return true;
+            }
+        });
+
+        //可以呈现单行文本、按钮、复选框等TextView类型的数据
+        ListView listView = findViewById(R.id.lv);
+        //准备数据
+        String[] arr1 = new String[]{"唐僧", "孙悟空", "猪八戒", "沙和尚"};
+        //将数据和Item视图包装为ArrayAdapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<>
+                (this, android.R.layout.simple_list_item_multiple_choice, arr1);
+        listView.setAdapter(adapter);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        listView.setMultiChoiceModeListener(new ListView.MultiChoiceModeListener() {
+
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position,
+                                                  long id, boolean checked) {
+                // Here you can do something when items are selected/de-selected,
+                // such as update the title in the CAB
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                // Respond to clicks on the actions in the CAB
+                switch (item.getItemId()) {
+                    case R.id.action_edit:
+                        Log.i(TAG, "onActionItemClicked: Edit");
+                        break;
+                    case R.id.action_share:
+                        Log.i(TAG, "onActionItemClicked: Share");
+                        break;
+                    case R.id.action_back:
+                        Log.i(TAG, "onActionItemClicked: Back");
+                        mode.finish();
+                        break;
+                }
+                return false;
+
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                // Inflate the menu for the CAB
+                MenuInflater inflater = mode.getMenuInflater();
+                inflater.inflate(R.menu.menu_toolbar1, menu);
+                return true;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                // Here you can make any necessary updates to the activity when
+                // the CAB is removed. By default, selected items are deselected/unchecked.
+                Log.i(TAG, "Listview onDestroyActionMode: ");
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                // Here you can perform updates to the CAB due to
+                // an invalidate() request
+                Log.i(TAG, "ListView onPrepareActionMode: ");
+                return false;
+            }
+        });
     }
 
     //OptionsMenu----------------------------------------------------------------
-    //当用户单击MENU键时触发该方法，代码定义菜单想
+    //当用户单击MENU键时触发该方法，代码定义菜单项
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         Log.i(TAG, "onCreateOptionsMenu: " + position);
@@ -159,30 +288,30 @@ public class MenuActivity extends Activity {
         //判断单击的是哪个菜单项，并有针对性地作出响应
         switch (menuItem.getItemId()) {
             case R.id.font_10:
-                textview.setTextSize(10 * 2);
+                textview1.setTextSize(10 * 2);
                 break;
             case R.id.font_12:
-                textview.setTextSize(12 * 2);
+                textview1.setTextSize(12 * 2);
                 break;
             case R.id.font_14:
-                textview.setTextSize(14 * 2);
+                textview1.setTextSize(14 * 2);
                 break;
             case R.id.font_16:
-                textview.setTextSize(16 * 2);
+                textview1.setTextSize(16 * 2);
                 break;
             case R.id.font_18:
-                textview.setTextSize(18 * 2);
+                textview1.setTextSize(18 * 2);
                 break;
             case R.id.red_font:
-                textview.setTextColor(Color.RED);
+                textview1.setTextColor(Color.RED);
                 //menuItem.setChecked(true);
                 break;
             case R.id.green_font:
-                textview.setTextColor(Color.GREEN);
+                textview1.setTextColor(Color.GREEN);
                 //menuItem.setChecked(true);
                 break;
             case R.id.blue_font:
-                textview.setTextColor(Color.BLUE);
+                textview1.setTextColor(Color.BLUE);
                 //menuItem.setChecked(true);
                 break;
             case R.id.plain_item:
@@ -296,28 +425,28 @@ public class MenuActivity extends Activity {
     public boolean onContextItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case FONT_10:
-                textview.setTextSize(10 * 2);
+                textview1.setTextSize(10 * 2);
                 break;
             case FONT_12:
-                textview.setTextSize(12 * 2);
+                textview1.setTextSize(12 * 2);
                 break;
             case FONT_14:
-                textview.setTextSize(14 * 2);
+                textview1.setTextSize(14 * 2);
                 break;
             case FONT_16:
-                textview.setTextSize(16 * 2);
+                textview1.setTextSize(16 * 2);
                 break;
             case FONT_18:
-                textview.setTextSize(18 * 2);
+                textview1.setTextSize(18 * 2);
                 break;
             case FONT_RED:
-                textview.setTextColor(Color.RED);
+                textview1.setTextColor(Color.RED);
                 break;
             case FONT_GREEN:
-                textview.setTextColor(Color.GREEN);
+                textview1.setTextColor(Color.GREEN);
                 break;
             case FONT_BLUE:
-                textview.setTextColor(Color.BLUE);
+                textview1.setTextColor(Color.BLUE);
                 break;
             case PLAIN_ITEM:
                 showMessage("您单击了普通菜单项");

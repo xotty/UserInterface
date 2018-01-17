@@ -1,43 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_search"
         android:actionViewClass="android.widget.SearchView"
         android:icon="@android:drawable/ic_menu_search"
-        android:showAsAction="always"
-        android:title="@string/action_bar_search" />
+        android:title="@string/action_bar_search"
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_share"
         android:actionProviderClass="android.widget.ShareActionProvider"
         android:icon="@android:drawable/ic_menu_share"
-        android:showAsAction="always"
-        android:title="@string/action_bar_share" />
+        android:title="@string/action_bar_share"
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_setting"
         android:actionProviderClass="org.xottys.userinterface.AppBarDemo.AppBarActivity$SettingsActionProvider"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_bar_settings" />
+        android:title="@string/action_bar_settings"
+        app:showAsAction="ifRoom" />
     />
     <item
         android:id="@+id/actionbar_displayoptioons"
-        android:showAsAction="ifRoom"
-        android:title="Actionbar_DisplayOptioons" />
+        android:title="Actionbar_DisplayOptioons"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/toolbar"
-        android:showAsAction="ifRoom"
-        android:title="ToolBar" />
-    <item
-        android:id="@+id/actionmode"
-        android:showAsAction="ifRoom"
-        android:title="ActionMode" />
+        android:title="ToolBar"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_sort"
         android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_bar_sort">
+        android:title="@string/action_bar_sort"
+        app:showAsAction="ifRoom">
         <menu>
             <item
                 android:id="@+id/action_sort_size"

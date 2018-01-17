@@ -21,6 +21,7 @@ package org.xottys.userinterface.AppBarDemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -34,6 +35,7 @@ import org.xottys.userinterface.R;
 
 public class ToolBarActivity extends AppCompatActivity {
     private static final String TAG = "ToolBarActivity";
+    private ActionMenuView actionMenuView;
     private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem menuItem) {
@@ -47,8 +49,8 @@ public class ToolBarActivity extends AppCompatActivity {
                 case R.id.action_share:
                     msg += "Click share";
                     break;
-                case R.id.action_settings:
-                    msg += "Click setting";
+                case R.id.action_back:
+                    finish();
                     break;
             }
 
@@ -67,6 +69,8 @@ public class ToolBarActivity extends AppCompatActivity {
 
         Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
         Toolbar toolbar2 = (Toolbar) findViewById(R.id.toolbar2);
+        actionMenuView = (ActionMenuView) findViewById(R.id.action_menu_view);
+
         Button bt1 = (Button) findViewById(R.id.bt1);
         Button bt2 = (Button) findViewById(R.id.bt2);
         Button bt3 = (Button) findViewById(R.id.bt3);
@@ -87,9 +91,9 @@ public class ToolBarActivity extends AppCompatActivity {
 
         //设置导航图标
         toolbar1.setNavigationIcon(R.drawable.ic_drawer_home);
-    /*导航图标也可以换成普通的返回箭头
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    */
+        /*导航图标也可以换成普通的返回箭头
+             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        */
         //设置导航图标点击监听器
         toolbar1.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,8 +104,40 @@ public class ToolBarActivity extends AppCompatActivity {
 
         // Menu item click 的監聽事件一樣要設定在 setSupportActionBar 才有作用
         toolbar1.setOnMenuItemClickListener(onMenuItemClick);
+        toolbar2.setNavigationIcon(R.drawable.back);
+        //导航图标点击事件
+        toolbar2.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ToolBarActivity.this, "NavigationIcon Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        //toolbar2中按钮点击事件
+        //ActionMenuView中各Item点击事件
+        actionMenuView.setOnMenuItemClickListener(new ActionMenuView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                String msg = "";
+                switch (item.getItemId()) {
+                    case R.id.action_edit:
+                        msg += "Click edit";
+                        break;
+                    case R.id.action_share:
+                        msg += "Click share";
+                        break;
+                    case R.id.action_back:
+                        finish();
+                        break;
+                }
+                if (!msg.equals("")) {
+                    Log.i(TAG, "onMenuItemClick: " + msg);
+                    Toast.makeText(ToolBarActivity.this, msg, Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
+
+        //toolbar3中按钮点击事件
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,7 +160,8 @@ public class ToolBarActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar1, menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar2, actionMenuView.getMenu());
         return true;
     }
 }

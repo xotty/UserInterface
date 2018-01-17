@@ -11,6 +11,13 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:theme="@style/AppTheme.AppBarOverlay" />
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout_main"
             android:layout_width="match_parent"
@@ -46,7 +53,7 @@
         android:id="@+id/fab_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|center"
+        android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_add_white_24dp"
         android:translationZ="4dp"

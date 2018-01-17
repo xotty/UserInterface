@@ -86,13 +86,13 @@ public class MatrialWidgetsFragment extends Fragment implements View.OnClickList
 
         initLoginView(nestedScrollView);
 
-        Button btn_bottom_dialog = (Button) nestedScrollView.findViewById(R.id.btn_bottom_dialog);
-        Button btn_fuulscreen_dialog = (Button) nestedScrollView.findViewById(R.id.btn_fullscreen_dialog);
+        Button btn_bottom_dialog = nestedScrollView.findViewById(R.id.btn_bottom_dialog);
+        Button btn_fuulscreen_dialog = nestedScrollView.findViewById(R.id.btn_fullscreen_dialog);
         btn_bottom_dialog.setOnClickListener(this);
         btn_fuulscreen_dialog.setOnClickListener(this);
 
 
-        BottomNavigationView navigation = (BottomNavigationView) nestedScrollView.findViewById(R.id.bottom_navigation);
+        BottomNavigationView navigation = nestedScrollView.findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // If BottomNavigationView has more than 3 items, using reflection to disable shift mode
@@ -110,14 +110,14 @@ public class MatrialWidgetsFragment extends Fragment implements View.OnClickList
 
     public void initLoginView(View view) {
         //TextInputLayout视图
-        AutoCompleteTextView mUserNameView = (AutoCompleteTextView) view.findViewById(R.id.tv_user_name);
-        TextInputEditText mPasswordView = (TextInputEditText) view.findViewById(R.id.tv_password);
-        final TextInputLayout input_user_name = (TextInputLayout) view.findViewById(R.id.input_user_name);
-        final TextInputLayout input_password = (TextInputLayout) view.findViewById(R.id.input_password);
+        AutoCompleteTextView mUserNameView = view.findViewById(R.id.tv_user_name);
+        TextInputEditText mPasswordView = view.findViewById(R.id.tv_password);
+        final TextInputLayout input_user_name = view.findViewById(R.id.input_user_name);
+        final TextInputLayout input_password = view.findViewById(R.id.input_password);
 //        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 //            @Override
 //        public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-//            if (id == R.id.login || id == EditorInfo.IME_NULL) {
+//            if (id == getResources().getInteger(R.integer.customImeActionId) || id == EditorInfo.IME_NULL) {
 //                Log.i(TAG, "Login:"+input_user_name.toString()+"/"+input_password.toString());
 //                return true;
 //            }
@@ -125,9 +125,9 @@ public class MatrialWidgetsFragment extends Fragment implements View.OnClickList
 //        }
 //    });
 
-        Button forgot_password = (Button) view.findViewById(R.id.btn_forgot_password);
+        Button forgot_password = view.findViewById(R.id.btn_forgot_password);
         forgot_password.setOnClickListener(this);
-        Button register = (Button) view.findViewById(R.id.btn_forgot_register);
+        Button register = view.findViewById(R.id.btn_forgot_register);
         register.setOnClickListener(this);
     }
 
@@ -147,9 +147,9 @@ public class MatrialWidgetsFragment extends Fragment implements View.OnClickList
             case R.id.btn_bottom_dialog:
                 final BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(getContext());
                 View dialogView = getActivity().getLayoutInflater().inflate(R.layout.dialog_bottom_sheet, null);
-                Button btn_dialog_bottom_sheet_ok = (Button) dialogView.findViewById(R.id.btn_dialog_bottom_sheet_ok);
-                Button btn_dialog_bottom_sheet_cancel = (Button) dialogView.findViewById(R.id.btn_dialog_bottom_sheet_cancel);
-                ImageView img_bottom_dialog = (ImageView) dialogView.findViewById(R.id.img_bottom_dialog);
+                Button btn_dialog_bottom_sheet_ok = dialogView.findViewById(R.id.btn_dialog_bottom_sheet_ok);
+                Button btn_dialog_bottom_sheet_cancel = dialogView.findViewById(R.id.btn_dialog_bottom_sheet_cancel);
+                ImageView img_bottom_dialog = dialogView.findViewById(R.id.img_bottom_dialog);
                 img_bottom_dialog.setImageResource(R.drawable.google_assistant);
                 mBottomSheetDialog.setContentView(dialogView);
 
@@ -171,9 +171,9 @@ public class MatrialWidgetsFragment extends Fragment implements View.OnClickList
             case R.id.btn_fullscreen_dialog:
                 final Dialog fullscreenDialog = new Dialog(getContext(), R.style.DialogFullscreen);
                 fullscreenDialog.setContentView(R.layout.dialog_fullscreen);
-                ImageView img_full_screen_dialog = (ImageView) fullscreenDialog.findViewById(R.id.img_full_screen_dialog);
+                ImageView img_full_screen_dialog = fullscreenDialog.findViewById(R.id.img_full_screen_dialog);
                 img_full_screen_dialog.setImageResource(R.drawable.google_assistant);
-                ImageView img_dialog_fullscreen_close = (ImageView) fullscreenDialog.findViewById(R.id.img_dialog_fullscreen_close);
+                ImageView img_dialog_fullscreen_close = fullscreenDialog.findViewById(R.id.img_dialog_fullscreen_close);
                 img_dialog_fullscreen_close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

@@ -38,4 +38,5 @@
 
     <dimen name="big_activity_fab_margin">16dp</dimen>
     <dimen name="zero_horizontal_margin_big_activity">0dp</dimen>
+
 </resources>

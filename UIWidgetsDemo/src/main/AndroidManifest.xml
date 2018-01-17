@@ -155,6 +155,18 @@
             android:label="@string/title_activity_recycler_view"
             android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
             android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+        <activity
+            android:name=".MaterialDesignDemo.CollapsingToolbarActivity"
+            android:label="@string/title_activity_collapsing_view"
+            android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+        <activity
+            android:name=".MaterialDesignDemo.ConstraintLayoutActivity"
+            android:label="@string/constraint_layout"
+            android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+
+
     </application>
 
 </manifest>
