@@ -75,7 +75,7 @@ public class AppGlobal extends Application {
         String top = runningTasks.get(0).topActivity.getShortClassName();
         top = top.substring(1);
         int swithcNumber = runningTasks.get(0).numActivities;
-        List<Activity> list = null;
+        List<Activity> list;
         String str = "";
         StringBuilder midStr = new StringBuilder("");
         switch (swithcNumber) {

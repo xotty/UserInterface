@@ -407,13 +407,13 @@ public class TextViewActivity extends Activity {
         });
 
         //单选自动搜索和填充TextView，设置标准Adapter
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, COUNTRIES);
         AutoCompleteTextView textView1 = (AutoCompleteTextView) findViewById(R.id.autoedit);
         textView1.setAdapter(adapter1);
 
         //多选自动搜索和填充TextView，设置自定义Adapter,设定弹出框的样式和其中文本的样式
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this,
                 R.layout.autocompletetvpop, COUNTRIES);
         MultiAutoCompleteTextView textView2 = (MultiAutoCompleteTextView) findViewById(R.id.multautoedit);
         textView2.setAdapter(adapter2);

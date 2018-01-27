@@ -39,17 +39,17 @@ public class SimpleExpandableActivity extends ExpandableListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //定义父项和子项数据
-        List<Map<String, String>> groupData = new ArrayList<Map<String, String>>();
-        List<List<Map<String, String>>> childData = new ArrayList<List<Map<String, String>>>();
+        List<Map<String, String>> groupData = new ArrayList<>();
+        List<List<Map<String, String>>> childData = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
-            Map<String, String> curGroupMap = new HashMap<String, String>();
+            Map<String, String> curGroupMap = new HashMap<>();
             groupData.add(curGroupMap);
             curGroupMap.put(NAME, "Group " + i);
             curGroupMap.put(IS_EVEN, (i % 2 == 0) ? "This group is even" : "This group is odd");
-            
-            List<Map<String, String>> children = new ArrayList<Map<String, String>>();
+
+            List<Map<String, String>> children = new ArrayList<>();
             for (int j = 0; j < 15; j++) {
-                Map<String, String> curChildMap = new HashMap<String, String>();
+                Map<String, String> curChildMap = new HashMap<>();
                 children.add(curChildMap);
                 curChildMap.put(NAME, "Child " + j);
                 curChildMap.put(IS_EVEN, (j % 2 == 0) ? "This child is even" : "This child is odd");

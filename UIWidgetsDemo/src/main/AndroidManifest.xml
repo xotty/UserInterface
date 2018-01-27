@@ -13,9 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:theme="@android:style/Theme">
+        android:theme="@android:style/Theme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,13 +29,16 @@
             android:label="@string/title_activity_text_view"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DialogDemo.DialogActivity"
+            android:name=".dialogdemo.DialogActivity"
+            android:label="Dialog Demo" />
+        <activity
+            android:name=".dialogdemo.AlertDialogActivity"
             android:label="Dialog Demo" />
         <activity
             android:name=".ImageViewActivity"
             android:label="ImageView Demo" />
 
-        <activity android:name=".ProgressBarActivity"></activity>
+        <activity android:name=".ProgressBarActivity" />
 
         <activity
             android:name=".AdapterViewDemo.AdapterViewActivity"
@@ -148,24 +150,27 @@
         <activity
             android:name=".MaterialDesignDemo.MaterialDesignActivity"
             android:label="MaterialDesign Demo"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+            android:theme="@style/AppDayNightTheme" />
         <activity
             android:name=".MaterialDesignDemo.RecyclerViewActivity"
             android:label="@string/title_activity_recycler_view"
             android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
-            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+            android:theme="@style/AppDayNightTheme" />
         <activity
             android:name=".MaterialDesignDemo.CollapsingToolbarActivity"
             android:label="@string/title_activity_collapsing_view"
             android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
-            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+            android:theme="@style/AppDayNightTheme" />
         <activity
             android:name=".MaterialDesignDemo.ConstraintLayoutActivity"
             android:label="@string/constraint_layout"
             android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
-            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
-
+            android:theme="@style/AppDayNightTheme" />
+        <activity
+            android:name=".MaterialDesignDemo.PaletteActivity"
+            android:label="@string/palette"
+            android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
+            android:theme="@style/AppDayNightTheme" />
 
     </application>
 

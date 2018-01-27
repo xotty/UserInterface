@@ -2,11 +2,12 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <org.xottys.userinterface.DialogDemo.MyNumberPicker
+
+    <org.xottys.userinterface.dialogdemo.MyNumberPicker
         android:id="@+id/mnp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:layout_gravity="center" />
+        android:focusableInTouchMode="true" />
 </FrameLayout>

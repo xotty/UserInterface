@@ -23,7 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop" />
+            android:contentDescription="card4"
+            android:scaleType="centerCrop"
+            android:src="@drawable/material_design_4" />
 
         <TextView
             android:id="@+id/tv_card_main_2_title"
@@ -49,6 +51,8 @@
                 android:layout_marginEnd="8dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:contentDescription="border"
+                android:focusable="true"
                 android:padding="8dp"
                 android:src="@drawable/ic_share_black_24dp" />
 
@@ -60,6 +64,8 @@
                 android:layout_toStartOf="@id/img_main_card2_share"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:contentDescription="border"
+                android:focusable="true"
                 android:padding="8dp"
                 android:src="@drawable/ic_bookmark_border_black_24dp" />
 
@@ -71,6 +77,8 @@
                 android:layout_toStartOf="@id/img_main_card2_bookmark"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:contentDescription="border"
+                android:focusable="true"
                 android:padding="8dp"
                 android:src="@drawable/ic_favorite_border_black_24dp" />
         </RelativeLayout>

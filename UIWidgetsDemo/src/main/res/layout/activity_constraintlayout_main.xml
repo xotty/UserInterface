@@ -10,14 +10,14 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FFFFFFFF"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonBasicArrange"
-            android:layout_width="120dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="105dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/button_pressed"
             android:gravity="center"
@@ -29,9 +29,10 @@
 
         <Button
             android:id="@+id/buttonBasicSize"
-            android:layout_width="120dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="105dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/button_pressed"
             android:gravity="center"
@@ -44,9 +45,10 @@
         <Button
             android:id="@+id/buttonAdvancedArrange"
 
-            android:layout_width="120dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="115dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/button_pressed"
             android:gravity="center"
@@ -60,14 +62,15 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FFFFFFFF"
+
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonGuideline"
-            android:layout_width="120dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="105dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/button_pressed"
             android:gravity="center"
@@ -79,9 +82,10 @@
 
         <Button
             android:id="@+id/buttonChainStyle"
-            android:layout_width="120dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="105dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/button_pressed"
             android:gravity="center"
@@ -93,9 +97,10 @@
 
         <Button
             android:id="@+id/buttonPlaceholder"
-            android:layout_width="120dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="115dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/button_pressed"
             android:gravity="center"
@@ -118,8 +123,8 @@
 
         <ImageView
             android:id="@+id/header"
-            android:layout_width="430dp"
-            android:layout_height="176dp"
+            android:layout_width="0dp"
+            android:layout_height="165dp"
             android:layout_marginTop="4dp"
             android:contentDescription="@string/placeholder"
             android:scaleType="centerCrop"
@@ -142,7 +147,7 @@
             android:id="@+id/favorite"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="160dp"
             android:background="@drawable/info_background"
             android:contentDescription="@string/placeholder"
@@ -163,8 +168,7 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/singapore"
             android:textSize="18sp"
             app:layout_constraintLeft_creator="1"
@@ -174,19 +178,17 @@
             app:layout_editor_absoluteX="16dp"
             app:layout_editor_absoluteY="140dp"
             tools:layout_constraintLeft_creator="0"
-            tools:layout_constraintTop_creator="0"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="140dp" />
+            tools:layout_constraintTop_creator="0" />
 
         <EditText
             android:id="@+id/cameraType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/camera_value"
+            android:textSize="12sp"
             app:layout_constraintLeft_creator="1"
             app:layout_constraintLeft_toLeftOf="@+id/settings"
             app:layout_constraintRight_creator="1"
@@ -238,21 +240,20 @@
 
         <android.support.constraint.Barrier
             android:id="@+id/labelBarrier"
-            android:layout_width="wrap_content"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             app:barrierDirection="end"
-            app:constraint_referenced_ids="cameraLabel,settingsLabel"
-            tools:layout_editor_absoluteX="68dp" />
+            app:constraint_referenced_ids="cameraLabel,settingsLabel" />
 
         <EditText
             android:id="@+id/settings"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/camera_settings"
+            android:textSize="12sp"
             app:layout_constraintLeft_creator="1"
             app:layout_constraintRight_creator="1"
             app:layout_constraintRight_toRightOf="@+id/description"
@@ -268,17 +269,20 @@
         <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
 
             android:ellipsize="end"
             android:fadingEdge="vertical"
+
+
             android:text="@string/singapore_description"
 
-
             android:textSize="15sp"
-
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@+id/constraint_layout_main"
-            app:layout_constraintRight_toRightOf="@+id/constraint_layout_main" />
+            app:layout_constraintRight_toRightOf="@+id/constraint_layout_main"
+            app:layout_constraintTop_toBottomOf="@+id/settings"
+            app:layout_constraintVertical_bias="0.0" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

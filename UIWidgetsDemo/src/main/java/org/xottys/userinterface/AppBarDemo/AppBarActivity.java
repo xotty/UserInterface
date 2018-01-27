@@ -22,23 +22,23 @@
 
 package org.xottys.userinterface.AppBarDemo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.v4.view.ActionProvider;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
-import android.view.ActionProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +56,7 @@ import java.io.InputStream;
  * includes the action bar by default and a menu resource is used to populate the
  * menu data itself.
  */
-public class AppBarActivity extends Activity implements SearchView.OnQueryTextListener {
+public class AppBarActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private static final String TAG = "AppBarActivity";
     private static final String SHARED_FILE_NAME = "mshared.png";
     TextView mSearchText;
@@ -69,20 +69,20 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
         mSearchText = new TextView(this);
         setContentView(mSearchText);
         // 设置是否显示应用程序图标
-        getActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
         copyPrivateRawResuorceToPubliclyAccessibleFile();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.actionbar_menu1, menu);
+        getMenuInflater().inflate(R.menu.actionbar_menu1, menu);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setOnQueryTextListener(this);
 
         // Set file with share history to the provider and set the share intent.
         MenuItem actionItem = menu.findItem(R.id.action_share);
-        ShareActionProvider actionProvider = (ShareActionProvider) actionItem.getActionProvider();
+        ShareActionProvider actionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(actionItem);
+
         actionProvider.setShareHistoryFileName(ShareActionProvider.DEFAULT_SHARE_HISTORY_FILE_NAME);
         // Note that you can set/change the intent any time,
         // say when the user has selected an image.
@@ -102,7 +102,7 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Toast.makeText(this, "Selected Item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
-        Intent intent = null;
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.actionbar_displayoptioons:
                 intent = new Intent(this, ActionBarDisplayOptions.class);
@@ -113,9 +113,6 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
             case R.id.toolbar:
                 intent = new Intent(this, ToolBarActivity.class);
                 break;
-//            case R.id.actionmode:
-//                startActionMode(mCallback);
-//                return true;
             default:
                 return true;
         }
@@ -169,9 +166,9 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
         try {
             inputStream = getResources().openRawResource(R.raw.robot);
             outputStream = openFileOutput(SHARED_FILE_NAME,
-                    Context.MODE_WORLD_WRITEABLE);
+                    Context.MODE_PRIVATE);
             byte[] buffer = new byte[1024];
-            int length = 0;
+            int length;
             try {
                 while ((length = inputStream.read(buffer)) > 0) {
                     outputStream.write(buffer, 0, length);
@@ -231,7 +228,7 @@ public class AppBarActivity extends Activity implements SearchView.OnQueryTextLi
             // Inflate the action view to be shown on the action bar.
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             View view = layoutInflater.inflate(R.layout.action_bar_settings_action_provider, null);
-            ImageButton button = view.findViewById(R.id.button);
+            ImageButton button = (ImageButton) view.findViewById(R.id.button);
             // Attach a click listener for launching the system settings.
             button.setOnClickListener(new View.OnClickListener() {
                 @Override

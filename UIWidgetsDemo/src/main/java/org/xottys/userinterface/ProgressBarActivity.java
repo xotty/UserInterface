@@ -16,13 +16,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class ProgressBarActivity extends Activity {
-
+    private static final String TAG = "ProgressBarActivity";
     int hasData = 0;
 
     // 记录ProgressBar的完成进度
@@ -141,7 +142,9 @@ public class ProgressBarActivity extends Activity {
     // 模拟一个耗时的操作
     public int doWork() {
         // 为数组元素赋值，hasdata加1
-        data[hasData++] = (int) (Math.random() * 100);
+        int pos = hasData + 1;
+        data[pos] = (int) (Math.random() * 100);
+        Log.i(TAG, "" + data[pos]);
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {

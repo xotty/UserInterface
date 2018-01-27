@@ -9,7 +9,7 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface.DialogDemo;
+package org.xottys.userinterface.dialogdemo;
 
 import android.app.AlertDialog;
 import android.content.Context;

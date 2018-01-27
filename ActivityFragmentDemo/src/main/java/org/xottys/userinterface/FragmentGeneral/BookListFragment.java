@@ -28,18 +28,13 @@ public class BookListFragment extends ListFragment
 {
 	private Callbacks mCallbacks;
 
-	public interface Callbacks
-	{
-		public void onItemSelected(Integer id);
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		//为该ListFragment设置Adapter，将Book数据(BookContent.ITEMS)添加进去
-		setListAdapter(new ArrayAdapter<BookContent.Book>(getActivity(),
-				android.R.layout.simple_list_item_activated_1,
+        setListAdapter(new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_activated_1,
 				android.R.id.text1, BookContent.ITEMS));
 
 		Log.d(TAG, "-------onCreate------");
@@ -61,7 +56,6 @@ public class BookListFragment extends ListFragment
 
 		Log.d(TAG, "-------onAttach------");
 	}
-
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -140,7 +134,6 @@ public class BookListFragment extends ListFragment
 		Log.d(TAG, "-------onDetach------");
 	}
 
-
 	// 当用户点击某列表项时回调该方法，通过调用Avtivity的回调方法，把数据传给Activity
 	@Override
 	public void onListItemClick(ListView listView
@@ -157,4 +150,8 @@ public class BookListFragment extends ListFragment
 				activateOnItemClick ? ListView.CHOICE_MODE_SINGLE
 						: ListView.CHOICE_MODE_NONE);
 	}
+
+    public interface Callbacks {
+        void onItemSelected(Integer id);
+    }
 }

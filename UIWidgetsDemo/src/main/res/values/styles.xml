@@ -12,11 +12,25 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/navigation_BarColor</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:colorControlNormal">@color/colorControlNormal</item>
+        <item name="android:colorBackground">@color/colorBKG</item>
         <item name="android:buttonStyle">@android:style/Widget.Holo.Button</item>
     </style>
 
     <style name="AppTheme" parent="AppBaseTheme" />
 
+    <style name="AppDayNightTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/navigation_BarColor</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:colorControlNormal">@color/colorControlNormal</item>
+        <item name="android:colorBackground">@color/colorBKG</item>
+        <item name="android:buttonStyle">@android:style/Widget.Holo.Button</item>
+    </style>
     <style name="AppTheme.NoActionBar" parent="AppBaseTheme.NoActionBar">
         <item name="actionBarSize">80dip</item>
     </style>
@@ -47,7 +61,7 @@
         <item name="android:maxHeight">48dip</item>
     </style>
 
-    <style name="MyActionBarTheme" parent="@android:style/Theme.Holo">
+    <style name="MyActionBarTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!--<item name="android:actionModeStyle">@style/Widget.AppCompat.ActionMode</item>-->
         <!--<item name="android:actionModeBackground">@drawable/abc_cab_background_top_material</item>-->
         <!--<item name="android:actionModeSplitBackground">?attr/colorPrimaryDark</item>-->
@@ -61,7 +75,7 @@
     </style>
 
     <!-- ToolBarActivity Theme -->
-    <style name="MyToolBarTheme" parent="ToolBarTheme.Base"></style>
+    <style name="MyToolBarTheme" parent="ToolBarTheme.Base" />
 
     <style name="ToolBarTheme.Base" parent="Theme.AppCompat">
         <item name="windowActionBar">false</item>

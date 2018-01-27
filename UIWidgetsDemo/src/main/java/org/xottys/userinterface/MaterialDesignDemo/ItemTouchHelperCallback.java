@@ -1,12 +1,25 @@
+/**
+ * 实现Recycleview拖拽排序与侧滑删除的标准方法，此时需要覆写下列方法：
+ * 1)getMovementFlags(RecyclerView, ViewHolder)，明确侧滑和拖拽方向
+ * 2)onMove(RecyclerView, ViewHolder, ViewHolder)，拖拽时的操作
+ * 3)onSwiped(ViewHolder, int)，侧滑时的操作
+ * 4)isLongPressDragEnabled()，可选，缺省值为true：支持长按RecyclerView item可进入拖动操作
+ * 5)isItemViewSwipeEnabled()，可选，缺省值为true：在RecyclerView任意位置触摸时启用滑动操作
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:MatrialWidgetsFragment
+ * <br/>Date:Oct，2017
+ *
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface.MaterialDesignDemo;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-/**
- * Created by zhang on 2016.08.21.
- */
 public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     private onMoveAndSwipedListener moveAndSwipedListener;

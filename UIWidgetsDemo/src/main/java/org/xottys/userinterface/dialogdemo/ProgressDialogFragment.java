@@ -12,7 +12,7 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface.DialogDemo;
+package org.xottys.userinterface.dialogdemo;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -58,8 +58,7 @@ public class ProgressDialogFragment extends Fragment {
     }
 
     public static ProgressDialogFragment newInstance() {
-        ProgressDialogFragment fragment = new ProgressDialogFragment();
-        return fragment;
+        return new ProgressDialogFragment();
     }
 
     @Override

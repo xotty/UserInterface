@@ -174,7 +174,7 @@ public class MyAuthenticateActivity extends Activity {
             }
 
             //将name显示到Account picker中去
-            mAlertDialog = new AlertDialog.Builder(this).setTitle("Pick Account").setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, name), new DialogInterface.OnClickListener() {
+            mAlertDialog = new AlertDialog.Builder(this).setTitle("Pick Account").setAdapter(new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, name), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     if (invalidate)
@@ -303,7 +303,7 @@ public class MyAuthenticateActivity extends Activity {
                 new AccountManagerCallback<Bundle>() {
                     @Override
                     public void run(AccountManagerFuture<Bundle> future) {
-                        Bundle bnd = null;
+                        Bundle bnd;
                         try {
                             bnd = future.getResult();
                             final String authtoken = bnd.getString(AccountManager.KEY_AUTHTOKEN);

@@ -1,3 +1,17 @@
+/**
+ * 负责配合ViewPager切换主页面上的三个Fragment：
+ * 1）MatrialWidgetsFragment
+ * 2）CardViewFragment
+ * 3）RippleDrawableFragment
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:RippleDrawableFragment
+ * <br/>Date:Jan，2018
+ *
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface.MaterialDesignDemo;
 
 import android.support.v4.app.Fragment;
@@ -27,9 +41,9 @@ public class FragmentAdapter extends FragmentStatePagerAdapter {
         return mFragments.size();
     }
 
-    //这里就是Tab标题，用SpannableString可以使其显示图标或图文
     @Override
     public CharSequence getPageTitle(int position) {
+
         return mTitles.get(position);
     }
 

@@ -11,7 +11,7 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface.DialogDemo;
+package org.xottys.userinterface.dialogdemo;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -46,11 +46,6 @@ public class PickerDialogFragment extends Fragment {
     HashMap[] citys = null;
     int selectedID;
     int mSeletedIndex1, mSeletedIndex2;
-    private String[] state = new String[31];
-    private String[] city = new String[20];
-    private String[] county = new String[20];
-    private Integer[] stateid, cityid;
-
     //时间监听器
     TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
         @Override
@@ -58,7 +53,6 @@ public class PickerDialogFragment extends Fragment {
             showMessage("您选择了：" + hourOfDay + "时" + minute + "分");
         }
     };
-
     //日期监听器
     DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -67,6 +61,10 @@ public class PickerDialogFragment extends Fragment {
             showMessage("您选择了：" + year + "年" + (month + 1) + "月" + dayOfMonth + "日");
         }
     };
+    private String[] state = new String[31];
+    private String[] city = new String[20];
+    private String[] county = new String[20];
+    private Integer[] stateid, cityid;
 
 
 
@@ -75,8 +73,7 @@ public class PickerDialogFragment extends Fragment {
     }
 
     public static PickerDialogFragment newInstance() {
-        PickerDialogFragment fragment = new PickerDialogFragment();
-        return fragment;
+        return new PickerDialogFragment();
     }
 
     @Override
@@ -610,8 +607,8 @@ public class PickerDialogFragment extends Fragment {
 
     //根据传入的id参数在Map数组中遍历找出所有parentid与之相同的项目
     private String[] pickCities(int parentid) {
-        ArrayList<String> al1 = new ArrayList<String>();
-        ArrayList<Integer> al2 = new ArrayList<Integer>();
+        ArrayList<String> al1 = new ArrayList<>();
+        ArrayList<Integer> al2 = new ArrayList<>();
         for (HashMap mp : citys) {
             if ((int) mp.get("parentid") == parentid) {
                 al1.add((String) mp.get("name"));

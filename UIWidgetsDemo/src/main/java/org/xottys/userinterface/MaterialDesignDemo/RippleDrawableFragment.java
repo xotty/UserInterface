@@ -1,10 +1,22 @@
+/**
+ * 本例在RIPPLE中演示了Graphics中的一个新控件RippleDrawable的用法，使用要点：
+ * 1)在res/drawable中用xml定义ripple资源，其关键是配置mask（无/颜色/图片/形状），如：ripple_red_with_pic_mask
+ * 2)在布局xml中用定义的ripple作为某可点击控件的background的资源，android:background="@drawable/ripple_red_with_pic_mask"
+ * 3)此时通常设定该控件：android:clickabl=true
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:RippleDrawableFragment
+ * <br/>Date:Jan，2018
+ *
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface.MaterialDesignDemo;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +32,6 @@ public class RippleDrawableFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -34,11 +45,6 @@ public class RippleDrawableFragment extends Fragment {
         }
         getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
-        Toolbar toolbar = rootView.findViewById(R.id.toolbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
         return rootView;
     }
 }

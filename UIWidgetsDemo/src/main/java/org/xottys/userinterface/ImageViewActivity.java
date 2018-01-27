@@ -119,7 +119,7 @@ public class ImageViewActivity extends Activity {
                 // 显示图片的指定区域
                 image2.setImageBitmap(Bitmap.createBitmap(bitmap
                         , x, y, 120, 120));
-                image2.setAlpha(alpha);
+                image2.setImageAlpha(alpha);
                 return false;
             }
         });

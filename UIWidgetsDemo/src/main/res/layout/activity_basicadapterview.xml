@@ -6,7 +6,7 @@
 	android:orientation="vertical">
 	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+        android:layout_height="wrap_content"
 		android:orientation="vertical">
 		<TextView
 			android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="200dp"
 		android:divider="#f00"
-		android:dividerHeight="2px"
+        android:dividerHeight="2dp"
 		android:entries="@array/books"
 		android:headerDividersEnabled="false"/>
 	<TextView
@@ -34,7 +34,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:divider="#f00"
-		android:dividerHeight="2px"
+        android:dividerHeight="2dp"
 		android:headerDividersEnabled="false"/>
 
 	<!-- ArrayAdapter ListView,设置使用绿色的分隔条 -->

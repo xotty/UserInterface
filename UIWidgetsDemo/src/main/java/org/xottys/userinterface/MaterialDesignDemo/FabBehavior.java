@@ -1,3 +1,23 @@
+/**
+ * 本例重新定义了FloatingActionButton的Behavior，此时需要覆写下列部分方法：
+ * 1)layoutDependsOn，否给应用了Behavior的View 指定一个依赖的布局
+ * 2)onDependentViewChanged，当被依赖的View状态（如：位置、大小）发生变化时，此方法被调用
+ * 3)onNestedPreScroll，嵌套滑动发生之前被调用
+ * 4)onStartNestedScroll，嵌套滑动开始时被调用
+ * 5)onNestedScroll，嵌套滑动进行时被调用
+ * 6)onStopNestedScroll，嵌套滑动停止时被调用
+ * 7)onNestedScrollAccepted，onStartNestedScroll返回true会触发这个方法，做些准备工作
+ * 8)onNestedPreFling，松开手指并且会发生惯性动作之前调用
+ * 9)onLayoutChild，对子View进行重新布局
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:MatrialWidgetsFragment
+ * <br/>Date:Oct，2017
+ *
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface.MaterialDesignDemo;
 
 import android.animation.Animator;
@@ -11,9 +31,6 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.Interpolator;
 
-/**
- * Created by zhang on 2017.07.16.
- */
 
 public class FabBehavior extends FloatingActionButton.Behavior {
 

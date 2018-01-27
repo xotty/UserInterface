@@ -7,9 +7,9 @@ import android.widget.ArrayAdapter;
 
 import org.xottys.userinterface.AdapterViewDemo.AdapterViewActivity;
 import org.xottys.userinterface.AppBarDemo.AppBarActivity;
-import org.xottys.userinterface.DialogDemo.DialogActivity;
 import org.xottys.userinterface.MaterialDesignDemo.MaterialDesignActivity;
 import org.xottys.userinterface.ScrollViewDemo.ScrollViewActivity;
+import org.xottys.userinterface.dialogdemo.DialogActivity;
 
 public class MainActivity extends LauncherActivity {
     //定义要跳转的各个Activity的名称
@@ -27,7 +27,7 @@ public class MainActivity extends LauncherActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //将names数组的内容装入Adapter,以便显示在listview中
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, names);
         setListAdapter(adapter);
     }

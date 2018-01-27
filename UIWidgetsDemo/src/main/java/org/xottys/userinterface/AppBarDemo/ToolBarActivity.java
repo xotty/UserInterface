@@ -80,7 +80,7 @@ public class ToolBarActivity extends AppCompatActivity {
         toolbar1.setLogo(R.drawable.ic_launcher);
         // Title
         toolbar1.setTitle("Title");
-        toolbar1.setTitleTextColor(getResources().getColor(R.color.red));
+        toolbar1.setTitleTextColor(getResources().getColor(R.color.red, null));
 
         // Sub Title
         toolbar1.setSubtitle("Sub title");

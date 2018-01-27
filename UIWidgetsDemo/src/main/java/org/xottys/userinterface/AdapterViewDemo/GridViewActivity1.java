@@ -53,8 +53,8 @@ public class GridViewActivity1 extends Activity {
 		setContentView(R.layout.activity_greiview);
 		gview = (GridView) findViewById(R.id.gview);
 		//数据list
-		data_list = new ArrayList<Map<String, Object>>();
-		//获取数据
+        data_list = new ArrayList<>();
+        //获取数据
 		getData();
 		//新建适配器
 		String[] from ={"image","text"};
@@ -75,15 +75,14 @@ public class GridViewActivity1 extends Activity {
 		});
 	}
 
-	public List<Map<String, Object>> getData(){
-		//icon和iconName的长度是相同的，这里任选其一都可以
+    public void getData() {
+        //icon和iconName的长度是相同的，这里任选其一都可以
 		for(int i=0;i<icon.length;i++){
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("image", icon[i]);
+            Map<String, Object> map = new HashMap<>();
+            map.put("image", icon[i]);
 			map.put("text", iconName[i]);
 			data_list.add(map);
 		}
-		return data_list;
 	}
 
 	void showToast(CharSequence msg) {

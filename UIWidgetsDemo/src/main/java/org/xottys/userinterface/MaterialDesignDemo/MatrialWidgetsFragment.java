@@ -1,24 +1,18 @@
 /**
- * 本例演示了下列Material Design控件用法
- * 1)TextInputLayout/TextInputEditText：
+ * 本例在MD WIDGETS中演示了下列Material Design主要控件的用法：
+ * 1)TextInputLayout/TextInputEditText
  * 2)FloatingActionButton
  * 3)Snackbar
+ * 4)TabLayout
+ * 5)NavigationView
  * 6)AppBarLayout
- * 7)CollapsingToolbarLayout
- * 8)CoordinatorLayout
- * <p>
- * 1）xml中用<android.support.v7.widget.Toolbar>定义，其中可选择定义一些简单控件
- * 2）使用ToolBar的Activity必须是AppCompatActivity，且要屏蔽actionBar（用相应Theme或requestWindowFeature(Window.FEATURE_NO_TITLE)）
- * 3）构建ToolBar的各个组件：NavigationIcon、Logo、Title、Subtitle、自定义控件、MenuItem（作为ActionBar时才会有，且其Item设置app:showAsAction）
- * 4）在styles.xml中用Theme方式定义各组件的颜色和大小，包括MenuItem弹出框的样式和位置
- * 5）setSupportActionBar(toolbar)
- * 6）定义NavigationIcon、自定义控件和菜单项点击事件
- * 7) onOptionsItemSelected中android.R.id.home分支失效
- * 8) 可以独立不作为ActionBar来使用，水平放置在屏幕的任何位置，此时不再具有Menu绑定关系
+ * 7)NestedScrollView
+ * 8)BottomNavigationView
+ * 9)BottomSheetDialog
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
- * <br/>Program Name:ToolBarActivity
+ * <br/>Program Name:MatrialWidgetsFragment
  * <br/>Date:Oct，2017
  *
  * @author xottys@163.com
@@ -27,6 +21,7 @@
 package org.xottys.userinterface.MaterialDesignDemo;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -39,6 +34,8 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
+import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,6 +51,8 @@ import java.lang.reflect.Field;
 public class MatrialWidgetsFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "MatrialWidgetsFragment";
     NestedScrollView nestedScrollView;
+    TextInputLayout input_password;
+    TextInputEditText input_user_name;
 
     //BottomNavigationView中Item点击事件
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -82,23 +81,26 @@ public class MatrialWidgetsFragment extends Fragment implements View.OnClickList
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        nestedScrollView = (NestedScrollView) inflater.inflate(R.layout.fragment_materialwidgets, container, false);
+        final Context contextThemeWrapper = new ContextThemeWrapper(
+                getActivity(), R.style.AppTheme_NoActionBar);
+        LayoutInflater localInflater = inflater
+                .cloneInContext(contextThemeWrapper);
+
+        nestedScrollView = (NestedScrollView) localInflater.inflate(R.layout.fragment_materialwidgets, container, false);
 
         initLoginView(nestedScrollView);
 
-        Button btn_bottom_dialog = nestedScrollView.findViewById(R.id.btn_bottom_dialog);
-        Button btn_fuulscreen_dialog = nestedScrollView.findViewById(R.id.btn_fullscreen_dialog);
+        Button btn_bottom_dialog = (Button) nestedScrollView.findViewById(R.id.btn_bottom_dialog);
+        Button btn_fuulscreen_dialog = (Button) nestedScrollView.findViewById(R.id.btn_fullscreen_dialog);
         btn_bottom_dialog.setOnClickListener(this);
         btn_fuulscreen_dialog.setOnClickListener(this);
 
 
-        BottomNavigationView navigation = nestedScrollView.findViewById(R.id.bottom_navigation);
+        BottomNavigationView navigation = (BottomNavigationView) nestedScrollView.findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // If BottomNavigationView has more than 3 items, using reflection to disable shift mode
         disableShiftMode(navigation);
-        // ViewGroup viewGroup = (ViewGroup) mRecyclerView.getParent();
-        // if (viewGroup != null) { viewGroup.removeAllViews(); }
 
         return nestedScrollView;
     }
@@ -110,24 +112,27 @@ public class MatrialWidgetsFragment extends Fragment implements View.OnClickList
 
     public void initLoginView(View view) {
         //TextInputLayout视图
-        AutoCompleteTextView mUserNameView = view.findViewById(R.id.tv_user_name);
-        TextInputEditText mPasswordView = view.findViewById(R.id.tv_password);
-        final TextInputLayout input_user_name = view.findViewById(R.id.input_user_name);
-        final TextInputLayout input_password = view.findViewById(R.id.input_password);
-//        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//        public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-//            if (id == getResources().getInteger(R.integer.customImeActionId) || id == EditorInfo.IME_NULL) {
-//                Log.i(TAG, "Login:"+input_user_name.toString()+"/"+input_password.toString());
-//                return true;
-//            }
-//            return false;
-//        }
-//    });
+        AutoCompleteTextView tvpassword = (AutoCompleteTextView) view.findViewById(R.id.tv_password);
+        input_password = (TextInputLayout) view.findViewById(R.id.input_password);
+        input_user_name = (TextInputEditText) view.findViewById(R.id.input_user_name);
 
-        Button forgot_password = view.findViewById(R.id.btn_forgot_password);
+        //密码输入框再次获得焦点时删除错误提示信息
+        tvpassword.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                    input_password.setErrorEnabled(false);
+                } else {
+                    // 此处为失去焦点时的处理内容
+                    Log.i(TAG, "onFocusChange: Lost Focus");
+                }
+            }
+        });
+
+        Button forgot_password = (Button) view.findViewById(R.id.btn_forgot_password);
         forgot_password.setOnClickListener(this);
-        Button register = view.findViewById(R.id.btn_forgot_register);
+        Button register = (Button) view.findViewById(R.id.btn_forgot_register);
         register.setOnClickListener(this);
     }
 
@@ -141,15 +146,19 @@ public class MatrialWidgetsFragment extends Fragment implements View.OnClickList
                 break;
             //与Totast区别：可以提供一个文字操作按钮，可以在屏幕上滑动关闭
             case R.id.btn_forgot_register:
-                Snackbar.make(v, getString(R.string.snackbar_register), Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
+                input_password.setErrorEnabled(true);
+                //设置错误提示信息
+                input_password.setError("密码不正确");
+                input_user_name.setError("电话或邮箱不正确");
+                //焦点转移的用户名输入框
+                input_user_name.requestFocus();
                 break;
             case R.id.btn_bottom_dialog:
                 final BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(getContext());
-                View dialogView = getActivity().getLayoutInflater().inflate(R.layout.dialog_bottom_sheet, null);
-                Button btn_dialog_bottom_sheet_ok = dialogView.findViewById(R.id.btn_dialog_bottom_sheet_ok);
-                Button btn_dialog_bottom_sheet_cancel = dialogView.findViewById(R.id.btn_dialog_bottom_sheet_cancel);
-                ImageView img_bottom_dialog = dialogView.findViewById(R.id.img_bottom_dialog);
+                View dialogView = getActivity().getLayoutInflater().inflate(R.layout.dialog_bottom_sheet, nestedScrollView);
+                Button btn_dialog_bottom_sheet_ok = (Button) dialogView.findViewById(R.id.btn_dialog_bottom_sheet_ok);
+                Button btn_dialog_bottom_sheet_cancel = (Button) dialogView.findViewById(R.id.btn_dialog_bottom_sheet_cancel);
+                ImageView img_bottom_dialog = (ImageView) dialogView.findViewById(R.id.img_bottom_dialog);
                 img_bottom_dialog.setImageResource(R.drawable.google_assistant);
                 mBottomSheetDialog.setContentView(dialogView);
 
@@ -171,9 +180,9 @@ public class MatrialWidgetsFragment extends Fragment implements View.OnClickList
             case R.id.btn_fullscreen_dialog:
                 final Dialog fullscreenDialog = new Dialog(getContext(), R.style.DialogFullscreen);
                 fullscreenDialog.setContentView(R.layout.dialog_fullscreen);
-                ImageView img_full_screen_dialog = fullscreenDialog.findViewById(R.id.img_full_screen_dialog);
+                ImageView img_full_screen_dialog = (ImageView) fullscreenDialog.findViewById(R.id.img_full_screen_dialog);
                 img_full_screen_dialog.setImageResource(R.drawable.google_assistant);
-                ImageView img_dialog_fullscreen_close = fullscreenDialog.findViewById(R.id.img_dialog_fullscreen_close);
+                ImageView img_dialog_fullscreen_close = (ImageView) fullscreenDialog.findViewById(R.id.img_dialog_fullscreen_close);
                 img_dialog_fullscreen_close.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

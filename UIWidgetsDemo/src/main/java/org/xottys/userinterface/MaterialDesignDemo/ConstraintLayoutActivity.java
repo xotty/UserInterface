@@ -1,16 +1,21 @@
-// Copyright 2016 Google Inc.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * 本例演示了AS2.3以后引入的一种全新的布局方式ConstraintLayout的下列主要特性：
+ * 1)基本位置约束（线性、环形、文字基线）
+ * 2)基本尺寸约束（Fixed、WRAP_CONTENT 、MATCH_CONSTRAINT）
+ * 3)Margin、Barrier、Group
+ * 4)Guidline位置约束
+ * 5)ChainStyle位置约束
+ * 6)Placeholder模版
+ * 可以看成是一种升级版的RelativeLayout，主要是通过可视化工具拖拽各种控件来完成布局。
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:MaterialDesignDemo
+ * <br/>Date:Oct，2017～Jan，2018
+ *
+ * @author xottys@163.com
+ * @version 1.0
+ */
 
 package org.xottys.userinterface.MaterialDesignDemo;
 
@@ -20,7 +25,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.constraint.Group;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -62,26 +66,24 @@ public class ConstraintLayoutActivity extends AppCompatActivity implements View.
         constraintLayout.removeAllViews();
         View view = null;
         if (!button.hasFocus()) {
-//        button.setFocusable(true);
-//        button.requestFocus();
             button.setFocusableInTouchMode(true);
             button.requestFocusFromTouch();
         }
         switch (button.getId()) {
             case R.id.buttonBasicArrange:
-                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_basic_arrange, null);
+                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_basic_arrange, constraintLayout);
                 break;
             case R.id.buttonBasicSize:
-                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_basic_size, null);
+                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_basic_size, constraintLayout);
                 break;
             case R.id.buttonAdvancedArrange:
-                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_advanced_arrange, null);
-                btn = view.findViewById(R.id.btn_visibleswitch);
+                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_advanced_arrange, constraintLayout);
+                btn = (Button) view.findViewById(R.id.btn_visibleswitch);
                 btn.setTag(1);
-                TextView textView = view.findViewById(R.id.textView8);
+                TextView textView = (TextView) view.findViewById(R.id.textView8);
                 textView.setText(getResources().getString(R.string.singapore_description).substring(0, 250));
-                final Button btn1 = view.findViewById(R.id.button1);
-                final Group group = view.findViewById(R.id.group);
+                final Button btn1 = (Button) view.findViewById(R.id.button1);
+                final Group group = (Group) view.findViewById(R.id.group);
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View source) {
@@ -109,18 +111,15 @@ public class ConstraintLayoutActivity extends AppCompatActivity implements View.
                 });
                 break;
             case R.id.buttonGuideline:
-                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_guideline, null);
+                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_guideline, constraintLayout);
                 break;
             case R.id.buttonChainStyle:
-                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_chainstyle, null);
+                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_chainstyle, constraintLayout);
                 break;
             case R.id.buttonPlaceholder:
-                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_placeholder_content, null);
+                view = getLayoutInflater().inflate(R.layout.activity_constraintlayout_placeholder_content, constraintLayout);
                 break;
-
         }
         view.setBackgroundColor(Color.LTGRAY);
-        constraintLayout.addView(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
     }
-
 }

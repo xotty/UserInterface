@@ -7,7 +7,7 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface.DialogDemo;
+package org.xottys.userinterface.dialogdemo;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -55,7 +55,7 @@ public class MyNumberPicker extends NumberPicker {
     //设置滚动文本的大小和颜色
     private void updateView(View view) {
         if (view instanceof EditText) {
-            ((EditText) view).setTextColor(getResources().getColor(R.color.red));
+            ((EditText) view).setTextColor(getResources().getColor(R.color.red, null));
             ((EditText) view).setTextSize(20);
         }
     }

@@ -1,5 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/root"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:fitsSystemWindows="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -20,6 +27,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/ripple_red"
                 android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:text="Ripple With No Mask" />
 
@@ -41,6 +49,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/ripple_red_with_mask"
                 android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:text="Ripple With Mask" />
 
@@ -69,9 +78,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
                 android:background="@drawable/ripple_red_with_drawable"
                 android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:text="Ripple With Drawable Only" />
 
@@ -91,9 +100,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
                 android:background="@drawable/ripple_red_with_pic_mask"
                 android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:text="Ripple With Picture Mask" />
 
@@ -141,9 +150,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
-                android:layout_weight="1"
                 android:background="@drawable/ripple_red_with_selector"
                 android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:text="Ripple With Selector"
                 android:textColor="@color/google_yellow" />
@@ -156,3 +165,4 @@
     </LinearLayout>
 
 </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

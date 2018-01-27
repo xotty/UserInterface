@@ -13,6 +13,14 @@
             android:id="@+id/nav_constraint_layout"
             android:icon="@drawable/ic_format_list_bulleted_black_24dp"
             android:title="@string/constraint_layout" />
+        <item
+            android:id="@+id/nav_palette"
+            android:icon="@drawable/ic_format_list_bulleted_black_24dp"
+            android:title="@string/palette" />
+        <item
+            android:id="@+id/nav_daynight"
+            android:icon="@drawable/ic_format_list_bulleted_black_24dp"
+            android:title="@string/daynight" />
     </group>
     <group android:id="@+id/group_about">
         <item

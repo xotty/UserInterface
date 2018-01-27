@@ -11,7 +11,7 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface.DialogDemo;
+package org.xottys.userinterface.dialogdemo;
 
 import android.app.Fragment;
 import android.app.TabActivity;
@@ -58,13 +58,17 @@ public class DialogActivity extends TabActivity implements TabHost.TabContentFac
 
     private void changeFragment(String tabId)
     {
-        if (tabId.equals("alert"))
+        switch (tabId) {
+            case "alert":
             fragment = AlertDialogFragment.newInstance(tabId);
-        else if (tabId.equals("progress"))
-            fragment = ProgressDialogFragment.newInstance();
-        else if (tabId.equals("picker"))
-            fragment = PickerDialogFragment.newInstance();
-
+                break;
+            case "progress":
+                fragment = ProgressDialogFragment.newInstance();
+                break;
+            case "picker":
+                fragment = PickerDialogFragment.newInstance();
+                break;
+        }
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.tabcontent, fragment).commit();
     }

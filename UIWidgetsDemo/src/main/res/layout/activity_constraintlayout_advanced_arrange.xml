@@ -73,9 +73,7 @@
         android:text="ButtonB"
         app:layout_constraintCircle="@+id/button4"
         app:layout_constraintCircleAngle="135"
-        app:layout_constraintCircleRadius="100dp"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="255dp" />
+        app:layout_constraintCircleRadius="100dp" />
 
     <android.support.constraint.Barrier
         android:id="@+id/barrier1"

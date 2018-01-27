@@ -12,7 +12,7 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface.DialogDemo;
+package org.xottys.userinterface.dialogdemo;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -402,21 +402,21 @@ public class AlertDialogFragment extends Fragment {
     //设置AlertDialog 的位置和大小
     private void setDialogPosition(Dialog dg) {
         Window dialogWindow = dg.getWindow();
-        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        dialogWindow.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
+        if (dialogWindow != null) {
+            WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+            dialogWindow.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
 
-        //位置坐标，到Gravity边缘的距离
-        lp.x = 100;
-        lp.y = 50;
-        //大小尺寸
-        int width = WRAP_CONTENT;
-        int height = WRAP_CONTENT;
-        //设置大小
-        lp.width = width;
-        lp.height = height;
+            //位置坐标，到Gravity边缘的距离
+            lp.x = 100;
+            lp.y = 50;
 
-        dialogWindow.setAttributes(lp);
+            //设置大小
+            lp.width = WRAP_CONTENT;
+            lp.height = WRAP_CONTENT;
+
+            dialogWindow.setAttributes(lp);
+        }
     }
 
     /**

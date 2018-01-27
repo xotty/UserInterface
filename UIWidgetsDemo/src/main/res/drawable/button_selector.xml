@@ -3,9 +3,9 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <!--点击状态-->
-    <item android:state_pressed="true" android:drawable="@color/light_blue"></item>
+    <item android:drawable="@color/light_blue" android:state_pressed="true" />
     <!--默认状态什么都不设置-->
-    <item android:drawable="@color/light_gray"></item>
+    <item android:drawable="@color/light_gray" />
 
     <!--不同的控件可能还会有下列状态：-->
     <!--android:state_focused 是否取得焦点，比如用户选择了一个文本框。-->

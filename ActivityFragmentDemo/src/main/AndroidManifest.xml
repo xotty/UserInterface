@@ -77,28 +77,28 @@
             android:label="@string/title_book_detail" />
         <activity
             android:name=".CommonlyUsedActivities.MyListActivity"
-            android:label="ListActivityDemo"></activity>
+            android:label="ListActivityDemo" />
         <activity-alias
             android:name=".CommonlyUsedActivities.MyAliasActivity"
-            android:targetActivity=".CommonlyUsedActivities.MyListActivity"
-            android:label="AliasActivityDemo"></activity-alias>
+            android:label="AliasActivityDemo"
+            android:targetActivity=".CommonlyUsedActivities.MyListActivity" />
 
         <activity
             android:name=".CommonlyUsedFragments.FragmentListActivity"
-            android:label="ListFragmentDemo"></activity>
+            android:label="ListFragmentDemo" />
         <activity
             android:name=".CommonlyUsedFragments.FragmentDialogActivity"
-            android:label="DiaologFragmentDemo"></activity>
+            android:label="DiaologFragmentDemo" />
         <activity
             android:name=".CommonlyUsedFragments.FragmentWebViewActivity"
-            android:label="WebViewFragmentDemo"></activity>
+            android:label="WebViewFragmentDemo" />
         <activity
             android:name=".CommonlyUsedFragments.FragmentPreferencesActivity"
-            android:label="PreferencesFragmentDemo"></activity>
+            android:label="PreferencesFragmentDemo" />
         <!-- Authenticator related activities and service needs to be declared here in order for the app to recognize them-->
         <activity
             android:name=".CommonlyUsedActivities.MyAuthenticateActivity"
-            android:label="AuthenticatorActivitytDemo"></activity>
+            android:label="AuthenticatorActivitytDemo" />
         <activity android:name=".Authenticate.AuthenticatorActivity" android:label="@string/login_label"/>
         <activity android:name=".Authenticate.SignUpActivity" android:label="@string/signup_title"/>
         <service android:name=".Authenticate.MyAuthenticatorService">

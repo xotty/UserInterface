@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#287ccf</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="navigation_BarColor">#27B5EE</color>
+    <color name="colorControlNormal">#5e2a7f</color>
+    <color name="textColorPrimary">#ea4891</color>
+    <color name="colorBKG">#cccccc</color>
     <color name="light_blue">#4a92fc</color>
     <color name="light_gray">#cccccc</color>
     <color name="red">#ff4d40</color>

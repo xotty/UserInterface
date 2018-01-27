@@ -1,3 +1,17 @@
+/**
+ * 本例在CARDVIEW中演示了V7 Support中的一个新控件CardView的用法，使用要点：
+ * 1)设置卡片的圆角半径和阴影属性
+ * 2)设置卡片的内容，此时通常用RelativeLayout布局
+ * 3)设置相关元素的点击事件
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:MatrialWidgetsFragment
+ * <br/>Date:Oct，2017
+ *
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface.MaterialDesignDemo;
 
 import android.animation.ObjectAnimator;
@@ -18,13 +32,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bumptech.glide.Glide;
-
 import org.xottys.userinterface.R;
 
-/**
- * Created by zhang on 2016.08.07.
- */
 public class CardViewFragment extends Fragment implements View.OnClickListener, View.OnTouchListener {
 
     private ImageView img_main_card2_share, img_main_card2_bookmark, img_main_card2_favorite;
@@ -69,16 +78,6 @@ public class CardViewFragment extends Fragment implements View.OnClickListener, 
         card_main_1_4_1 = (CardView) nestedScrollView.findViewById(R.id.card_main_1_4_1);
         card_main_1_4_2 = (CardView) nestedScrollView.findViewById(R.id.card_main_1_4_2);
 
-        Glide.with(getContext()).load(R.drawable.material_design_2).fitCenter().into(img_main_card_1);
-        Glide.with(getContext()).load(R.drawable.material_design_4).fitCenter().into(img_main_card_2);
-        Glide.with(getContext()).load(R.drawable.material_design_11).fitCenter().into(img_card_main_3);
-        Glide.with(getContext()).load(R.drawable.material_design_1).fitCenter().into(img_main_card_41);
-        Glide.with(getContext()).load(R.drawable.material_design_1).fitCenter().into(img_main_card_42);
-
-
-        // ViewGroup viewGroup = (ViewGroup) mRecyclerView.getParent();
-        // if (viewGroup != null) { viewGroup.removeAllViews(); }
-
         return nestedScrollView;
     }
 
@@ -106,11 +105,6 @@ public class CardViewFragment extends Fragment implements View.OnClickListener, 
         card_main_1_4_1.setOnClickListener(this);
         card_main_1_4_2.setOnClickListener(this);
 
-        card_main_1_1.setOnTouchListener(this);
-        card_main_1_2.setOnTouchListener(this);
-        card_main_1_3.setOnTouchListener(this);
-        card_main_1_4_1.setOnTouchListener(this);
-        card_main_1_4_2.setOnTouchListener(this);
 
         alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
         alphaAnimation.setDuration(700);
@@ -122,6 +116,7 @@ public class CardViewFragment extends Fragment implements View.OnClickListener, 
 
     }
 
+    //点击卡片中各种元素的响应
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

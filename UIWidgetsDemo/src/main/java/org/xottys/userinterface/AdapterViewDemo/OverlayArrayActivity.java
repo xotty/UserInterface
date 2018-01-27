@@ -52,7 +52,7 @@ public class OverlayArrayActivity extends ListActivity implements ListView.OnScr
         mWindowManager = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
 
         // Use an existing ListAdapter that will map an array of strings to TextViews
-        setListAdapter(new ArrayAdapter<String>(this,
+        setListAdapter(new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, mStrings));
 
         getListView().setOnScrollListener(this);

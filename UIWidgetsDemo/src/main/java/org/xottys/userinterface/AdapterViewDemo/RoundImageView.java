@@ -16,7 +16,6 @@
 package org.xottys.userinterface.AdapterViewDemo;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -28,13 +27,11 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Xfermode;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 import org.xottys.userinterface.R;
 
-public class RoundImageView extends ImageView {
+public class RoundImageView extends android.support.v7.widget.AppCompatImageView {
     private Paint mPaint = new Paint();
     private Path mPath = new Path();
     private Xfermode mXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
@@ -64,11 +61,11 @@ public class RoundImageView extends ImageView {
         init(attrs);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public RoundImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(attrs);
-    }
+//    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+//    public RoundImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+//        super(context, attrs, defStyleAttr, defStyleRes);
+//        init(attrs);
+//    }
 
     private void init(AttributeSet attrs) {
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.RoundImageView);

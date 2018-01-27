@@ -41,7 +41,7 @@ public class MyHorizontalScrollViewAdapter {
 
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             //获取固定的Item视图

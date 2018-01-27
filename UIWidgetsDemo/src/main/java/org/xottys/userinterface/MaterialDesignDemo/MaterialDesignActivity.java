@@ -5,22 +5,28 @@
  * 3)Snackbar
  * 4)TabLayout
  * 5)NavigationView
- * 6)AppBarLayout
- * 7)CollapsingToolbarLayout
- * 8)CoordinatorLayout
- * 和V4、V7Surpport库的七个新控件：
- * 1)DrawerLayout
- * 2)SwipeRefreshLayout
- * 3)RecyclerView
- * 4)CardView
+ * 6)AppBarLayout(侧2)
+ * 7)CollapsingToolbarLayout(侧2)
+ * 8)CoordinatorLayout(侧2)
+ * V4、V7Surpport库及其它的十一个新控件：
+ * 1)DrawerLayout(侧)
+ * 2)SwipeRefreshLayout(侧1)
+ * 3)RecyclerView(侧1)
+ * 4)CardView(正Page2)
  * 5)NestedScrollView
  * 6)BottomNavigationView
  * 7)BottomSheetDialog
+ * 8)ConstraintLayout(侧3)
+ * 9)RippleDrawable(正Page3)
+ * 10)Palette(侧4)
+ * 11)Theme(侧5)
+ * 注--括号中的标注含义，正Page2：正常页面中第2项；侧：抽屉本身，左右均可，右抽屉不具有点击功效；侧2：抽屉视图中第2项
+ *   --其它未用括号标注的项均在正常页面中第1项（MD WIDGETS）中
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
- * <br/>Program Name:LayoutDemo
- * <br/>Date:Oct，2017
+ * <br/>Program Name:MaterialDesignDemo
+ * <br/>Date:Oct，2017～Jan，2018
  *
  * @author xottys@163.com
  * @version 1.0
@@ -42,6 +48,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -83,7 +90,7 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
         drawer.addDrawerListener(mToggle);
         mToggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view_left);
         //给MenuItem设置点击监听
         navigationView.setNavigationItemSelectedListener(this);
         //给MenuItem图标设置颜色，null表示原色
@@ -91,7 +98,7 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
 
         //设置HedaerView点击事件
         View headerView = navigationView.getHeaderView(0);
-        LinearLayout nav_header = headerView.findViewById(R.id.nav_header);
+        LinearLayout nav_header = (LinearLayout) headerView.findViewById(R.id.nav_header);
         nav_header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,7 +148,7 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
                 sb.setActionTextColor(Color.BLUE);      //改变按钮的文字颜色
                 View mView = sb.getView();
                 mView.setBackgroundColor(Color.LTGRAY);   //改变消息内容的背景
-                TextView tv = mView.findViewById(R.id.snackbar_text);
+                TextView tv = (TextView) mView.findViewById(R.id.snackbar_text);
                 tv.setTextColor(Color.RED);               //改变消息内容的文字颜色
                 sb.show();
             }
@@ -182,26 +189,12 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
         mTabLayout.addTab(mTabLayout.newTab().setIcon(R.drawable.ic_file_download_black_24dp));
         mTabLayout.addTab(mTabLayout.newTab().setText(titles.get(2)).setIcon(R.drawable.ic_shop_black_24dp));
         */
-        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                //选中了tab的逻辑
-            }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                //未选中tab的逻辑
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                //再次选中tab的逻辑
-            }
-        });
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new MatrialWidgetsFragment());
         fragments.add(new CardViewFragment());
         fragments.add(new RippleDrawableFragment());
+
         //定义ViewPager及其适配器
         ViewPager mViewPager = (ViewPager) findViewById(R.id.view_pager_main);
         mViewPager.setOffscreenPageLimit(2);
@@ -267,22 +260,34 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Intent intent = new Intent();
         switch (item.getItemId()) {
             case R.id.nav_recycler_and_swipe_refresh:
-                intent.setClass(this, RecyclerViewActivity.class);
-                startActivity(intent);
-                Log.i(TAG, "onNavigationItemSelected:recycler_and_swipe_refresh ");
+                startActivityTo(RecyclerViewActivity.class);
                 break;
             case R.id.nav_collapsing_toolbar:
-                intent.setClass(this, CollapsingToolbarActivity.class);
-                startActivity(intent);
+                startActivityTo(CollapsingToolbarActivity.class);
+                break;
             case R.id.nav_constraint_layout:
-                intent.setClass(this, ConstraintLayoutActivity.class);
-                startActivity(intent);
-
+                startActivityTo(ConstraintLayoutActivity.class);
+                break;
+            case R.id.nav_palette:
+                startActivityTo(PaletteActivity.class);
+                break;
+            case R.id.nav_daynight:
+                if (GVariable.isNight) {
+                    //恢复日间模式，调用values下的xml
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    GVariable.isNight = false;
+                } else {
+                    //启动夜间模式，调用values-night下的xml
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    GVariable.isNight = true;
+                }
+                //刷新屏幕
+                recreate();
+                return true;
             case R.id.nav_settings:
-                Log.i(TAG, "onNavigationItemSelected: Settins");
+                Log.i(TAG, "onNavigationItemSelected: Settings");
                 break;
             case R.id.nav_about:
                 Log.i(TAG, "onNavigationItemSelected: About");
@@ -304,5 +309,10 @@ public class MaterialDesignActivity extends AppCompatActivity implements Navigat
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mToggle.onConfigurationChanged(newConfig);
+    }
+
+    private void startActivityTo(Class<? extends AppCompatActivity> clazz) {
+        Intent intent = new Intent(this, clazz);
+        startActivity(intent);
     }
 }

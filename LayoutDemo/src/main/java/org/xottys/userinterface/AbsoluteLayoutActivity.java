@@ -22,5 +22,6 @@ public class AbsoluteLayoutActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.absolutelayout);
-	}
+
+    }
 }

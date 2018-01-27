@@ -5,64 +5,64 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <NumberPicker
                 android:id="@+id/picker1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"></NumberPicker>
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="省"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:text="省" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <NumberPicker
                 android:id="@+id/picker2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"></NumberPicker>
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="市"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:text="市" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <NumberPicker
                 android:id="@+id/picker3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"></NumberPicker>
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="县"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:text="县" />
         </LinearLayout>
     </LinearLayout>
     </FrameLayout>

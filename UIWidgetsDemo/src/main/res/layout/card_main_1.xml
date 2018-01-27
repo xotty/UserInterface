@@ -22,7 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop" />
+            android:contentDescription="card2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/material_design_2" />
 
         <TextView
             android:id="@+id/tv_card_main_1_title"

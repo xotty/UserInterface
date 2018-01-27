@@ -22,7 +22,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
-import android.util.Log;
 import android.widget.CursorTreeAdapter;
 import android.widget.SimpleCursorTreeAdapter;
 
@@ -44,6 +43,41 @@ public class SimpleCursorTreeActivity extends ExpandableListActivity {
 
     private static final int TOKEN_GROUP = 0;
     private static final int TOKEN_CHILD = 1;
+    private QueryHandler mQueryHandler;
+    private CursorTreeAdapter mAdapter;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // Set up our adapter
+        mAdapter = new MyExpandableListAdapter(
+                this,
+                android.R.layout.simple_expandable_list_item_1,
+                android.R.layout.simple_expandable_list_item_1,
+                new String[]{Contacts.DISPLAY_NAME}, // Name for group layouts
+                new int[]{android.R.id.text1},
+                new String[]{Phone.NUMBER}, // Number for child layouts
+                new int[]{android.R.id.text1});
+
+        setListAdapter(mAdapter);
+
+        mQueryHandler = new QueryHandler(this, mAdapter);
+
+        // Query for people，用异步查询结果在onQueryComplete中设置父项数据
+        mQueryHandler.startQuery(TOKEN_GROUP, null, Contacts.CONTENT_URI, CONTACTS_PROJECTION,
+                Contacts.HAS_PHONE_NUMBER + "=1", null, null);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Null out the group cursor. This will cause the group cursor and all of the child cursors
+        // to be closed.
+        mAdapter.changeCursor(null);
+        mAdapter = null;
+    }
 
     private static final class QueryHandler extends AsyncQueryHandler {
         private CursorTreeAdapter mAdapter;
@@ -71,7 +105,7 @@ public class SimpleCursorTreeActivity extends ExpandableListActivity {
 
     public class MyExpandableListAdapter extends SimpleCursorTreeAdapter {
 
-        // Note that the constructor does not take a Cursor. This is done to avoid querying the 
+        // Note that the constructor does not take a Cursor. This is done to avoid querying the
         // database on the main thread.
         public MyExpandableListAdapter(Context context, int groupLayout,
                                        int childLayout, String[] groupFrom, int[] groupTo, String[] childrenFrom,
@@ -83,7 +117,7 @@ public class SimpleCursorTreeActivity extends ExpandableListActivity {
 
         @Override
         protected Cursor getChildrenCursor(Cursor groupCursor) {
-            // Given the group, we return a cursor for all the children within that group 
+            // Given the group, we return a cursor for all the children within that group
             // Return a cursor that points to this contact's phone numbers
             Uri.Builder builder = Contacts.CONTENT_URI.buildUpon();
             ContentUris.appendId(builder, groupCursor.getLong(GROUP_ID_COLUMN_INDEX));
@@ -91,46 +125,10 @@ public class SimpleCursorTreeActivity extends ExpandableListActivity {
             Uri phoneNumbersUri = builder.build();
 
             //用异步查询结果在onQueryComplete中设置子项数据
-            mQueryHandler.startQuery(TOKEN_CHILD, groupCursor.getPosition(), phoneNumbersUri, 
+            mQueryHandler.startQuery(TOKEN_CHILD, groupCursor.getPosition(), phoneNumbersUri,
                     PHONE_NUMBER_PROJECTION, Phone.MIMETYPE + "=?",
                     new String[] { Phone.CONTENT_ITEM_TYPE }, null);
             return null;
         }
-    }
-
-    private QueryHandler mQueryHandler;
-    private CursorTreeAdapter mAdapter;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // Set up our adapter
-        mAdapter = new MyExpandableListAdapter(
-                this,
-                android.R.layout.simple_expandable_list_item_1,
-                android.R.layout.simple_expandable_list_item_1,
-                new String[] { Contacts.DISPLAY_NAME }, // Name for group layouts
-                new int[] { android.R.id.text1 },
-                new String[] { Phone.NUMBER }, // Number for child layouts
-                new int[] { android.R.id.text1 });
-
-        setListAdapter(mAdapter);
-
-        mQueryHandler = new QueryHandler(this, mAdapter);
-
-        // Query for people，用异步查询结果在onQueryComplete中设置父项数据
-        mQueryHandler.startQuery(TOKEN_GROUP, null, Contacts.CONTENT_URI, CONTACTS_PROJECTION,
-                Contacts.HAS_PHONE_NUMBER + "=1", null, null);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        // Null out the group cursor. This will cause the group cursor and all of the child cursors
-        // to be closed.
-        mAdapter.changeCursor(null);
-        mAdapter = null;
     }
 }

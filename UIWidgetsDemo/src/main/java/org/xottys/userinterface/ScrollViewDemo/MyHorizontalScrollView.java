@@ -237,10 +237,9 @@ public class MyHorizontalScrollView extends HorizontalScrollView implements OnCl
     // 加载前一张图片
     protected void loadPreImg() {
         //如果当前已经是第一张，则返回
-        if (mFristIndex == 0)
-            return;
+        if (mFristIndex != 0)
 
-        else {
+        {
             //获得当前应该显示为第一张图片的下标
             int index = mFristIndex - 1;
             mContainer = (LinearLayout) getChildAt(0);

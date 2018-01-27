@@ -139,9 +139,9 @@ public class MenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        textview1 = findViewById(R.id.tv);
-        textview2 = findViewById(R.id.tvam);
-        button = findViewById(R.id.btn);
+        textview1 = (TextView) findViewById(R.id.tv);
+        textview2 = (TextView) findViewById(R.id.tvam);
+        button = (Button) findViewById(R.id.btn);
         //PopupMenu----------------------------------------------------------------
         button.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -189,7 +189,7 @@ public class MenuActivity extends Activity {
         });
 
         //可以呈现单行文本、按钮、复选框等TextView类型的数据
-        ListView listView = findViewById(R.id.lv);
+        ListView listView = (ListView) findViewById(R.id.lv);
         //准备数据
         String[] arr1 = new String[]{"唐僧", "孙悟空", "猪八戒", "沙和尚"};
         //将数据和Item视图包装为ArrayAdapter

@@ -20,13 +20,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.xottys.userinterface.R;
 
 import static org.xottys.userinterface.Authenticate.AccountGeneral.sServerAuthenticate;
 import static org.xottys.userinterface.Authenticate.AuthenticatorActivity.ARG_ACCOUNT_TYPE;
 import static org.xottys.userinterface.Authenticate.AuthenticatorActivity.ARG_IS_ADDING_NEW_ACCOUNT;
-import static org.xottys.userinterface.Authenticate.AuthenticatorActivity.PARAM_USER_PASS;
 import static org.xottys.userinterface.Authenticate.AuthenticatorActivity.KEY_ERROR_MESSAGE;
+import static org.xottys.userinterface.Authenticate.AuthenticatorActivity.PARAM_USER_PASS;
 
 public class SignUpActivity extends Activity {
     private static final String TAG = "Authenticate";
@@ -71,7 +72,7 @@ public class SignUpActivity extends Activity {
 
                 Log.d(TAG,  "SignUpActivity > Started authenticating");
 
-                String authtoken = null;
+                String authtoken;
                 Bundle data = new Bundle();
                 try {
                     //调用去服务器注册的程序，获取token

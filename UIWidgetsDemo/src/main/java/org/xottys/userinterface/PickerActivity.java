@@ -17,6 +17,7 @@ package org.xottys.userinterface;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;
@@ -90,7 +91,7 @@ public class PickerActivity extends Activity {
         // 为CalendarView组件的日期改变事件添加事件监听器
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(CalendarView view, int year,
+            public void onSelectedDayChange(@NonNull CalendarView view, int year,
                                             int month, int dayOfMonth) {
                 // 使用Toast显示用户选择的日期
                 showMessage("你选择的是" + year + "年" + (month + 1) + "月"
