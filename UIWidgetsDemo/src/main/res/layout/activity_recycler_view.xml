@@ -32,7 +32,7 @@
         app:backgroundTint="@color/google_yellow"
         app:borderWidth="0dp"
         app:elevation="8dp"
-        app:layout_behavior="org.xottys.userinterface.MaterialDesignDemo.FabBehavior"
+        app:layout_behavior="org.xottys.userinterface.AdvancedViewGroup.FabBehavior"
         app:pressedTranslationZ="16dp"
         app:rippleColor="#33728dff" />
 

@@ -10,10 +10,6 @@
             android:icon="@drawable/ic_format_list_bulleted_black_24dp"
             android:title="@string/nav_collapsing_view" />
         <item
-            android:id="@+id/nav_constraint_layout"
-            android:icon="@drawable/ic_format_list_bulleted_black_24dp"
-            android:title="@string/constraint_layout" />
-        <item
             android:id="@+id/nav_palette"
             android:icon="@drawable/ic_format_list_bulleted_black_24dp"
             android:title="@string/palette" />

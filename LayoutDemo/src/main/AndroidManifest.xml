@@ -30,9 +30,10 @@
         <activity android:name=".FrameLayoutActivity"
             android:label="FrameLayout">
         </activity>
-        <activity android:name=".AbsoluteLayoutActivity"
-            android:label="AbsoluteLayout">
+        <activity
+            android:name=".ConstraintLayoutActivity"
+            android:label="ConstraintLayout"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
     </application>
-
 </manifest>

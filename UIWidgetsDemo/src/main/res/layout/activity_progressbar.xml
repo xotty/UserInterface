@@ -102,18 +102,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="50     from touch=false"
-            android:textColor="@color/blue"
-            android:textSize="20sp" />
+            android:text="50 from touch=false"
+            android:textColor="@color/google_yellow"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tracking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="65dp"
+            android:layout_marginStart="50dp"
             android:text="Tracking off"
-            android:textColor="@color/blue"
-            android:textSize="20sp" />
+            android:textColor="@color/google_yellow"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <!--标准样式拖动条-->

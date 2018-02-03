@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.SlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/spl_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:background="#eca0a0"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_left1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="左侧菜单1"
+            android:textSize="22sp" />
+
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/tv_left2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="左侧菜单2"
+            android:textSize="22sp" />
+
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="80dp" />
+
+        <TextView
+            android:id="@+id/tv_left3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="左侧菜单3"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/realtabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <android.support.v4.app.FragmentTabHost
+            android:id="@android:id/tabhost"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_tabhost_bg">
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0" />
+        </android.support.v4.app.FragmentTabHost>
+
+    </LinearLayout>
+</android.support.v4.widget.SlidingPaneLayout>

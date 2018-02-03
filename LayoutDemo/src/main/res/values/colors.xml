@@ -9,4 +9,9 @@
     <color name="color4">#ff0</color>
     <color name="color5">#f0f</color>
     <color name="color6">#0ff</color>
+    <color name="black">@android:color/black</color>
+    <color name="white">@android:color/white</color>
+    <color name="gray">#9E9E9E</color>
+    <color name="light_gray">#cccccc</color>
+    <color name="gray_deep">#666666</color>
 </resources>

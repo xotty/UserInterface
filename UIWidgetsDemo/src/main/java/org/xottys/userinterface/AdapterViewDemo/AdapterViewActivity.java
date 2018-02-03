@@ -30,12 +30,18 @@ import android.widget.TextView;
 
 public class AdapterViewActivity extends ExpandableListActivity {
     private static final String TAG = "AdapterViewActivity";
-
+    //定义各个Activity对应的实现类
+    Class<?>[] clazzs = {BasicAdapterViewActivity.class, AdvancedActivatedItemsActivity.class,
+            AdvancedOverlayArrayActivity.class, AdvancedViewBinderActivity.class, AdvancedTranscriptModeActivity.class,
+            AdvancedSelectionModeActivity.class, CustomerExpandableActivity.class, CustomerGroupActivity.class,
+            CustomerSlowActivity.class, CustomerEfficentActivity.class, ExpandableListViewSimpleActivity.class,
+            ExpandableListViewCursorTreeActivity.class, ExpandableListViewBaseActivity.class, SpinnerActivity.class,
+            GridViewSimpleActivity.class, GridViewBaseActivity.class, GridViewSelectionActivity.class,
+            ViewPagerBasicActivity.class, ViewPagerTitleActivity.class, ViewPagerFragmentActivity.class};
     private String[] groupArr = new String[]
             {"Basic AdapterView", "Advanced AdapterView", "Customer AdapterView" ,
               "ExpandableListView","Spinner","GridView","ViewPager"
              };
-
     private String[][] childArr = new String[][]
             {
               {},
@@ -46,16 +52,6 @@ public class AdapterViewActivity extends ExpandableListActivity {
               {"SimpleAdapter GridView","BaseAdapter GridView","Selection Mode GridView"},
               {"Basic ViewPager","Title ViewPager","Fragment ViewPager"}
             };
-
-    //定义各个Activity对应的实现类
-    Class<?>[] clazzs = {BasicAdapterViewActivity.class, ActivatedItemsActivity.class,
-            OverlayArrayActivity.class, ViewBinderActivity.class,TranscriptModeActivity.class,
-            SelectionModeActivity.class,CustomerAdapterActivity1.class,CustomerAdapterActivity2.class,
-            SlowAdapterActivity.class,EfficentAdapterActivity.class,SimpleExpandableActivity.class,
-            SimpleCursorTreeActivity.class,BaseExpandableActivity.class,SpinnerActivity.class,
-            GridViewActivity1.class,GridViewActivity2.class,GridViewActivity3.class,
-            BasicViewPagerActivity.class,TitleViewPagerActivity.class,FragmentViewPagerActivity.class};
-
 
     //将clazzs数组直接放入，系统将按顺序对应listview上的每一行，行点击后将跳转相应Intent的Activity
     public Intent intentForPosition(int position) {

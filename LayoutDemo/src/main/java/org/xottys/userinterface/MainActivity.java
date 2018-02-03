@@ -96,7 +96,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainActivity.this
-                        , AbsoluteLayoutActivity.class);
+                        , ConstraintLayoutActivity.class);
                 startActivity(intent);
             }
         });

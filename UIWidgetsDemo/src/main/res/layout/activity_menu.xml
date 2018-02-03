@@ -5,34 +5,50 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/searchinfo_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="上下文菜单：可通过菜单修改字体大小和背景色"
-        android:textSize="15sp" />
-
+        android:textSize="13sp" />
     <TextView
-        android:id="@+id/tvam"
+        android:id="@+id/contextmenu_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="上下文操作模式："
-        android:textSize="15sp" />
+        android:text="ContextMenu(点击启动)"
+        android:textSize="13sp" />
     <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
+        android:id="@+id/popupmenu_btn"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:text="PopupMenu" />
 
-    <ListView
-        android:id="@+id/lv"
+    <TextView
+        android:id="@+id/actionmode_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="ActionMode(长按启动)"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/actionbar_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="ActionBar" />
+
+    <Button
+        android:id="@+id/toolbar_btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Toolbar" />
 
 </LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?><!--实现按下改变颜色-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--点击状态-->
+    <!--默认状态什么都不设置-->
+    <item android:drawable="@color/light_gray" android:state_pressed="true" />
+    <item android:drawable="@color/light_gray" android:state_focused="true" />
+    <item android:drawable="@color/gray_deep" />
+</selector>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="IndexBar">
+    <declare-styleable name="CustomerGroupIndexBarLayout">
         <attr name="indexTextSize" format="dimension" />
         <attr name="indexTextColor" format="color" />
     </declare-styleable>

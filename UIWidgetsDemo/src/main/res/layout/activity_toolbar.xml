@@ -27,7 +27,7 @@
         android:layout_below="@id/toolbar1"
         android:text="上面是ToolBar作为ActionBar的演示"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 
     <Space
         android:id="@+id/sp"
@@ -56,7 +56,7 @@
         android:layout_above="@id/toolbar2"
         android:text="下面是ToolBar内含ActionMenuView的演示"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
     <!--使用ActonMenuView布局的Toolbar-->
     <TextView
         android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
         android:gravity="center_horizontal"
         android:text="下面是ToolBar--作为底部导航按钮的演示"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
     <!--不在ActionBar位置的ToolBar，但只有水平一个方向，此例放在底部-->
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar3"

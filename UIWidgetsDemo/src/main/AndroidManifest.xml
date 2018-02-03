@@ -29,10 +29,10 @@
             android:label="@string/title_activity_text_view"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".dialogdemo.DialogActivity"
+            android:name=".DialogDemo.DialogActivity"
             android:label="Dialog Demo" />
         <activity
-            android:name=".dialogdemo.AlertDialogActivity"
+            android:name=".DialogDemo.AlertDialogActivity"
             android:label="Dialog Demo" />
         <activity
             android:name=".ImageViewActivity"
@@ -49,47 +49,47 @@
             android:name=".AdapterViewDemo.BasicAdapterViewActivity"
             android:label="BasicAdapterView Demo" />
         <activity
-            android:name=".AdapterViewDemo.ActivatedItemsActivity"
+            android:name=".AdapterViewDemo.AdvancedActivatedItemsActivity"
             android:label="AdvancedAdapterView Demo" />
         <activity
-            android:name=".AdapterViewDemo.OverlayArrayActivity"
+            android:name=".AdapterViewDemo.AdvancedOverlayArrayActivity"
             android:label="AdvancedAdapterView Demo" />
         <activity
-            android:name=".AdapterViewDemo.ViewBinderActivity"
+            android:name=".AdapterViewDemo.AdvancedViewBinderActivity"
             android:label="AdvancedAdapterView Demo" />
         <activity
-            android:name=".AdapterViewDemo.TranscriptModeActivity"
+            android:name=".AdapterViewDemo.AdvancedTranscriptModeActivity"
             android:label="AdvancedAdapterView Demo" />
         <activity
-            android:name=".AdapterViewDemo.SelectionModeActivity"
+            android:name=".AdapterViewDemo.AdvancedSelectionModeActivity"
             android:label="AdvancedAdapterView Demo"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
         <activity
-            android:name=".AdapterViewDemo.CustomerAdapterActivity1"
+            android:name=".AdapterViewDemo.CustomerExpandableActivity"
             android:label="AdvancedAdapterView Demo"
             android:theme="@android:style/Theme" />
         <activity
-            android:name=".AdapterViewDemo.CustomerAdapterActivity2"
+            android:name=".AdapterViewDemo.CustomerGroupActivity"
             android:label="AdvancedAdapterView Demo"
             android:theme="@style/AppTheme.NoActionBar"
              />
         <activity
-        android:name=".AdapterViewDemo.SlowAdapterActivity"
+            android:name=".AdapterViewDemo.CustomerSlowActivity"
         android:label="AdvancedAdapterView Demo" />
         <activity
-            android:name=".AdapterViewDemo.EfficentAdapterActivity"
+            android:name=".AdapterViewDemo.CustomerEfficentActivity"
             android:label="AdvancedAdapterView Demo" />
 
         <activity
-            android:name=".AdapterViewDemo.SimpleExpandableActivity"
+            android:name=".AdapterViewDemo.ExpandableListViewSimpleActivity"
             android:label="ExpandableListView Demo" />
 
         <activity
-            android:name=".AdapterViewDemo.SimpleCursorTreeActivity"
+            android:name=".AdapterViewDemo.ExpandableListViewCursorTreeActivity"
             android:label="ExpandableListView Demo" />
 
         <activity
-            android:name=".AdapterViewDemo.BaseExpandableActivity"
+            android:name=".AdapterViewDemo.ExpandableListViewBaseActivity"
             android:label="ExpandableListView Demo" />
 
         <activity
@@ -97,26 +97,26 @@
             android:label="Spinner Demo" />
 
         <activity
-            android:name=".AdapterViewDemo.GridViewActivity1"
+            android:name=".AdapterViewDemo.GridViewSimpleActivity"
             android:label="GridView Demo" />
 
         <activity
-            android:name=".AdapterViewDemo.GridViewActivity2"
+            android:name=".AdapterViewDemo.GridViewBaseActivity"
             android:label="GridView Demo" />
 
         <activity
-            android:name=".AdapterViewDemo.GridViewActivity3"
+            android:name=".AdapterViewDemo.GridViewSelectionActivity"
             android:label="GridView Demo" />
         <activity
-            android:name=".AdapterViewDemo.BasicViewPagerActivity"
-            android:label="GridView Demo" />
-
-        <activity
-            android:name=".AdapterViewDemo.TitleViewPagerActivity"
+            android:name=".AdapterViewDemo.ViewPagerBasicActivity"
             android:label="GridView Demo" />
 
         <activity
-            android:name=".AdapterViewDemo.FragmentViewPagerActivity"
+            android:name=".AdapterViewDemo.ViewPagerTitleActivity"
+            android:label="GridView Demo" />
+
+        <activity
+            android:name=".AdapterViewDemo.ViewPagerFragmentActivity"
             android:label="GridView Demo" />
         <activity
             android:name=".ScrollViewDemo.ScrollViewActivity"
@@ -126,52 +126,53 @@
             android:name=".PickerActivity"
             android:label="Picker Demo"
             android:theme="@android:style/Theme.Holo" />
-
         <activity
-            android:name=".MenuActivity"
-            android:label="Menu Demo"
-            android:theme="@android:style/Theme.Holo" />
-
+            android:name=".MenuToolbarDemo.MenuToolbarActivity"
+            android:label="Options Menu"
+            android:theme="@style/Theme.AppCompat" />
         <activity
-            android:name=".AppBarDemo.AppBarActivity"
-            android:label="ActionBar Demo"
-            android:theme="@style/MyActionBarTheme" />
-        <activity
-            android:name=".AppBarDemo.ActionBarDisplayOptions"
+            android:name=".MenuToolbarDemo.ActionBarActivity"
             android:label="ActionBarDisplayOptions"
             android:theme="@android:style/Theme.Holo" />
         <activity
-            android:name=".AppBarDemo.ToolBarActivity"
+            android:name=".MenuToolbarDemo.ToolbarActivity"
             android:label="ToolBar Demo"
             android:theme="@style/MyToolBarTheme" />
         <activity
             android:name=".CustomViewActivity"
             android:label="CustomView Demo" />
         <activity
-            android:name=".MaterialDesignDemo.MaterialDesignActivity"
+            android:name=".AdvancedViewGroup.AdvancedWidgetActivity"
             android:label="MaterialDesign Demo"
             android:theme="@style/AppDayNightTheme" />
         <activity
-            android:name=".MaterialDesignDemo.RecyclerViewActivity"
+            android:name=".AdvancedViewGroup.RecyclerViewActivity"
             android:label="@string/title_activity_recycler_view"
-            android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
+            android:parentActivityName=".AdvancedViewGroup.AdvancedWidgetActivity"
             android:theme="@style/AppDayNightTheme" />
         <activity
-            android:name=".MaterialDesignDemo.CollapsingToolbarActivity"
+            android:name=".AdvancedViewGroup.CollapsingToolbarActivity"
             android:label="@string/title_activity_collapsing_view"
-            android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
+            android:parentActivityName=".AdvancedViewGroup.AdvancedWidgetActivity"
             android:theme="@style/AppDayNightTheme" />
         <activity
-            android:name=".MaterialDesignDemo.ConstraintLayoutActivity"
-            android:label="@string/constraint_layout"
-            android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
-            android:theme="@style/AppDayNightTheme" />
-        <activity
-            android:name=".MaterialDesignDemo.PaletteActivity"
+            android:name=".AdvancedViewGroup.PaletteActivity"
             android:label="@string/palette"
-            android:parentActivityName=".MaterialDesignDemo.MaterialDesignActivity"
+            android:parentActivityName=".AdvancedViewGroup.AdvancedWidgetActivity"
             android:theme="@style/AppDayNightTheme" />
+        <activity
+            android:name=".MiscWidgetDemo.MiscWidgetActivity"
+            android:label="MiscWidgetDemo" />
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="org.xottys.userinterface.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

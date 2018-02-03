@@ -25,11 +25,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:navigationBarColor">@color/navigation_BarColor</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:colorControlNormal">@color/colorControlNormal</item>
         <item name="android:colorBackground">@color/colorBKG</item>
         <item name="android:buttonStyle">@android:style/Widget.Holo.Button</item>
+
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
     <style name="AppTheme.NoActionBar" parent="AppBaseTheme.NoActionBar">
         <item name="actionBarSize">80dip</item>
@@ -74,7 +78,7 @@
         <!--<item name="android:actionModeShareDrawable">@drawable/abc_ic_menu_share_mtrl_alpha</item>-->
     </style>
 
-    <!-- ToolBarActivity Theme -->
+    <!--ToolbarActivityvity Theme -->
     <style name="MyToolBarTheme" parent="ToolBarTheme.Base" />
 
     <style name="ToolBarTheme.Base" parent="Theme.AppCompat">
