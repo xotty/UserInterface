@@ -1,6 +1,6 @@
 /**
- * 本例演示了SlidingPanelLayout、FragmentTabHost、Space、ViewStub的用法
- * 一、SlidingPanelLayout
+ * 本例演示了SlidingPaneLayout、FragmentTabHost、Space、ViewStub的用法
+ * 一、SlidingPaneLayout
  * 1）在xml中以<android.support.v4.widget.SlidingPaneLayout>标签定义布局文件，其中含两个子控件，第一个是左侧可推拉
  * 的视图，第二个是主内容视图。
  * 2）定义相关属性，如推拉渐变色等

@@ -22,11 +22,11 @@ import android.widget.ArrayAdapter;
 
 public class MyLauncherActivity extends LauncherActivity {
     //定义要跳转的各个Activity的名称
-    String[] names = {"AliasActivity", "PreferenceActivity", "ExpandableListActivity", "AccountAuthenticatorActivity"};
+    String[] names = {"ListActivity", "ExpandableListActivity", "PreferenceActivity", "AliasActivity", "AccountAuthenticatorActivity"};
 
     //定义各个Activity对应的实现类
-    Class<?>[] clazzs = {MyAliasActivity.class, MyPreferenceActivity.class
-            , MyExpandableListActivity.class, MyAuthenticateActivity.class};
+    Class<?>[] clazzs = {MyListActivity.class, MyExpandableListActivity.class, MyPreferenceActivity.class
+            , MyAliasActivity.class, MyAuthenticateActivity.class};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

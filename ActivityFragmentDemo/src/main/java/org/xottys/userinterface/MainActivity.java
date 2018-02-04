@@ -12,7 +12,6 @@ import org.xottys.userinterface.ActivityTaskMode.StandardActivity;
 import org.xottys.userinterface.CommonlyUsedActivities.MyLauncherActivity;
 import org.xottys.userinterface.CommonlyUsedFragments.FragmentListActivity;
 import org.xottys.userinterface.FragmentGeneral.BookListActivity;
-import org.xottys.userinterface.FragmentLifecycle.FragmentLifecycleActivity;
 
 public class MainActivity extends Activity {
     private final String TAG = "UserInterface";
@@ -55,7 +54,7 @@ public class MainActivity extends Activity {
         bt2.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this
-                        , FragmentLifecycleActivity.class);
+                        , org.xottys.userinterface.FragmentLifecycle.FragmentLifecycleActivity.class);
                 startActivity(intent);
             }
         });
