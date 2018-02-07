@@ -7,6 +7,11 @@
  * 6)AnalogClock/TextClock
  * 7)Chronometer
  * 8)AutoCompleteTextView/MultiAutoCompleteTextView
+ * 9)EmojiTextView/EmojiEditText/EmojiButton，具体用法如下：
+ * a)在xml中用<EmojiTextView>或<EmojiAppCompatTextView>标签定义
+ * b)初始化 EmojiCompat:EmojiCompat.init(config)
+ * c)显示和读写Emoji
+ *
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
@@ -17,7 +22,12 @@
  */
 package org.xottys.userinterface;
 
-import android.app.Activity;
+import android.content.Context;
+import android.support.text.emoji.EmojiCompat;
+import android.support.text.emoji.widget.EmojiAppCompatEditText;
+import android.support.text.emoji.widget.EmojiAppCompatTextView;
+import android.support.text.emoji.widget.EmojiTextView;
+import android.support.v7.app.AppCompatActivity;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -51,12 +61,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.lang.ref.WeakReference;
+
 import static android.text.Html.FROM_HTML_MODE_LEGACY;
 import static android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT;
 import static org.xottys.userinterface.R.string.styled_12_hour_clock2;
 import static org.xottys.userinterface.R.string.styled_24_hour_clock2;
 
-public class TextViewActivity extends Activity {
+public class TextViewActivity extends AppCompatActivity {
+    /** Change this to {@code false} when you want to use the downloadable Emoji font. */
+    private static final boolean USE_BUNDLED_EMOJI = true;
+
+    // [U+1F469] (WOMAN) + [U+200D] (ZERO WIDTH JOINER) + [U+1F4BB] (PERSONAL COMPUTER)
+    private static final String WOMAN_TECHNOLOGIST = "\uD83D\uDC69\u200D\uD83D\uDCBB";
+
+    // [U+1F469] (WOMAN) + [U+200D] (ZERO WIDTH JOINER) + [U+1F3A4] (MICROPHONE)
+    private static final String WOMAN_SINGER = "\uD83D\uDC69\u200D\uD83C\uDFA4";
+
+    private  static String EMOJI;
+
     //供AutoCompleteTextView使用的国家名称
     static final String[] COUNTRIES = new String[]{
             "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
@@ -418,9 +441,60 @@ public class TextViewActivity extends Activity {
         MultiAutoCompleteTextView textView2 = (MultiAutoCompleteTextView) findViewById(R.id.multautoedit);
         textView2.setAdapter(adapter2);
         textView2.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+
+        //Emoji字符显示和读写
+        EMOJI = WOMAN_TECHNOLOGIST + " " + WOMAN_SINGER;
+        // TextView variant provided by Emoji library
+        final TextView emojiTextView = findViewById(R.id.emoji_text_view);
+        // final EmojiTextView emojiTextView = findViewById(R.id.emoji_text_view);
+
+        emojiTextView.setText(getString(R.string.emoji_text_view, EMOJI));
+
+        // EditText variant provided by EmojiCompat library
+        final TextView emojiEditText= findViewById(R.id.emoji_edit_text);
+        //final EmojiAppCompatEditText emojiEditText = findViewById(R.id.emoji_edit_text);
+
+        emojiEditText.setText(getString(R.string.emoji_edit_text, EMOJI));
+
+        // Button variant provided by EmojiCompat library
+        final TextView emojiButton = findViewById(R.id.emoji_button);
+        emojiButton.setText(getString(R.string.emoji_button, EMOJI));
+
+        // Regular TextView without EmojiCompat support; you have to manually process the text
+        final TextView regularTextView = findViewById(R.id.regular_text_view);
+        //将Emoji的unicode转为字符串
+        EMOJI=String.valueOf(Character.toChars(Integer.parseInt("1F92A", 16)))
+        +String.valueOf(Character.toChars(Integer.parseInt("1F9E5", 16)));
+
+        EmojiCompat.get().registerInitCallback(new InitCallback(regularTextView));
+        //regularTextView.setText(getString(R.string.regular_text_view, EMOJI));
+
+        final TextView customTextView = findViewById(R.id.emoji_custom_text_view);
+        customTextView.setText(getString(R.string.custom_text_view, EMOJI));
+
     }
 
     private void showMessage(final String msg) {
         Toast.makeText(TextViewActivity.this, msg, Toast.LENGTH_LONG).show();
+    }
+
+    private static class InitCallback extends EmojiCompat.InitCallback {
+        private final WeakReference<TextView> mRegularTextViewRef;
+
+        InitCallback(TextView regularTextView) {
+            mRegularTextViewRef = new WeakReference<>(regularTextView);
+        }
+
+        @Override
+        public void onInitialized() {
+            final TextView regularTextView = mRegularTextViewRef.get();
+            if (regularTextView != null) {
+                final EmojiCompat compat = EmojiCompat.get();
+                final Context context = regularTextView.getContext();
+                regularTextView.setText(
+                        compat.process(context.getString(R.string.regular_text_view, EMOJI)));
+            }
+        }
+
     }
 }

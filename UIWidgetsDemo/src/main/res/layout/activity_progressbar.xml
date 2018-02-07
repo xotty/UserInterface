@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +26,7 @@
             android:layout_marginStart="20dp"/>
         <!-- Small形进度条 -->
         <ProgressBar
-            style="@android:style/Widget.ProgressBar.Small"
+            style="?android:attr/progressBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"/>
@@ -70,6 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:max="100"
+        android:progress="25"
         android:progressDrawable="@drawable/my_bar" />
     <!--双进度水平进度条-->
     <ProgressBar
@@ -90,13 +95,46 @@
         android:backgroundTint="@color/light_blue"
         android:backgroundTintMode="add" />
 
-    <LinearLayout
+        <!--ContentLoadingProgressBar-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.v4.widget.ContentLoadingProgressBar
+                android:id="@+id/contentloadingprogress1"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp" />
+
+            <android.support.v4.widget.ContentLoadingProgressBar
+                android:id="@+id/contentloadingprogress2"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="250dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/green"
+                android:max="100"
+                android:progress="0" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dip"
+            android:layout_marginTop="20dp"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="@color/light_blue"
+            android:backgroundTintMode="add" />
+
+        <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
-
         <TextView
             android:id="@+id/progress"
             android:layout_width="wrap_content"
@@ -115,7 +153,6 @@
             android:textColor="@color/google_yellow"
             android:textSize="16sp" />
     </LinearLayout>
-
     <!--标准样式拖动条-->
     <SeekBar
         android:id="@+id/seek1"
@@ -133,7 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:max="100"
-        android:maxHeight="20px"
+        android:maxHeight="20dp"
         android:progress="0"
         android:progressDrawable="@drawable/seekbar_style"
         android:thumb="@drawable/thumb" />
@@ -165,7 +202,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dip" />
+            android:layout_marginStart="10dip" />
         <!--标准尺寸，只能显示用-->
         <RatingBar
             android:id="@+id/indicator_ratingbar"
@@ -203,4 +240,5 @@
         android:numStars="10"
         android:rating="2.2"
         android:stepSize="0.2" />
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

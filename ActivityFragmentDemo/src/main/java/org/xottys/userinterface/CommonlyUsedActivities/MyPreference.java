@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import org.xottys.userinterface.R;
 
 public class MyPreference extends Preference {
-    static Context ctx;
+    Context ctx;
     public MyPreference(Context context, AttributeSet attrs) {
          this(context, attrs, 0);
     }

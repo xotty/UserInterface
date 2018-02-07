@@ -316,7 +316,7 @@
     <string name="main_flat_button_2_clicked">Flat Button 2</string>
     <string name="item_swipe_dismissed">Dismissed</string>
     <string name="item_swipe_undo">Undo</string>
-    <string name="title_activity_recycler_view">RecyclerView</string>
+    <string name="title_activity_recycler_view">RecyclerView Demo</string>
     <string name="title_activity_collapsing_view">Collapsing ToolBar</string>
     <string name="tv_recycler_item_1">Swipe down to refresh</string>
     <string name="tv_recycler_item_2">Swipe left or right to dismiss it</string>
@@ -356,6 +356,13 @@
     <string name="camera_value">Leica M Typ 240</string>
     <string name="singapore">Singapore</string>
     <string name="constraint_layout">Constraint Layout</string>
-    <string name="palette">Palette</string>
+    <string name="palette">Palette Demo</string>
     <string name="daynight">Theme-Day/Night</string>
+
+    <string name="emoji_text_view">Emoji TextView %s</string>
+    <string name="emoji_edit_text">Emoji EditText %s</string>
+    <string name="emoji_button">Emoji Button %s</string>
+    <string name="regular_text_view">Regular TextView %s</string>
+    <string name="custom_text_view">Custom TextView %s</string>
+
 </resources>

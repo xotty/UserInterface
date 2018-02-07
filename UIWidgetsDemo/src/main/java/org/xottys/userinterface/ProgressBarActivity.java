@@ -2,6 +2,7 @@
  * 1)ProgressBar，分环形和水平两种，前者只能展示为一个循环的动画，后者才能显示任务执行的具体进度值
  * 2)SeekBar
  * 3)RatingBar
+ * 4)ContentLoadingProgressbar,与ProgressBar基本一致，增加了特有的hide/show方法
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
@@ -16,6 +17,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
@@ -24,12 +26,14 @@ import android.widget.TextView;
 
 public class ProgressBarActivity extends Activity {
     private static final String TAG = "ProgressBarActivity";
+    Thread thread;
     int hasData = 0;
 
     // 记录ProgressBar的完成进度
     int status = 0;
 
     ProgressBar bar1, bar2;
+    ContentLoadingProgressBar bar3;
     TextView tv1;
 
     // 负责更新的进度的Handler
@@ -41,7 +45,19 @@ public class ProgressBarActivity extends Activity {
                 tv1.setText("任务完成的进度:" + status + "%");
                 bar1.setProgress(status);
                 bar2.setProgress(status);
+                bar3.setProgress(status);
+            } else if (msg.what == 0x222) {
+                //ContentLoadingProgressbar的特有方法
+                bar3.hide();
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        bar3.setProgress(50);
+                        //ContentLoadingProgressbar的特有方法
+                        bar3.show();
+                    }
+                }, 3000);
             }
+
         }
     };
 
@@ -109,8 +125,9 @@ public class ProgressBarActivity extends Activity {
         bar1= (ProgressBar) findViewById(R.id.bar1);
         bar2 = (ProgressBar) findViewById(R.id.bar2);
 
+        bar3 = (ContentLoadingProgressBar) findViewById(R.id.contentloadingprogress2);
         // 启动线程来执行任务，每循环一次status加1
-        new Thread() {
+        thread = new Thread() {
             public void run() {
                 while (status < 100) {
                     // 获取耗时操作的完成百分比
@@ -118,9 +135,10 @@ public class ProgressBarActivity extends Activity {
                     // 发送消息
                     mHandler.sendEmptyMessage(0x111);
                 }
+                mHandler.sendEmptyMessage(0x222);
             }
-        }.start();
-
+        };
+        thread.start();
         //第一行搜索条是标准模式，第二行是自定义样式
         mSeekBar1 = (SeekBar) findViewById(R.id.seek1);
         mSeekBar1.setOnSeekBarChangeListener(seekBarChangeListener);
@@ -142,14 +160,23 @@ public class ProgressBarActivity extends Activity {
     // 模拟一个耗时的操作
     public int doWork() {
         // 为数组元素赋值，hasdata加1
-        int pos = hasData + 1;
+        int pos = hasData++;
         data[pos] = (int) (Math.random() * 100);
         Log.i(TAG, "" + data[pos]);
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
+            //当线程强行终止时能跳出循环
+            hasData = 100;
         }
         return hasData;
+    }
+
+    //返回时终止线程
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        thread.interrupt();
     }
 }

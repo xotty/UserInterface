@@ -124,9 +124,6 @@ public class MyAuthenticateActivity extends Activity {
 
     /**
      * Add new account to the account manager
-     *
-     * @param accountType
-     * @param authTokenType
      */
     private void addNewAccount(String accountType, String authTokenType) {
         System.out.println("Main 1");
@@ -157,8 +154,6 @@ public class MyAuthenticateActivity extends Activity {
 
     /**
      * Show all the accounts registered on the account manager. Request an auth token upon user select.
-     *
-     * @param authTokenType
      */
     private void showAccountPicker(final String authTokenType, final boolean invalidate) {
         mInvalidate = invalidate;
@@ -190,8 +185,6 @@ public class MyAuthenticateActivity extends Activity {
     /**
      * Get the auth token for an existing account on the AccountManager
      *
-     * @param account
-     * @param authTokenType
      */
     private void getExistingAccountAuthToken(Account account, String authTokenType) {
         final AccountManagerFuture<Bundle> future = mAccountManager.getAuthToken(account, authTokenType, null, this, null, null);
@@ -266,8 +259,6 @@ public class MyAuthenticateActivity extends Activity {
     /**
      * Invalidates the auth token for the account
      *
-     * @param account
-     * @param authTokenType
      */
     private void invalidateAuthToken(final Account account, String authTokenType) {
         final AccountManagerFuture<Bundle> future = mAccountManager.getAuthToken(account, authTokenType, null, this, null, null);
@@ -295,8 +286,6 @@ public class MyAuthenticateActivity extends Activity {
      * If one exist - return its auth token.
      * If more than one exists - show a picker and return the select account's auth token.
      *
-     * @param accountType
-     * @param authTokenType
      */
     private void getTokenForAccountCreateIfNeeded(String accountType, String authTokenType) {
         final AccountManagerFuture<Bundle> future = mAccountManager.getAuthTokenByFeatures(accountType, authTokenType, null, this, null, null,

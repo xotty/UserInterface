@@ -10,16 +10,16 @@
  */
 package org.xottys.userinterface.FragmentGeneral;
 
+import android.util.SparseArray;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class BookContent
 {
     public static List<Book> ITEMS = new ArrayList<>();
-    public static Map<Integer, Book> ITEM_MAP
-            = new HashMap<>();
+    public static SparseArray<Book> ITEM_MAP
+            = new SparseArray<>();
 
 	static
 	{

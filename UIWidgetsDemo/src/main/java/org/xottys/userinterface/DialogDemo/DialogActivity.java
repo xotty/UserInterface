@@ -22,7 +22,7 @@
  */
 package org.xottys.userinterface.DialogDemo;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,7 +33,7 @@ import android.widget.Toast;
 
 import org.xottys.userinterface.R;
 
-public class DialogActivity extends Activity implements TabHost.TabContentFactory {
+public class DialogActivity extends AppCompatActivity implements TabHost.TabContentFactory {
     Fragment fragment=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
