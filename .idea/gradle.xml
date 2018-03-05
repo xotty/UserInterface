@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/ActivityFragmentDemo" />
+            <option value="$PROJECT_DIR$/AnimationDemo" />
             <option value="$PROJECT_DIR$/LayoutDemo" />
             <option value="$PROJECT_DIR$/UIWidgetsDemo" />
           </set>

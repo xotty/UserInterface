@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/d00" android:duration="100" />
+    <item android:drawable="@drawable/d01" android:duration="100" />
+    <item android:drawable="@drawable/d02" android:duration="100" />
+    <item android:drawable="@drawable/d03" android:duration="100" />
+    <item android:drawable="@drawable/d04" android:duration="100" />
+    <item android:drawable="@drawable/d05" android:duration="100" />
+    <item android:drawable="@drawable/d06" android:duration="100" />
+    <item android:drawable="@drawable/d07" android:duration="100" />
+    <item android:drawable="@drawable/d08" android:duration="100" />
+    <item android:drawable="@drawable/d09" android:duration="100" />
+    <item android:drawable="@drawable/d10" android:duration="100" />
+    <item android:drawable="@drawable/d11" android:duration="100" />
+    <item android:drawable="@drawable/d11" android:duration="100" />
+    <item android:drawable="@drawable/d12" android:duration="100" />
+    <item android:drawable="@drawable/d13" android:duration="100" />
+    <item android:drawable="@drawable/d14" android:duration="100" />
+    <item android:drawable="@drawable/d15" android:duration="100" />
+    <item android:drawable="@drawable/d16" android:duration="100" />
+    <item android:drawable="@drawable/d17" android:duration="100" />
+    <item android:drawable="@drawable/d18" android:duration="100" />
+    <item android:drawable="@drawable/d19" android:duration="100" />
+    <item android:drawable="@drawable/d20" android:duration="100" />
+    <item android:drawable="@drawable/d21" android:duration="100" />
+    <item android:drawable="@drawable/d22" android:duration="100" />
+    <item android:drawable="@drawable/d23" android:duration="100" />
+    <item android:drawable="@drawable/d24" android:duration="100" />
+    <item android:drawable="@drawable/d25" android:duration="100" />
+    <item android:drawable="@drawable/d26" android:duration="100" />
+    <item android:drawable="@drawable/d27" android:duration="100" />
+    <item android:drawable="@drawable/d28" android:duration="100" />
+    <item android:drawable="@drawable/d29" android:duration="100" />
+
+</animation-list>
