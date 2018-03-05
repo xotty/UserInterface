@@ -20,7 +20,7 @@
             android:label="TweenedAnimation"/>
         <activity android:name=".FrameAnimationActivity"
             android:label="FrameAnimation" />
-        <activity android:name=".PropertyAnimationActivity1"
+        <activity android:name=".BasicPropertyAnimationActivity"
             android:label="PropertyAnimation1"/>
         <activity android:name=".PropertyAnimationActivity2"
             android:label="PropertyAnimation2"/>

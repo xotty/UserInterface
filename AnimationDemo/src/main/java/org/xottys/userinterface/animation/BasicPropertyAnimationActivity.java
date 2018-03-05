@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class PropertyAnimationActivity1 extends BaseActivity implements OnClickListener {
+public class BasicPropertyAnimationActivity extends BaseActivity implements OnClickListener {
 
     private static final String TAG = "PropertyAnimation1";
     private Context mContext;
@@ -29,7 +29,7 @@ public class PropertyAnimationActivity1 extends BaseActivity implements OnClickL
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-        setContentView(R.layout.activity_property_animation);
+        setContentView(R.layout.activity_basicpropertyanimation);
     }
 
     @Override

@@ -9,11 +9,11 @@ import android.widget.ArrayAdapter;
 public class MainActivity extends LauncherActivity {
 
     //定义要跳转的各个Activity的名称
-    String[] names = {"TweenedAnimation Demo", "FrameAnimation Demo", "PropertyAnimation Demo1", "PropertyAnimation Demo2","SVGAnimation Demo",
-            "ViewAnimator Demo","PhysicsAnimation Demo", "TransitionAnimation Demo", "3DAnimation Demo", "MiscAnimation Demo"};
+    String[] names = {"Tweened Animation Demo", "Frame Animation Demo", "Basic PropertyAnimation Demo", "Advanced PropertyAnimation Demo","SVG Animation Demo",
+            "ViewAnimator Demo","Physics Animation Demo", "Transition Animation Demo", "3D Animation Demo", "Misc Animation Demo"};
 
     //定义各个Activity对应的实现类
-    Class<?>[] clazzs = {TweenedAnimationActivity.class, FrameAnimationActivity.class, PropertyAnimationActivity1.class, PropertyAnimationActivity2.class,CustomSVGActivity.class,
+    Class<?>[] clazzs = {TweenedAnimationActivity.class, FrameAnimationActivity.class, BasicPropertyAnimationActivity.class, PropertyAnimationActivity2.class,CustomSVGActivity.class,
             ViewAnimatorActivity.class,PhysicsAnimationActivity.class, TransitionAnimationActivity.class, ThreeDimensionAnimationActivity.class, MiscAnimationActivity.class};
 
 

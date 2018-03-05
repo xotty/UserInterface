@@ -68,7 +68,7 @@ public class PropertyAnimationActivity2 extends Activity implements View.OnClick
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_propertyanimation2);
+        setContentView(R.layout.activity_advancedpropertyanimation);
         screenWidth = getResources().getDisplayMetrics().widthPixels;
         screenHeight = getResources().getDisplayMetrics().heightPixels;
         tv = findViewById(R.id.title);
