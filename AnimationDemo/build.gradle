@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "org.xottys.userinterface.animation"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -34,5 +34,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.1.0-beta5'
     compile 'com.android.support:support-dynamic-animation:26.1.0'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 
 }

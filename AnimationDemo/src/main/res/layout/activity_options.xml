@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_main"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/img"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_main"
+            android:text="makeCustomAnimation"
+            style="@style/ButtonStyle"/>
+
+        <Button
+            android:id="@+id/btn_main2"
+            android:text="makeScaleUpAnimation"
+            style="@style/ButtonStyle"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_main3"
+            android:text="makeThumbnailScaleUpAnimation"
+            style="@style/ButtonStyle"
+            />
+
+        <Button
+            android:id="@+id/btn_main4"
+            android:text="makeClipRevealAnimation"
+            style="@style/ButtonStyle"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_main5"
+            android:text="makeSceneTransitionAnimation + ViewCompat"
+            style="@style/ButtonStyle"
+            />
+
+        <Button
+            android:id="@+id/btn_main6"
+            android:text="makeSceneTransitionAnimation + Transition--explode"
+            style="@style/ButtonStyle" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_main7"
+            android:text="makeSceneTransitionAnimation + Transition--fade"
+            style="@style/ButtonStyle"
+            />
+
+        <Button
+            android:id="@+id/btn_main8"
+            android:text="makeSceneTransitionAnimation + Transition--MOVE"
+            style="@style/ButtonStyle"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_main9"
+            android:text="makeSceneTransitionAnimation + Transition--slide_bottom"
+            style="@style/ButtonStyle" />
+
+        <Button
+            android:id="@+id/btn_main10"
+            android:text="makeSceneTransitionAnimation + Transition--slide_right"
+            style="@style/ButtonStyle"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_main11"
+            android:text="makeSceneTransitionAnimation + Transition--slide_top"
+            style="@style/ButtonStyle"/>
+
+        <Button
+            android:id="@+id/btn_main12"
+            android:text="makeSceneTransitionAnimation + Transition--slide_left"
+            style="@style/ButtonStyle" />
+    </LinearLayout>
+
+
+</LinearLayout>

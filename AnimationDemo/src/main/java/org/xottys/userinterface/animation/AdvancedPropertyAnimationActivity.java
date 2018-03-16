@@ -4,12 +4,12 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
@@ -29,8 +29,8 @@ import org.xottys.userinterface.animation.views.PointAnimView;
 
 import java.text.DecimalFormat;
 
-public class PropertyAnimationActivity2 extends Activity implements View.OnClickListener {
-    private static final String TAG = "PropertyAnimationActivity2";
+public class AdvancedPropertyAnimationActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "AdvancedPropertyAnimationActivity";
 
     private Button mMenuButton;
     private Button mItemButton1;
@@ -296,7 +296,7 @@ public class PropertyAnimationActivity2 extends Activity implements View.OnClick
                                 startNumberAnimator(textView);
                                 break;
                             case 2:
-                                pvHolderKFrameView.startAnimation(PropertyAnimationActivity2.this);
+                                pvHolderKFrameView.startAnimation(AdvancedPropertyAnimationActivity.this);
                                 break;
 
                             case 4:

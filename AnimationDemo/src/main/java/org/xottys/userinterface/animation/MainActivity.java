@@ -13,9 +13,8 @@ public class MainActivity extends LauncherActivity {
             "ViewAnimator Demo","Physics Animation Demo", "Transition Animation Demo", "3D Animation Demo", "Misc Animation Demo"};
 
     //定义各个Activity对应的实现类
-    Class<?>[] clazzs = {TweenedAnimationActivity.class, FrameAnimationActivity.class, BasicPropertyAnimationActivity.class, PropertyAnimationActivity2.class,CustomSVGActivity.class,
+    Class<?>[] clazzs = {TweenedAnimationActivity.class, FrameAnimationActivity.class, BasicPropertyAnimationActivity.class, AdvancedPropertyAnimationActivity.class,CustomSVGActivity.class,
             ViewAnimatorActivity.class,PhysicsAnimationActivity.class, TransitionAnimationActivity.class, ThreeDimensionAnimationActivity.class, MiscAnimationActivity.class};
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,4 +31,5 @@ public class MainActivity extends LauncherActivity {
     public Intent intentForPosition(int position) {
         return new Intent(MainActivity.this, clazzs[position]);
     }
+
 }

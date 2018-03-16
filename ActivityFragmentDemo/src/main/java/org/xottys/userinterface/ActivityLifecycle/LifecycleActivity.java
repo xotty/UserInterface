@@ -199,4 +199,5 @@ public class LifecycleActivity extends Activity {
         Log.d(TAG, "-------onDestroy------");
         tv.append("-------onDestroy------\n");
     }
+
 }

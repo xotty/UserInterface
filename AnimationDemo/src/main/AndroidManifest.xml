@@ -12,28 +12,71 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TweenedAnimationActivity"
-            android:label="TweenedAnimation"/>
-        <activity android:name=".FrameAnimationActivity"
+        <activity
+            android:name=".TweenedAnimationActivity"
+            android:label="TweenedAnimation" />
+        <activity
+            android:name=".FrameAnimationActivity"
             android:label="FrameAnimation" />
-        <activity android:name=".BasicPropertyAnimationActivity"
-            android:label="PropertyAnimation1"/>
-        <activity android:name=".PropertyAnimationActivity2"
-            android:label="PropertyAnimation2"/>
-        <activity android:name=".ViewAnimatorActivity"
-            android:label="ViewAnimator"/>
-        <activity android:name=".PhysicsAnimationActivity"
-            android:label="PhysicsAnimation"/>
-        <activity android:name=".TransitionAnimationActivity"
-            android:label="TransitionAnimation"/>
-        <activity android:name=".CustomSVGActivity"
-            android:label="Custom SVG Animation"/>
-        <activity android:name=".MiscAnimationActivity"/>
-        <activity android:name=".ThreeDimensionAnimationActivity"/>
+        <activity
+            android:name=".BasicPropertyAnimationActivity"
+            android:label="PropertyAnimation1" />
+        <activity
+            android:name=".AdvancedPropertyAnimationActivity"
+            android:label="PropertyAnimation2" />
+        <activity
+            android:name=".ViewAnimatorActivity"
+            android:label="ViewAnimator" />
+        <activity
+            android:name=".PhysicsAnimationActivity"
+            android:label="PhysicsAnimation" />
+        <activity
+            android:name=".TransitionAnimationActivity"
+            android:label="TransitionAnimation"
+            android:theme="@style/MaterialAnimations"/>
+        <activity
+            android:name=".CustomSVGActivity"
+            android:label="Custom SVG Animation" />
+        <activity android:name=".MiscAnimationActivity" />
+        <activity android:name=".ThreeDimensionAnimationActivity" />
+        <activity android:name=".transition.ActivityOptionsActivity"
+            android:label="ActivityOptions"
+            android:theme="@style/ActivityTransitionTheme"/>
+        <activity android:name=".transition.ActivityOptionsDetailsActivity"
+            android:label="ActivityOptionsDetails"
+            android:theme="@style/ActivityTransitionTheme"/>
+        <activity android:name=".transition.LayoutAnimationControllerActivity"
+            android:label="LayoutAnimationController"/>
+        <activity android:name=".transition.LayoutTransitionActivity"
+            android:label="LayoutTransition"/>
+        <activity android:name=".transition.TransitionActivity"
+            android:label="Transition"
+            android:theme="@style/MaterialAnimations.Red" />
+        <activity android:name=".transition.TransitionDetailsActivity"
+            android:label="TransitionDetails"
+            android:theme="@style/MaterialAnimations.Blue" />
+        <activity android:name=".transition.TransitionManagerActivity"
+            android:label="TransitionManager"/>
+        <activity android:name=".transition.Activity_A" />
+        <activity android:name=".transition.Activity_B" />
+        <activity android:name=".transition.Activity_C" />
+        <activity android:name=".transition.LayoutAnimation1"
+            android:label="List Cascade" />
+        <activity android:name=".transition.LayoutAnimation2"
+            android:label="Reverse Order"/>
+        <activity android:name=".transition.LayoutAnimation3"
+            android:label="Wave Scale"/>
+        <activity android:name=".transition.LayoutAnimation4"
+            android:label="Nested Animation"/>
+        <activity android:name=".transition.LayoutAnimation5"
+            android:label="Random"/>
+        <activity android:name=".transition.SharedElementActivity"
+            android:label="SharedElement"
+            android:theme="@style/MaterialAnimations"/>
+
     </application>
 
 </manifest>

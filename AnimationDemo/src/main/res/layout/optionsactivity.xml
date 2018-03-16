@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/make_custom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="makeCustom"
+        android:textColor="@color/colorPrimary"
+        android:onClick="onClick"
+        android:textAllCaps="false"/>
+
+
+    <Button
+        android:id="@+id/make_scale_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="makeScaleUp"
+        android:textColor="@color/colorPrimary"
+        android:onClick="onClick"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/make_thumbnail_scaleup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="makeThumbnailScaleUp"
+        android:textColor="@color/colorPrimary"
+        android:onClick="onClick"
+        android:textAllCaps="false"/>
+
+
+    <Button
+        android:id="@+id/make_clip_reveal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="makeClipReveal"
+        android:textColor="@color/colorPrimary"
+        android:onClick="onClick"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/make_basic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="makeBasic"
+        android:textColor="@color/colorPrimary"
+        android:onClick="onClick"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/no_animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Animation"
+        android:textColor="@color/colorPrimary"
+        android:onClick="onClick"
+        android:textAllCaps="false"/>
+    <TextView
+        android:id="@+id/make_scene_transition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Press Image below to start makeSceneTransitionAnimation"
+        android:gravity="center_horizontal"/>
+
+    <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp">
+    <ImageView android:id="@+id/ducky"
+               android:layout_height="100dp"
+               android:layout_width="100dp"
+               android:src="@drawable/ducky"
+               android:onClick="clicked"
+               android:transitionName="ducky"
+            />
+
+    <ImageView android:id="@+id/ball"
+               android:layout_height="100dp"
+               android:layout_width="100dp"
+               android:src="@drawable/ball"
+               android:onClick="clicked"
+               android:transitionName="ball"
+            />
+
+    <ImageView android:id="@+id/mug"
+               android:layout_height="100dp"
+               android:layout_width="100dp"
+               android:scaleType="centerCrop"
+               android:src="@drawable/mug"
+               android:onClick="clicked"
+               android:transitionName="mug"
+            />
+
+    <ImageView android:id="@+id/scissors"
+               android:layout_height="100dp"
+               android:layout_width="100dp"
+               android:scaleType="centerCrop"
+               android:src="@drawable/scissors"
+               android:onClick="clicked"
+               android:transitionName="scissors"
+            />
+</GridLayout>
+</LinearLayout>
