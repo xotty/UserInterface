@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import org.xottys.userinterface.animation.R;
-public class SharedElementFragment2 extends Fragment {
+public class SharedElementDetailsFragment extends Fragment {
 
-    public static SharedElementFragment2 newInstance() {
+    public static SharedElementDetailsFragment newInstance() {
         Bundle args = new Bundle();
-        SharedElementFragment2 fragment = new SharedElementFragment2();
+        SharedElementDetailsFragment fragment = new SharedElementDetailsFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -22,7 +22,7 @@ public class SharedElementFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_sharedelement_fragment2, container, false);
 
-        ImageView squareBlue = (ImageView) view.findViewById(R.id.square_blue);
+        ImageView squareBlue =  view.findViewById(R.id.square_blue);
         DrawableCompat.setTint(squareBlue.getDrawable(), Color.BLUE);
 
         return view;

@@ -11,6 +11,7 @@
             android:id="@+id/iv_1"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:layout_marginTop="40dp"
             android:onClick="onArrowClick"
             android:src="@drawable/animvector" />
 

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="ViewSwitcher"/>
+        android:text="AdapterViewFlipper"/>
     <LinearLayout
         android:id="@+id/btnzone"
         android:layout_width="match_parent"
@@ -17,14 +17,18 @@
         android:layout_margin="5dp"
         android:background="@drawable/round_background"
         android:orientation="horizontal">
-
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/autoplay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="自动播放"/>
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/next"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="下一张"/>
-
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/prev"
             android:layout_width="0dp"
@@ -32,13 +36,12 @@
             android:layout_weight="1"
             android:text="上一张"/>
     </LinearLayout>
-
-    <ViewSwitcher
-        android:id="@+id/view_switcher"
+    <AdapterViewFlipper
+        android:id="@+id/flipper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center_horizontal">
-    </ViewSwitcher>
-
+        android:layout_marginTop="20dp"
+        android:autoStart="true"
+        android:flipInterval="2000"
+        android:layout_gravity="center_horizontal"/>
 </LinearLayout>

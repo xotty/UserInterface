@@ -11,4 +11,8 @@
     <string name="layout_animation_phone">Phone:</string>
     <string name="layout_animation_address">Address:</string>
     <string name="square_blue_name">square_blue</string>
+    <string name="card_back_title">Angry Red Android</string>
+    <string name="card_back_description"><![CDATA[Lorem ipsum dolor sit]]></string>
+    <string name="action_info">Photo info</string>
+    <string name="action_photo">View photo</string>
 </resources>

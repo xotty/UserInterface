@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/btn_page_transformer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/depth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Depth"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/mycube"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MyCube"
+            />
+
+        <RadioButton
+            android:id="@+id/zoom_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZoomOut" />
+    </RadioGroup>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btn_page_transformer"
+       />
+</RelativeLayout>

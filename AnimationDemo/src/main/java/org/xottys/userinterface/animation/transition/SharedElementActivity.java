@@ -20,13 +20,13 @@ public class SharedElementActivity extends AppCompatActivity {
         Slide slideTransition = new Slide(Gravity.START);
         slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         // Create fragment and define some of it transitions
-        SharedElementFragment1 sharedElementFragment1 = SharedElementFragment1.newInstance();
-        sharedElementFragment1.setReenterTransition(slideTransition);
-        sharedElementFragment1.setExitTransition(slideTransition);
-        sharedElementFragment1.setSharedElementEnterTransition(new ChangeBounds());
+        SharedElementFragment sharedElementFragment = SharedElementFragment.newInstance();
+        sharedElementFragment.setReenterTransition(slideTransition);
+        sharedElementFragment.setExitTransition(slideTransition);
+        sharedElementFragment.setSharedElementEnterTransition(new ChangeBounds());
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.sample2_content, sharedElementFragment1)
+                .replace(R.id.sample2_content, sharedElementFragment)
                 .commit();
 
         setupToolbar();
@@ -55,7 +55,7 @@ public class SharedElementActivity extends AppCompatActivity {
 //        Slide slideTransition = new Slide(Gravity.LEFT);
 //        slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
 //        // Create fragment and define some of it transitions
-//        SharedElementFragment1 sharedElementFragment1 = SharedElementFragment1.newInstance(sample);
+//        SharedElementFragment sharedElementFragment1 = SharedElementFragment.newInstance(sample);
 //        sharedElementFragment1.setReenterTransition(slideTransition);
 //        sharedElementFragment1.setExitTransition(slideTransition);
 //        sharedElementFragment1.setSharedElementEnterTransition(new ChangeBounds());

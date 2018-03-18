@@ -5,23 +5,28 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
-public class ViewAnimatorActivity extends FragmentActivity{
+import org.xottys.userinterface.animation.transition.TransitionManagerFragment1;
+import org.xottys.userinterface.animation.transition.TransitionManagerFragment2;
+
+public class AdapterViewAnimatorActivity extends FragmentActivity{
     private TextView textView;
     LayoutInflater mLayoutInflater;
     // 存放Fragment的数组
-    private Class mFragmentArray[] = {ViewAnimatorFragment.class, ViewSwitcherFragment.class, ImageTextSwitcherFragment.class, ViewFlipperFragment.class};
+    private Class mFragmentArray[] = {AdapterViewAnimatorFragment1.class, AdapterViewAnimatorFragment2.class};
     // 存放Tab 标签文字的数组
-    private String mTextArray[] = {"    View\nAnimator", "   View\nSwitcher", "Image/Text\n  Switcher", "  View\nFlipper"};
+    private String mTextArray[] = {"StackView", "AdapterViewwFlipper"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_viewanimator);
-     //   getActionBar().setDisplayShowTitleEnabled(true);
-       mLayoutInflater = LayoutInflater.from(this);
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        setContentView(R.layout.activity_transitionmanager);
+
+        mLayoutInflater = LayoutInflater.from(this);
 
         // 找到TabHost
         FragmentTabHost mTabHost = findViewById(android.R.id.tabhost);

@@ -13,14 +13,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import org.xottys.userinterface.animation.R;
 
-public class SharedElementFragment1 extends Fragment {
+public class SharedElementFragment extends Fragment {
 
 
-    public static SharedElementFragment1 newInstance() {
+    public static SharedElementFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        SharedElementFragment1 fragment = new SharedElementFragment1();
+        SharedElementFragment fragment = new SharedElementFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -29,7 +29,7 @@ public class SharedElementFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_sharedelement_fragment1, container, false);
 
-        final ImageView squareBlue = (ImageView) view.findViewById(R.id.square_blue);
+        final ImageView squareBlue =  view.findViewById(R.id.square_blue);
         DrawableCompat.setTint(squareBlue.getDrawable(), Color.BLUE);
 
         view.findViewById(R.id.sample2_button1).setOnClickListener(new View.OnClickListener() {
@@ -50,21 +50,21 @@ public class SharedElementFragment1 extends Fragment {
     }
 
     private void addNextFragment( ImageView squareBlue, boolean overlap) {
-        SharedElementFragment2 sharedElementFragment2 = SharedElementFragment2.newInstance();
+        SharedElementDetailsFragment sharedElementDetailsFragment = SharedElementDetailsFragment.newInstance();
 
-        Slide slideTransition = new Slide(Gravity.RIGHT);
+        Slide slideTransition = new Slide(Gravity.END);
         slideTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
 
         ChangeBounds changeBoundsTransition = new ChangeBounds();
         changeBoundsTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
 
-        sharedElementFragment2.setEnterTransition(slideTransition);
-        sharedElementFragment2.setAllowEnterTransitionOverlap(overlap);
-        sharedElementFragment2.setAllowReturnTransitionOverlap(overlap);
-        sharedElementFragment2.setSharedElementEnterTransition(changeBoundsTransition);
+        sharedElementDetailsFragment.setEnterTransition(slideTransition);
+        sharedElementDetailsFragment.setAllowEnterTransitionOverlap(overlap);
+        sharedElementDetailsFragment.setAllowReturnTransitionOverlap(overlap);
+        sharedElementDetailsFragment.setSharedElementEnterTransition(changeBoundsTransition);
 
         getFragmentManager().beginTransaction()
-                .replace(R.id.sample2_content, sharedElementFragment2)
+                .replace(R.id.sample2_content, sharedElementDetailsFragment)
                 .addToBackStack(null)
                 .addSharedElement(squareBlue, getString(R.string.square_blue_name))
                 .commit();

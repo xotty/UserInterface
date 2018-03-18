@@ -1,6 +1,7 @@
 package org.xottys.userinterface.animation;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -13,12 +14,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import org.xottys.userinterface.animation.views.AlipayFailureView;
@@ -65,6 +72,25 @@ public class AdvancedPropertyAnimationActivity extends AppCompatActivity impleme
     DecimalFormat format = new DecimalFormat("#.00");
     ValueAnimator anim;
 
+    private static final String[] LIST_STRINGS_EN = new String[] {
+            "One",
+            "Two",
+            "Three Animation",
+            "Four",
+            "Five",
+            "Six"
+    };
+    private static final String[] LIST_STRINGS_FR = new String[] {
+            "Un",
+            "Deux",
+            "Trois",
+            "Quatre",
+            "Le Five",
+            "Six"
+    };
+
+    ListView mEnglishList;
+    ListView mFrenchList;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -229,8 +255,58 @@ public class AdvancedPropertyAnimationActivity extends AppCompatActivity impleme
                     break;
                 case R.id.item3:
                     clickedItemButtonID = 3;
-                    tv.setText("CircularReveal Demo\nClick Image to Start Animation");
                     animationLayout.removeView(animationButton);
+                    tv.setText("ObjectAnimator Demo");
+                    View roatatingListView = getLayoutInflater().inflate(R.layout.rotating_list, null);
+//
+//                    View vetctorView = getLayoutInflater().inflate(R.layout.animated_vector, null);
+//                    iv1 = vetctorView.findViewById(R.id.iv_1);
+//                    iv2 = vetctorView.findViewById(R.id.iv_2);
+//                    iv3 = vetctorView.findViewById(R.id.iv_3);
+                    animationContent1.addView(roatatingListView);
+                    //FrameLayout container = (LinearLayout) findViewById(R.id.container);
+                    mEnglishList = (ListView) findViewById(R.id.list_en);
+                    mFrenchList = (ListView) findViewById(R.id.list_fr);
+
+                    // Prepare the ListView
+                    final ArrayAdapter<String> adapterEn = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_list_item_1, LIST_STRINGS_EN);
+                    // Prepare the ListView
+                    final ArrayAdapter<String> adapterFr = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_list_item_1, LIST_STRINGS_FR);
+
+                    mEnglishList.setAdapter(adapterEn);
+                    mFrenchList.setAdapter(adapterFr);
+                    mFrenchList.setRotationY(-90f);
+
+                    Button starter = (Button) findViewById(R.id.button);
+                    starter.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+                            flipit();
+                        }
+                    });
+
+                    break;
+                case R.id.item4:
+                    clickedItemButtonID = 4;
+                    tv.setText("Path Animation Demo");
+                    PathView pathView = new PathView(this);
+
+                    iv = new ImageView(this);
+                    LinearLayout.LayoutParams lp3 = new LinearLayout.LayoutParams(
+                            100, 100);
+                    lp3.setMargins(10, 10, 0, 0);//左上右下
+
+                    iv.setLayoutParams(lp3);
+                    iv.setBackgroundColor(Color.RED);
+                    animationContent1.addView(iv);
+                    animationContent1.addView(pathView);
+                    break;
+                case R.id.item5:
+                    clickedItemButtonID = 5;
+                    animationLayout.removeView(animationButton);
+                    tv.setText("CircularReveal Demo\nClick Image to Start Animation");
+
                     lp7.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
 
                     View circularRevealView = getLayoutInflater().inflate(R.layout.circularreveal_animator, null);
@@ -255,32 +331,6 @@ public class AdvancedPropertyAnimationActivity extends AppCompatActivity impleme
                             animator2.start();
                         }
                     });
-                    break;
-                case R.id.item4:
-                    clickedItemButtonID = 4;
-                    tv.setText("Path Animation Demo");
-                    PathView pathView = new PathView(this);
-
-                    iv = new ImageView(this);
-                    LinearLayout.LayoutParams lp3 = new LinearLayout.LayoutParams(
-                            100, 100);
-                    lp3.setMargins(10, 10, 0, 0);//左上右下
-
-                    iv.setLayoutParams(lp3);
-                    iv.setBackgroundColor(Color.RED);
-                    animationContent1.addView(iv);
-                    animationContent1.addView(pathView);
-                    break;
-                case R.id.item5:
-                    clickedItemButtonID = 5;
-                    animationLayout.removeView(animationButton);
-                    tv.setText("VectorDrawble Animation Demo\nClick Image to Start Animation");
-                    View vetctorView = getLayoutInflater().inflate(R.layout.animated_vector, null);
-                    iv1 = vetctorView.findViewById(R.id.iv_1);
-                    iv2 = vetctorView.findViewById(R.id.iv_2);
-                    iv3 = vetctorView.findViewById(R.id.iv_3);
-                    animationContent1.addView(vetctorView);
-
                     break;
             }
             if (clickedItemButtonID != 5 && clickedItemButtonID != 3) {
@@ -481,22 +531,36 @@ public class AdvancedPropertyAnimationActivity extends AppCompatActivity impleme
         pathAnimator.start();
     }
 
-    public void onArrowClick(View view) {
-        Drawable drawable = iv1.getDrawable();
-        ((Animatable) drawable).start();
+    private Interpolator accelerator = new AccelerateInterpolator();
+    private Interpolator decelerator = new DecelerateInterpolator();
+    private void flipit() {
+        final ListView visibleList;
+        final ListView invisibleList;
+        if (mEnglishList.getVisibility() == View.GONE) {
+            visibleList = mFrenchList;
+            invisibleList = mEnglishList;
+        } else {
+            invisibleList = mFrenchList;
+            visibleList = mEnglishList;
+        }
+        ObjectAnimator visToInvis = ObjectAnimator.ofFloat(visibleList, "rotationY", 0f, 90f);
+        visToInvis.setDuration(500);
+        visToInvis.setInterpolator(accelerator);
+        final ObjectAnimator invisToVis = ObjectAnimator.ofFloat(invisibleList, "rotationY",
+                -90f, 0f);
+        invisToVis.setDuration(500);
+        invisToVis.setInterpolator(decelerator);
+        visToInvis.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator anim) {
+                visibleList.setVisibility(View.GONE);
+                invisToVis.start();
+                invisibleList.setVisibility(View.VISIBLE);
+            }
+        });
+        visToInvis.start();
     }
 
-    public void onSearchBoxClick(View view) {
-        isSearchBoxChecked = !isSearchBoxChecked;
-        final int[] stateSet = {android.R.attr.state_checked * (isSearchBoxChecked ? 1 : -1)};
-        iv2.setImageState(stateSet, true);
-    }
-
-    public void onTwitterClick(View view) {
-        isTwitterChecked = !isTwitterChecked;
-        final int[] stateSet = {android.R.attr.state_checked * (isTwitterChecked ? 1 : -1)};
-        iv3.setImageState(stateSet, true);
-    }
 
     public void setButtnGone() {
         mItemButton1.setVisibility(View.GONE);

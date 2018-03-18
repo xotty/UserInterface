@@ -23,13 +23,14 @@
             android:label="FrameAnimation" />
         <activity
             android:name=".BasicPropertyAnimationActivity"
-            android:label="PropertyAnimation1" />
+            android:label="BasicPropertyAnimation" />
         <activity
             android:name=".AdvancedPropertyAnimationActivity"
-            android:label="PropertyAnimation2" />
+            android:label="AdvancedPropertyAnimation" />
         <activity
             android:name=".ViewAnimatorActivity"
-            android:label="ViewAnimator" />
+            android:label="ViewAnimator"
+            android:theme="@style/MaterialAnimations"/>
         <activity
             android:name=".PhysicsAnimationActivity"
             android:label="PhysicsAnimation" />
@@ -76,6 +77,18 @@
         <activity android:name=".transition.SharedElementActivity"
             android:label="SharedElement"
             android:theme="@style/MaterialAnimations"/>
+        <activity android:name=".AdapterViewAnimatorActivity"
+        android:label="AdapterViewAnimator" />
+        <activity android:name=".PageTransformerActivity"
+            android:label="PageTransformer" />
+        <activity android:name=".FragmentTransactionActivity"
+            android:label="FragmentTransactionAnimation"
+            android:theme="@style/DarkTheme"/>
+        <activity android:name=".Transition3dActivity"
+            android:label="3D 动画"
+            android:theme="@style/MaterialAnimations"/>
+        <activity android:name=".VectorDrawableActivity"
+            android:label="VectorDrawable" />
 
     </application>
 
