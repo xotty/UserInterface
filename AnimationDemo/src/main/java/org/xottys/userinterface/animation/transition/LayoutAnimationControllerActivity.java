@@ -1,5 +1,6 @@
 package org.xottys.userinterface.animation.transition;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,7 @@ import android.view.View;
 
 import org.xottys.userinterface.animation.R;
 
-public class LayoutAnimationControllerActivity extends AppCompatActivity {
+public class LayoutAnimationControllerActivity extends Activity {
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

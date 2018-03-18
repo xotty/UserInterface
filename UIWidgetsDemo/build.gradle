@@ -7,7 +7,7 @@ android {
     buildToolsVersion '26.0.2'
 
     defaultConfig {
-        applicationId "org.xottys.userinterface"
+        applicationId "org.xottys.userinterface.uiwidgets"
         minSdkVersion 24
         targetSdkVersion 26
         versionCode 1

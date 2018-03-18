@@ -16,10 +16,10 @@
 
 package org.xottys.userinterface.animation.transition;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -30,7 +30,7 @@ import org.xottys.userinterface.animation.R;
 
 import java.util.List;
 
-public class LayoutAnimation5 extends AppCompatActivity {
+public class LayoutAnimation5 extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

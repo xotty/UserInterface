@@ -1,15 +1,15 @@
 package org.xottys.userinterface.animation;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import org.xottys.userinterface.animation.views.TransPathView;
 
 
-public class CustomSVGActivity extends AppCompatActivity {
+public class CustomSVGActivity extends Activity {
 
     public static final String PATH_0 = "M19,48 L34,34 L52,53 L52,97 L19,118 Z M38,30 L52,15 L107,15 L121,30 L103,48 L56,48 Z M108,52 L126,34 L141,49 L141,118 L107,97 Z M107,139 L141,123 L141,191 L126,206 L107,188 Z M56,192 L102,192 L121,211 L107,225 L53,225 L38,211 Z M19,123 L52,139 L52,188 L33,206 L19,192 Z M28,120 L28,120 L28,120 L28,120 L28,120 L28,120 Z";
     public static final String PATH_1 = "M19,48 L34,34 L52,53 L52,97 L19,118 Z M38,30 L38,30 L38,30 L38,30 L38,30 L38,30 Z M108,52 L108,52 L108,52 L108,52 L108,52 Z M107,139 L107,139 L107,139 L107,139 L107,139 Z M56,192 L56,192 L56,192 L56,192 L56,192 L56,192 Z M19,123 L52,139 L52,188 L33,206 L19,192 Z M28,120 L28,120 L28,120 L28,120 L28,120 L28,120 Z";

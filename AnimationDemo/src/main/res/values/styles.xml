@@ -1,14 +1,10 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+    <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowContentTransitions">true</item>
-
     </style>
 
     <style name="MenuStyle">
@@ -45,7 +41,7 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-    <style name="ActivityTransitionTheme" parent="Theme.AppCompat">
+    <style name="ActivityTransitionTheme" parent="MaterialAnimations">
         <item name="android:windowEnterTransition">@transition/explode</item>
         <item name="android:windowExitTransition">@transition/explode</item>
         <item name="android:windowSharedElementEnterTransition">@transition/move_image</item>
@@ -54,8 +50,22 @@
         <item name="android:windowAllowEnterTransitionOverlap">false</item>
     </style>
 
-
-    <style name="MaterialAnimations" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="MaterialAnimations_NoActionBar" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/material_animations_primary</item>
+        <item name="android:colorPrimaryDark">@color/material_animations_primary_dark</item>
+        <item name="android:colorAccent">@color/material_animations_accent</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorPrimaryInverse">@color/text_light</item>
+        <item name="android:statusBarColor">@color/material_animations_primary_dark</item>
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">false</item>
+        <item name="android:windowAllowReturnTransitionOverlap">false</item>
+        <item name="android:titleTextAppearance">@style/MaterialAnimations.TextAppearance.Title
+        </item>
+        <item name="android:windowBackground">@color/light_grey</item>
+    </style>
+    <style name="MaterialAnimations" parent="android:Theme.Material.Light.DarkActionBar">
         <item name="android:colorPrimary">@color/material_animations_primary</item>
         <item name="android:colorPrimaryDark">@color/material_animations_primary_dark</item>
         <item name="android:colorAccent">@color/material_animations_accent</item>
@@ -78,6 +88,9 @@
         <item name="android:statusBarColor">@color/theme_red_primary_dark</item>
         <item name="android:windowBackground">@color/theme_red_background</item>
         <item name="android:colorAccent">@color/theme_red_accent</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowContentTransitions">true</item>
+
     </style>
 
     <style name="MaterialAnimations.Blue" parent="MaterialAnimations">

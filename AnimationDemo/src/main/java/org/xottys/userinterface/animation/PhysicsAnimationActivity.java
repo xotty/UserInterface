@@ -1,7 +1,7 @@
 package org.xottys.userinterface.animation;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import android.support.animation.DynamicAnimation;
@@ -10,7 +10,7 @@ import android.support.animation.SpringAnimation;
 import android.support.animation.SpringForce;
 import android.widget.ImageView;
 
-public class PhysicsAnimationActivity extends AppCompatActivity {
+public class PhysicsAnimationActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

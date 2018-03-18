@@ -2,7 +2,7 @@
     <!-- ================================ -->
     <!--  app/shortcuts examples strings  -->
     <!-- ================================ -->
-    <string name="app_name">ActivityFragmentDemo</string>
+    <string name="app_name">UI-Lifecycle</string>
     <string name="lifecycle">Activity生命周期演示</string>
     <string name="addtxt">动态添加\nButton</string>
     <string name="deltxt">动态删除\nButton</string>

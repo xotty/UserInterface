@@ -2,12 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-
-
-
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "org.xottys.userinterface.animation"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -22,7 +20,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {

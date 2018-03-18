@@ -23,7 +23,7 @@ import org.xottys.userinterface.animation.R;
  * This application demonstrates how to use LayoutTransition to automate transition animations
  * as items are removed from or added to a container.
  */
-public class LayoutTransitionActivity extends AppCompatActivity {
+public class LayoutTransitionActivity extends Activity {
 
     private int numButtons = 1;
     enum BtnHide{btn_remove,btn_gone,btn_invisible} ;

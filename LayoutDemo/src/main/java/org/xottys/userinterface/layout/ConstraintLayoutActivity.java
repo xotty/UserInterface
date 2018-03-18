@@ -17,7 +17,7 @@
  * @version 1.0
  */
 
-package org.xottys.userinterface;
+package org.xottys.userinterface.layout;
 
 import android.graphics.Color;
 import android.os.Bundle;

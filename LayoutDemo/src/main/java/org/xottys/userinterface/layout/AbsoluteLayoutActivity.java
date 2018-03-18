@@ -1,6 +1,6 @@
-/**帧布局
- * 缺省是从左上角开始，后面的会覆盖前面的控件。
- * 可以用android:layout_gravity将控件设置在布局的四边或中间
+/**绝对布局，
+ *极力不推荐，官方已经舍弃。
+ *定义两个控件左上角坐标轴，即Android:layout_x和android:layout_y来控制位置。
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
@@ -9,17 +9,19 @@
  * @author xottys@163.com
  * @version 1.0
  */
-package org.xottys.userinterface;
 
+package org.xottys.userinterface.layout;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class FrameLayoutActivity extends Activity
+
+public class AbsoluteLayoutActivity extends Activity
 {
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.framelayout);
-	}
+		setContentView(R.layout.absolutelayout);
+
+    }
 }

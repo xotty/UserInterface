@@ -20,8 +20,7 @@ public class ViewAnimatorActivity extends FragmentActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewanimator);
-     //   getActionBar().setDisplayShowTitleEnabled(true);
-       mLayoutInflater = LayoutInflater.from(this);
+        mLayoutInflater = LayoutInflater.from(this);
 
         // 找到TabHost
         FragmentTabHost mTabHost = findViewById(android.R.id.tabhost);

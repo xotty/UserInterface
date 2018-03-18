@@ -1,11 +1,12 @@
 package org.xottys.userinterface.animation;
 
+import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-public class FrameAnimationActivity extends AppCompatActivity {
+public class FrameAnimationActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

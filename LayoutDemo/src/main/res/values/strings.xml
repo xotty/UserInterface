@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UserInterface</string>
+    <string name="app_name">UI-Layout</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_grid_layout_test">GridLayoutTest</string>
     <string name="bn1">演示按钮1</string>

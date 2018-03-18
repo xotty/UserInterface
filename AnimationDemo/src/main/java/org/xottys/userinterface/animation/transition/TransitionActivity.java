@@ -17,14 +17,11 @@ package org.xottys.userinterface.animation.transition;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
-import android.app.SharedElementCallback;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
@@ -32,37 +29,51 @@ import android.transition.Transition;
 import android.transition.Visibility;
 import android.util.Pair;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
 import org.xottys.userinterface.animation.R;
 
-import java.util.List;
-import java.util.Map;
 
-/**
- *
- */
-public class TransitionActivity extends AppCompatActivity {
+public class TransitionActivity extends Activity {
 
-    private Intent intent;
-    View squareBlue;
+    private View squareBlue;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transition);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+
+        getWindow().setAllowEnterTransitionOverlap(true);
+        getWindow().setAllowReturnTransitionOverlap(true);
 
         Fade enterTransition = new Fade();
-        enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+        enterTransition.setDuration(500);
         getWindow().setEnterTransition(enterTransition);
+
+        Transition returnTransition = new Slide(Gravity.BOTTOM);
+        returnTransition.setDuration(500);
+        getWindow().setReturnTransition(returnTransition);
+
+        Transition exitTransition = new Explode();
+        returnTransition.setDuration(500);
+        getWindow().setExitTransition(exitTransition);
+
+        Transition reenterTransition = new Slide(Gravity.TOP);
+        returnTransition.setDuration(500);
+        getWindow().setReenterTransition(reenterTransition);
+
+        setContentView(R.layout.activity_transition);
         squareBlue = findViewById(R.id.imgicon);
         ((ImageView)squareBlue).setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void onClick(View v) {
-        intent = new Intent(this, TransitionDetailsActivity.class);
+        Intent intent = new Intent(this, TransitionDetailsActivity.class);
 
         switch (v.getId()) {
             case R.id.explode_code:
@@ -99,23 +110,39 @@ public class TransitionActivity extends AppCompatActivity {
             case R.id.share_fragment:
                 intent = new Intent(this, SharedElementActivity.class);
 
-//                final View squareBlue = findViewById(R.id.imgicon);
                 final View tname = findViewById(R.id.share_fragment);
                 startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this,
                         Pair.create(tname, "title"),
                         Pair.create(squareBlue, "square_blue"))
                         .toBundle());
-//                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
 
                 break;
             case R.id.exit:
-                Transition returnTransition = new Slide(Gravity.BOTTOM);
-                returnTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
+                Transition returnTransition = new Slide(Gravity.TOP);
+                returnTransition.setDuration(500);
                 getWindow().setReturnTransition(returnTransition);
                 finishAfterTransition();
                 break;
         }
        if  (v.getId()!=R.id.share_activity && v.getId()!=R.id.exit &&v.getId()!=R.id.share_fragment )
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+    }
+
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        finishAfterTransition();
+//    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if(item.getItemId() == android.R.id.home)
+        {   Transition returnTransition = new Explode();
+            returnTransition.setDuration(500);
+            getWindow().setReturnTransition(returnTransition);
+            finishAfterTransition();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

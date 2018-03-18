@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AnimationDemo</string>
+    <string name="app_name">UI-Animation Demo</string>
     <string name="animation_2_text_1">Freedom</string>
     <string name="animation_2_text_2">is nothing else but</string>
     <string name="animation_2_text_3">a chance to be better.</string>

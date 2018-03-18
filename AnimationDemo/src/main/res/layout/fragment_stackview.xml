@@ -18,28 +18,20 @@
         android:background="@drawable/round_background"
         android:orientation="horizontal">
 
-        <android.support.v7.widget.AppCompatButton
+        <Button
             android:id="@+id/next"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="下一张"/>
 
-        <android.support.v7.widget.AppCompatButton
+        <Button
             android:id="@+id/prev"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="上一张"/>
     </LinearLayout>
-
-    <!--<ViewSwitcher-->
-        <!--android:id="@+id/view_switcher"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="50dp"-->
-        <!--android:layout_gravity="center_horizontal">-->
-    <!--</ViewSwitcher>-->
 
     <StackView
         android:id="@+id/stackview"

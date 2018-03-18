@@ -2,12 +2,12 @@
 
 package org.xottys.userinterface.animation.transition;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import org.xottys.userinterface.animation.R;
 
-public class LayoutAnimation4 extends AppCompatActivity {
+public class LayoutAnimation4 extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.drawable.Animatable;
@@ -36,7 +37,7 @@ import org.xottys.userinterface.animation.views.PointAnimView;
 
 import java.text.DecimalFormat;
 
-public class AdvancedPropertyAnimationActivity extends AppCompatActivity implements View.OnClickListener {
+public class AdvancedPropertyAnimationActivity extends Activity implements View.OnClickListener {
     private static final String TAG = "AdvancedPropertyAnimationActivity";
 
     private Button mMenuButton;

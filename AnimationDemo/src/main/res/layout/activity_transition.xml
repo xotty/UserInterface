@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="0dp">
 
     <Button
         android:id="@+id/explode_code"
@@ -144,8 +144,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:clipToPadding="false"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/imgicon"

@@ -5,11 +5,13 @@ overridePendingTransition 需要注意加载的时机，即Activity#onCreate之�
  */
 package org.xottys.userinterface.animation;
 
-import android.app.LauncherActivity;
+import android.app.ActivityOptions;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.Explode;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import org.xottys.userinterface.animation.transition.ActivityOptionsActivity;
 import org.xottys.userinterface.animation.transition.LayoutAnimationControllerActivity;
@@ -17,30 +19,44 @@ import org.xottys.userinterface.animation.transition.LayoutTransitionActivity;
 import org.xottys.userinterface.animation.transition.TransitionActivity;
 import org.xottys.userinterface.animation.transition.TransitionManagerActivity;
 
-public class TransitionAnimationActivity extends LauncherActivity {
-
-    //定义要跳转的各个Activity的名称
-    String[] names = {"ActivityOptions Demo", "Transition Demo", "TransitionManager Demo",
-            "LayoutTransition Demo","LayoutAnimationController  Demo"};
-
-    Class<?>[] clazzs = {ActivityOptionsActivity.class,TransitionActivity.class, TransitionManagerActivity.class,
-            LayoutTransitionActivity.class,LayoutAnimationControllerActivity.class};
+public class TransitionAnimationActivity extends ListActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        //进入的动画
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_bottom);
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, names);
-        setListAdapter(adapter);
+           String[] activity_names = {"ActivityOptions Demo", "Transition Demo", "TransitionManager Demo",
+            "LayoutTransition Demo","LayoutAnimationController Demo"};
 
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, activity_names);
+        ListView listView = this.getListView();
+        listView.setItemsCanFocus(true);
+        setListAdapter(arrayAdapter);
     }
 
     @Override
-    public Intent intentForPosition(int position) {
-
-        return new Intent(TransitionAnimationActivity.this, clazzs[position]);
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        Intent intent=null;
+        switch (position){
+            case 0:
+                intent=new Intent(TransitionAnimationActivity.this,ActivityOptionsActivity.class);
+                break;
+            case 1:
+                intent=new Intent(TransitionAnimationActivity.this,TransitionActivity.class);
+                break;
+            case 2:
+                intent=new Intent(TransitionAnimationActivity.this,TransitionManagerActivity.class);
+                break;
+            case 3:
+                intent=new Intent(TransitionAnimationActivity.this,LayoutTransitionActivity.class);
+                break;
+            case 4:
+                intent=new Intent(TransitionAnimationActivity.this,LayoutAnimationControllerActivity.class);
+                break;
+        }
+        ActivityOptions activityOptions
+                = ActivityOptions.makeSceneTransitionAnimation(this);
+        startActivity(intent, activityOptions.toBundle());
     }
 
     @Override

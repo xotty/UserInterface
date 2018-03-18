@@ -1,6 +1,7 @@
 
 package org.xottys.userinterface.animation.transition;
 
+import android.app.Activity;
 import android.app.ActivityOptions;
 import android.app.SharedElementCallback;
 import android.content.Intent;
@@ -10,7 +11,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class ActivityOptionsActivity extends AppCompatActivity implements View.OnClickListener {
+public class ActivityOptionsActivity extends Activity implements View.OnClickListener {
 
     public static final int[] DRAWABLES = {
             R.drawable.ball,

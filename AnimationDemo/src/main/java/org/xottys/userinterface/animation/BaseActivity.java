@@ -1,9 +1,9 @@
 package org.xottys.userinterface.animation;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends Activity {
 
     @Override
     public void setContentView(int layoutResID) {

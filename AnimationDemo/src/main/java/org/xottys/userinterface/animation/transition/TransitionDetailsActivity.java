@@ -16,27 +16,21 @@
 package org.xottys.userinterface.animation.transition;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.Gravity;
-import android.view.View;
-import android.view.Window;
-import android.widget.ImageView;
+
 
 import org.xottys.userinterface.animation.R;
 
 
-public class TransitionDetailsActivity extends AppCompatActivity {
+public class TransitionDetailsActivity extends Activity {
     Transition transition;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +47,7 @@ public class TransitionDetailsActivity extends AppCompatActivity {
                 break;
             case 2:
                 transition=new Slide();
-                ((Slide)transition).setSlideEdge(Gravity.RIGHT);
+                ((Slide)transition).setSlideEdge(Gravity.END);
                 transition.setDuration(500);
                 break;
             case 3:
