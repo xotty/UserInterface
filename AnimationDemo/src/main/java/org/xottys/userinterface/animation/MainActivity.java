@@ -9,16 +9,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import org.xottys.userinterface.animation.adapterview_animator.AdapterViewAnimatorActivity;
+import org.xottys.userinterface.animation.advanced_property_animation.AdvancedPropertyAnimationActivity;
+import org.xottys.userinterface.animation.page_transformer.PageTransformerActivity;
+import org.xottys.userinterface.animation.physics.PhysicsAnimationActivity;
+import org.xottys.userinterface.animation.transition.TransitionAnimationActivity;
+import org.xottys.userinterface.animation.view_animator.ViewAnimatorActivity;
+
 
 public class MainActivity extends LauncherActivity {
 
     //定义要跳转的各个Activity的名称
     String[] names = {"Tweened Animation Demo", "Frame Animation Demo", "Basic PropertyAnimation Demo", "Advanced PropertyAnimation Demo",
-            "Physics Animation Demo", "Transition Animation Demo","ViewAnimator Demo","AdapterViewAnimator Demo","VectorDrawable Demo","SVG Animation Demo","FragmentTransaction Animation Demo","PageTransformer Demo","3D Animation Demo" };
+            "Physics Animation Demo", "Transition Animation Demo","ViewAnimator Demo","AdapterViewAnimator Demo","Anim Drawable Demo","SVG Animation Demo","FragmentTransaction Animation Demo","PageTransformer Demo","3D Animation Demo" };
 
     //定义各个Activity对应的实现类
     Class<?>[] clazzs = {TweenedAnimationActivity.class, FrameAnimationActivity.class, BasicPropertyAnimationActivity.class, AdvancedPropertyAnimationActivity.class,
-           PhysicsAnimationActivity.class, TransitionAnimationActivity.class, ViewAnimatorActivity.class,AdapterViewAnimatorActivity.class,VectorDrawableActivity.class,CustomSVGActivity.class,FragmentTransactionActivity.class,PageTransformerActivity.class, Transition3dActivity.class};
+           PhysicsAnimationActivity.class, TransitionAnimationActivity.class, ViewAnimatorActivity.class,AdapterViewAnimatorActivity.class,AnimDrawableActivity.class,CustomSVGActivity.class,FragmentTransactionActivity.class,PageTransformerActivity.class, Transition3dActivity.class};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

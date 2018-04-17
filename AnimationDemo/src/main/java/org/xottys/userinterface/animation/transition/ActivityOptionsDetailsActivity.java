@@ -1,23 +1,17 @@
-/*
- * Copyright (C) 2014 The Android Open Source Project
+/**
+ * 本例为演示ActivityOptions的目标Activity，主要是根据上一个Activity传入图片名称正确显示图片即可
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:FrameAnimationActivity
+ * <br/>Date:Mar，2018
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @author xottys@163.com
+ * @version 1.0
  */
 package org.xottys.userinterface.animation.transition;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -26,48 +20,38 @@ import android.widget.ImageView;
 
 import org.xottys.userinterface.animation.R;
 
-
 public class ActivityOptionsDetailsActivity extends Activity {
-
-    private static final String TAG = "ActivityTransitionDetails";
 
     private static final String KEY_ID = "ViewTransitionValues:id";
 
     private int mImageResourceId = R.drawable.ducky;
 
-    private String mName = "ducky";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawable(new ColorDrawable(randomColor()));
+        //设置随机背景色
+        getWindow().setBackgroundDrawable(new ColorDrawable(ActivityOptionsActivity.randomColor()));
         setContentView(R.layout.optionsdetails);
-        ImageView titleImage =  findViewById(R.id.titleImage);
+
+        //设置titleImage
+        ImageView titleImage = findViewById(R.id.titleImage);
         titleImage.setImageDrawable(getHeroDrawable());
     }
 
+    //根据上一个Activity传入的参数（图片名称）获得图片
     private Drawable getHeroDrawable() {
+        //获取上一个Activity传入的图片名称
         String name = getIntent().getStringExtra(KEY_ID);
+        //根据图片名称获取图片id
         if (name != null) {
-            mName = name;
             mImageResourceId = ActivityOptionsActivity.getDrawableIdForKey(name);
         }
-
-        return getResources().getDrawable(mImageResourceId);
+        //返回图片id所代表的图片资源
+        return getResources().getDrawable(mImageResourceId, null);
     }
 
+    //点击图片后返回
     public void clicked(View v) {
-        Intent intent = new Intent(this, ActivityOptionsActivity.class);
-        intent.putExtra(KEY_ID, mName);
-        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(this,
-                v, "hero");
-        startActivity(intent, activityOptions.toBundle());
-    }
-
-    private static int randomColor() {
-        int red = (int)(Math.random() * 128);
-        int green = (int)(Math.random() * 128);
-        int blue = (int)(Math.random() * 128);
-        return 0xFF000000 | (red << 16) | (green << 8) | blue;
+        finishAfterTransition();
     }
 }

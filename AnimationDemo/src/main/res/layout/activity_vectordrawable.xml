@@ -1,38 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/iv_5"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onTransClick"
+        android:src="@drawable/drawable_transition"
+        android:contentDescription="TransitionDrawable"/>
+    <ImageView
+        android:id="@+id/iv_1"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="10dp"
+        android:onClick="onArrowClick"
+        android:src="@drawable/animvector"
+        android:contentDescription="AnimatedVectorDrawable"/>
 
-        <ImageView
-            android:id="@+id/iv_1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="40dp"
-            android:onClick="onArrowClick"
-            android:src="@drawable/animvector" />
+
+
+    <ImageView
+        android:id="@+id/iv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:contentDescription="AnimatedStateListDrawable"
+        android:onClick="onTwitterClick"
+        android:src="@drawable/animselector2" />
 
         <ImageView
             android:id="@+id/iv_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:contentDescription="@null"
-            android:scaleType="fitCenter"
+
+            android:contentDescription="AnimatedStateListDrawable "
             android:onClick="onSearchBoxClick"
             android:src="@drawable/animselector1" />
 
-        <ImageView
-            android:id="@+id/iv_3"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="36dp"
-            android:contentDescription="@null"
-            android:scaleType="fitCenter"
-            android:onClick="onTwitterClick"
-            android:src="@drawable/animselector2" />
 
-    </LinearLayout>
+<!--<LinearLayout-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:gravity="center_horizontal"-->
+<!--android:layout_marginTop="20dp"-->
+<!--android:orientation="horizontal">-->
+    <ImageView
+        android:id="@+id/iv_4"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/svg_heart"
+        android:contentDescription="StateListAnimator"/>
+
+
+<!--</LinearLayout>-->
+</LinearLayout>
+</ScrollView>

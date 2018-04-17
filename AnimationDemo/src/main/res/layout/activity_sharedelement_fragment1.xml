@@ -22,12 +22,12 @@
 
 
     <Button
-        android:id="@+id/sample2_button1"
+        android:id="@+id/sample_button1"
         android:text="Next (Overlap transition = false)"
         style="@style/MaterialAnimations.Button" />
 
     <Button
-        android:id="@+id/sample2_button2"
+        android:id="@+id/sample_button2"
         android:text="Next (Overlap transition =  true)"
         style="@style/MaterialAnimations.Button" />
 

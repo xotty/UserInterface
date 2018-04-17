@@ -24,9 +24,6 @@ package org.xottys.userinterface;
 
 import android.content.Context;
 import android.support.text.emoji.EmojiCompat;
-import android.support.text.emoji.widget.EmojiAppCompatEditText;
-import android.support.text.emoji.widget.EmojiAppCompatTextView;
-import android.support.text.emoji.widget.EmojiTextView;
 import android.support.v7.app.AppCompatActivity;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -70,7 +67,6 @@ import static org.xottys.userinterface.R.string.styled_24_hour_clock2;
 
 public class TextViewActivity extends AppCompatActivity {
     /** Change this to {@code false} when you want to use the downloadable Emoji font. */
-    private static final boolean USE_BUNDLED_EMOJI = true;
 
     // [U+1F469] (WOMAN) + [U+200D] (ZERO WIDTH JOINER) + [U+1F4BB] (PERSONAL COMPUTER)
     private static final String WOMAN_TECHNOLOGIST = "\uD83D\uDC69\u200D\uD83D\uDCBB";

@@ -1,3 +1,14 @@
+/**
+ * 本例通过ListView和ImageView显示和隐藏呈现3D立体翻转的动画效果：
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Google
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:Transition3dActivity
+ * <br/>Date:Mar，2018
+ *
+ * @author Google
+ * @version 1.0
+ */
 package org.xottys.userinterface.animation;
 
 import android.app.Activity;
@@ -54,14 +65,14 @@ public class Transition3dActivity extends Activity implements
 
         setContentView(R.layout.acvtivity_transition3d);
 
-        mPhotosList = (ListView) findViewById(android.R.id.list);
-        mImageView = (ImageView) findViewById(R.id.picture);
-        mContainer = (ViewGroup) findViewById(R.id.container);
+        //mContainer= mPhotosList+mImageView
+        mContainer =  findViewById(R.id.container);
+        mPhotosList =  findViewById(android.R.id.list);
+        mImageView =  findViewById(R.id.picture);
 
-        // Prepare the ListView
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        //Prepare the ListView
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, PHOTOS_NAMES);
-
         mPhotosList.setAdapter(adapter);
         mPhotosList.setOnItemClickListener(this);
 
@@ -70,9 +81,19 @@ public class Transition3dActivity extends Activity implements
         mImageView.setFocusable(true);
         mImageView.setOnClickListener(this);
 
-        // Since we are caching large views, we want to keep their cache
-        // between each animation
+        // Since we are caching large views, we want to keep their cache between each animation
         mContainer.setPersistentDrawingCache(ViewGroup.PERSISTENT_ANIMATION_CACHE);
+    }
+
+
+    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+        // Pre-load the image then start the animation
+        mImageView.setImageResource(PHOTOS_RESOURCES[position]);
+        applyRotation(position, 0, 90);
+    }
+
+    public void onClick(View v) {
+        applyRotation(-1, 180, 90);
     }
 
     /**
@@ -98,17 +119,6 @@ public class Transition3dActivity extends Activity implements
 
         mContainer.startAnimation(rotation);
     }
-
-    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        // Pre-load the image then start the animation
-        mImageView.setImageResource(PHOTOS_RESOURCES[position]);
-        applyRotation(position, 0, 90);
-    }
-
-    public void onClick(View v) {
-        applyRotation(-1, 180, 90);
-    }
-
     /**
      * This class listens for the end of the first half of the animation.
      * It then posts a new action that effectively swaps the views when the container
@@ -147,7 +157,7 @@ public class Transition3dActivity extends Activity implements
             final float centerX = mContainer.getWidth() / 2.0f;
             final float centerY = mContainer.getHeight() / 2.0f;
             Rotate3dAnimation rotation;
-            
+            //显示图片时
             if (mPosition > -1) {
                 mPhotosList.setVisibility(View.GONE);
                 mImageView.setVisibility(View.VISIBLE);
@@ -155,6 +165,7 @@ public class Transition3dActivity extends Activity implements
 
                 rotation = new Rotate3dAnimation(90, 180, centerX, centerY, 310.0f, false);
             } else {
+                //显示列表时
                 mImageView.setVisibility(View.GONE);
                 mPhotosList.setVisibility(View.VISIBLE);
                 mPhotosList.requestFocus();

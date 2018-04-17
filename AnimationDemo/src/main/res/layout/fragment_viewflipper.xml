@@ -48,7 +48,5 @@
                         android:text="@string/animation_2_text_4"/>
     </ViewFlipper>
 
-
-
 </LinearLayout>
 

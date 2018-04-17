@@ -24,7 +24,6 @@
         <keyframe android:fraction="1" android:value="750" />
     </propertyValuesHolder>
     <propertyValuesHolder android:propertyName="y" >
-        <keyframe/>
         <keyframe android:fraction=".2" android:value="300" />
         <keyframe android:value="1000" />
     </propertyValuesHolder>

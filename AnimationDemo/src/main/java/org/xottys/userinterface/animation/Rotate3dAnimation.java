@@ -1,17 +1,17 @@
-/*
- * Copyright (C) 2007 The Android Open Source Project
+/**
+ * 通过覆写applyTransformation方法自定义Animation，实现现3D立体翻转的动画效果
+ * 1）Camera对象生成和初始化
+ * 2）调用Camera动画
+ * 3）将Camera的matrix赋值给Transformation的matrix
+ * 4）用Matrix的pre和post方法确定中心轴点
+ * <p>
+ * <br/>Copyright (C), 2017-2018,Google
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:Transition3dActivity
+ * <br/>Date:Mar，2018
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * @author Google
+ * @version 1.0
  */
 
 package org.xottys.userinterface.animation;
@@ -65,27 +65,32 @@ public class Rotate3dAnimation extends Animation {
         mCamera = new Camera();
     }
 
+    //通过设置Transformation参数的matrix来实现视图变换
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation t) {
         final float fromDegrees = mFromDegrees;
         float degrees = fromDegrees + ((mToDegrees - fromDegrees) * interpolatedTime);
-
         final float centerX = mCenterX;
         final float centerY = mCenterY;
         final Camera camera = mCamera;
 
         final Matrix matrix = t.getMatrix();
-
+        //视图以Z为轴移动（拉近或远离屏幕）
         camera.save();
         if (mReverse) {
             camera.translate(0.0f, 0.0f, mDepthZ * interpolatedTime);
         } else {
             camera.translate(0.0f, 0.0f, mDepthZ * (1.0f - interpolatedTime));
         }
+
+        //以Y为轴旋转degrees
         camera.rotateY(degrees);
+        //旋转后的视图矩阵放入matrix
         camera.getMatrix(matrix);
+
         camera.restore();
 
+        //先将旋转中心移动到（0,0）点，因为Matrix总是用0,0点作为旋转点，旋转之后将视图放回原来的位置。
         matrix.preTranslate(-centerX, -centerY);
         matrix.postTranslate(centerX, centerY);
     }

@@ -23,22 +23,19 @@
         android:textColor="@color/colorPrimary"
         android:textAllCaps="false"
         android:onClick="onClick"/>
-
-    <Button
-        android:id="@+id/Wave_Scale"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Wave Scale"
-        android:textColor="@color/colorPrimary"
-        android:textAllCaps="false"
-        android:onClick="onClick"/>
-
-
     <Button
         android:id="@+id/Nested_Animation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nested Animation"
+        android:textColor="@color/colorPrimary"
+        android:textAllCaps="false"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/Wave_Scale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wave Scale"
         android:textColor="@color/colorPrimary"
         android:textAllCaps="false"
         android:onClick="onClick"/>

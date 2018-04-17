@@ -1,3 +1,15 @@
+/**
+ * 本例演示了用自定义路径方式（类似矢量图）来构造视图及其动画
+ *
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:CustomSVGActivity
+ * <br/>Date:Mar，2018
+ *
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface.animation;
 
 import android.app.Activity;
@@ -6,11 +18,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
-import org.xottys.userinterface.animation.views.TransPathView;
-
 
 public class CustomSVGActivity extends Activity {
-
+    //自定义路径（表示数字0～9）
     public static final String PATH_0 = "M19,48 L34,34 L52,53 L52,97 L19,118 Z M38,30 L52,15 L107,15 L121,30 L103,48 L56,48 Z M108,52 L126,34 L141,49 L141,118 L107,97 Z M107,139 L141,123 L141,191 L126,206 L107,188 Z M56,192 L102,192 L121,211 L107,225 L53,225 L38,211 Z M19,123 L52,139 L52,188 L33,206 L19,192 Z M28,120 L28,120 L28,120 L28,120 L28,120 L28,120 Z";
     public static final String PATH_1 = "M19,48 L34,34 L52,53 L52,97 L19,118 Z M38,30 L38,30 L38,30 L38,30 L38,30 L38,30 Z M108,52 L108,52 L108,52 L108,52 L108,52 Z M107,139 L107,139 L107,139 L107,139 L107,139 Z M56,192 L56,192 L56,192 L56,192 L56,192 L56,192 Z M19,123 L52,139 L52,188 L33,206 L19,192 Z M28,120 L28,120 L28,120 L28,120 L28,120 L28,120 Z";
     public static final String PATH_2 = "M19,48 L19,48 L19,48 L19,48 L19,48 Z M38,30 L52,15 L107,15 L121,30 L103,48 L56,48 Z M108,52 L126,34 L141,49 L141,118 L107,97 Z M107,139 L107,139 L107,139 L107,139 L107,139 Z M56,192 L102,192 L121,211 L107,225 L53,225 L38,211 Z M19,123 L52,139 L52,188 L33,206 L19,192 Z M28,120 L56,102 L103,102 L131,120 L104,134 L56,134 Z";
@@ -25,6 +35,7 @@ public class CustomSVGActivity extends Activity {
     String[] arr = new String[]{PATH_0, PATH_1, PATH_2, PATH_3, PATH_4, PATH_5, PATH_6, PATH_7, PATH_8, PATH_9};
     TransPathView transView;
 
+    //设置初始显示的数字
     String currPath = PATH_0;
 
     @Override
@@ -35,7 +46,7 @@ public class CustomSVGActivity extends Activity {
         transView.setViewPort(160, 240);
         transView.setPaths(currPath, PATH_0);
     }
-
+    //点击0～9后旋转360度显示当前点击的数字
     public void startTrans(View view) {
         int num2 = Integer.parseInt(((Button)view).getText().toString().trim());
         transView.setPaths(currPath, arr[num2]);

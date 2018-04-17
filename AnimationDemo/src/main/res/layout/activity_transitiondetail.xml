@@ -8,8 +8,7 @@
         android:id="@+id/holder_view"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:background="?android:colorPrimary"
-        android:transitionName="share" />
+        android:background="?android:colorPrimary"/>
 
     <TextView
         android:id="@+id/title_name"
@@ -17,22 +16,11 @@
         android:layout_height="wrap_content"
         android:textSize="38sp"
         android:text="xottys@163.com"
-        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="12dp"
         android:elevation="5dp"
         android:transitionName="title_name"
         android:textColor="#fafafa"/>
-
-    <!--<Button-->
-        <!--android:id="@+id/fab_button"-->
-        <!--android:layout_width="160dp"-->
-        <!--android:layout_height="160dp"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_below="@id/holder_view"-->
-        <!--android:layout_marginTop="-80dp"-->
-        <!--android:background="@mipmap/ic_launcher"-->
-        <!--android:elevation="5dp"-->
-        <!--android:transitionName="fab" />-->
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img"
         android:layout_alignParentEnd="true"

@@ -1,3 +1,15 @@
+/**
+ * 本例为演示场景动画TransitionManager的TAB宿主程序
+ * <p>
+ * <p>
+ * <br/>Copyright (C), 2017-2018, Steve Chang
+ * <br/>This program is protected by copyright laws.
+ * <br/>Program Name:FrameAnimationActivity
+ * <br/>Date:Mar，2018
+ *
+ * @author xottys@163.com
+ * @version 1.0
+ */
 package org.xottys.userinterface.animation.transition;
 
 import android.os.Bundle;
@@ -5,14 +17,12 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
 import org.xottys.userinterface.animation.R;
 
-public class TransitionManagerActivity extends FragmentActivity{
-    private TextView textView;
+public class TransitionManagerActivity extends FragmentActivity {
     LayoutInflater mLayoutInflater;
     // 存放Fragment的数组
     private Class mFragmentArray[] = {TransitionManagerFragment1.class, TransitionManagerFragment2.class};
@@ -22,7 +32,6 @@ public class TransitionManagerActivity extends FragmentActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
         setContentView(R.layout.activity_transitionmanager);
 
         mLayoutInflater = LayoutInflater.from(this);
@@ -47,10 +56,11 @@ public class TransitionManagerActivity extends FragmentActivity{
 
         }
     }
-        //给每个Tab按钮设置图标和文字
+
+    //给每个Tab按钮设置图标和文字
     private View getTabItemView(int index) {
         View view = mLayoutInflater.inflate(R.layout.tab_item_view, null);
-        textView = view.findViewById(R.id.textview);
+        TextView textView = view.findViewById(R.id.textview);
         textView.setText(mTextArray[index]);
         return view;
     }

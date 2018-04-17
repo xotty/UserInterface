@@ -16,4 +16,5 @@
 
 <layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
         android:delay="10%"
-        android:animation="@anim/slide_left" />
+        android:animation="@anim/slide_left"
+        android:duration="20000"/>
