@@ -3,9 +3,14 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ActivityFragmentDemo/ActivityFragmentDemo.iml" filepath="$PROJECT_DIR$/ActivityFragmentDemo/ActivityFragmentDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ActivityFragmentDemo/ActivityFragmentDemo.iml" filepath="$PROJECT_DIR$/ActivityFragmentDemo/ActivityFragmentDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AnimationDemo/AnimationDemo.iml" filepath="$PROJECT_DIR$/AnimationDemo/AnimationDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/AnimationDemo/AnimationDemo.iml" filepath="$PROJECT_DIR$/AnimationDemo/AnimationDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/LayoutDemo/LayoutDemo.iml" filepath="$PROJECT_DIR$/LayoutDemo/LayoutDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LayoutDemo/LayoutDemo.iml" filepath="$PROJECT_DIR$/LayoutDemo/LayoutDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/UIWidgetsDemo/UIWidgetsDemo.iml" filepath="$PROJECT_DIR$/UIWidgetsDemo/UIWidgetsDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UIWidgetsDemo/UIWidgetsDemo.iml" filepath="$PROJECT_DIR$/UIWidgetsDemo/UIWidgetsDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/UserInterface.iml" filepath="$PROJECT_DIR$/.idea/UserInterface.iml" />
       <module fileurl="file://$PROJECT_DIR$/UserInterface.iml" filepath="$PROJECT_DIR$/UserInterface.iml" />
     </modules>
   </component>

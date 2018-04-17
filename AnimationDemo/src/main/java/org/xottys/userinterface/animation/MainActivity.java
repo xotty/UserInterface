@@ -30,8 +30,9 @@ public class MainActivity extends LauncherActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        //自定义Adapter以实现不同item显示颜色不同
         final BaseAdapter adapter = new BaseAdapter() {
-
             //返回有多少个item
             @Override
             public int getCount() {
