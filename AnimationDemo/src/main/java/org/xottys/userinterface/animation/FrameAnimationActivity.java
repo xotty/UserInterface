@@ -4,7 +4,7 @@
  * 2）定义animationlist：在res/drawable目录下用xml标签<animation-list>将一组连续的动画图片顺序组合
  * 3）将animationlist装入Imageview，mImageView.setImageResource(R.drawable.animationlist)
  * 4）启动动画：AnimationDrawable animationDrawable = (AnimationDrawable) mImageView.getDrawable();
- *            animationDrawable1.start();
+ *            animationDrawable.start();
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.

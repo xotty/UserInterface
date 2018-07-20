@@ -3,7 +3,7 @@
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
- * <br/>Program Name:PhysicsAnimationActivity
+ * <br/>Program Name:PhysicsMainActivity
  * <br/>Date:Mar，2018
  *
  * @author xottys@163.com
@@ -161,8 +161,8 @@ public class AlipayFailureView extends View {
         });
 
         //右线动画
-        mLineRightAnimator.setDuration(350);
         mLineRightAnimator = ValueAnimator.ofFloat(0, pathRightMeasure.getLength());
+        mLineRightAnimator.setDuration(350);
         mLineRightAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {

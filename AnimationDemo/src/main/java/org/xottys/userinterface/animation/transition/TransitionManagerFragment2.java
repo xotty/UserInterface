@@ -51,7 +51,6 @@ public class TransitionManagerFragment2 extends Fragment {
         TransitionInflater transitionInflater = TransitionInflater.from(getContext());
         mTransitionManager = transitionInflater.inflateTransitionManager(R.transition.transitions_mgr,
                 mSceneRoot);
-
         return view;
     }
 
@@ -75,7 +74,7 @@ public class TransitionManagerFragment2 extends Fragment {
                         mTransitionManager.transitionTo(mScene2);
                         break;
                     case R.id.scene3:
-                        //设置到mScene2到mScene3的过渡动画
+                        //设置从mScene2到mScene3的过渡动画
                         mTransitionManager.setTransition(mScene2, mScene3, new Slide(Gravity.TOP));
                         //转换到mScene3
                         mTransitionManager.transitionTo(mScene3);

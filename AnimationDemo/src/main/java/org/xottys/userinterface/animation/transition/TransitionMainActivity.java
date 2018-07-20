@@ -24,7 +24,7 @@ import android.widget.ListView;
 
 import org.xottys.userinterface.animation.R;
 
-public class TransitionAnimationActivity extends ListActivity {
+public class TransitionMainActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +44,19 @@ public class TransitionAnimationActivity extends ListActivity {
         Intent intent=null;
         switch (position){
             case 0:
-                intent=new Intent(TransitionAnimationActivity.this,ActivityOptionsActivity.class);
+                intent=new Intent(TransitionMainActivity.this,ActivityOptionsActivity.class);
                 break;
             case 1:
-                intent=new Intent(TransitionAnimationActivity.this,TransitionActivity.class);
+                intent=new Intent(TransitionMainActivity.this,TransitionActivity.class);
                 break;
             case 2:
-                intent=new Intent(TransitionAnimationActivity.this,TransitionManagerActivity.class);
+                intent=new Intent(TransitionMainActivity.this,TransitionManagerActivity.class);
                 break;
             case 3:
-                intent=new Intent(TransitionAnimationActivity.this,LayoutTransitionActivity.class);
+                intent=new Intent(TransitionMainActivity.this,LayoutTransitionActivity.class);
                 break;
             case 4:
-                intent=new Intent(TransitionAnimationActivity.this,LayoutAnimationControllerActivity.class);
+                intent=new Intent(TransitionMainActivity.this,LayoutAnimationControllerActivity.class);
                 break;
         }
         ActivityOptions activityOptions

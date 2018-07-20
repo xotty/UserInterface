@@ -4,7 +4,6 @@
  * 2）完全xml方式定义和加载LayoutAnimationController
  * 3）xml方式定义LayoutAnimationController，代码和xml中分别加载之
  * 4）设置/移除监听器(可选)
- * 5）
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.

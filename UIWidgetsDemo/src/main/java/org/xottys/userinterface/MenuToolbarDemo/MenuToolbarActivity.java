@@ -71,7 +71,7 @@ import android.widget.Toast;
 
 import org.xottys.userinterface.BuildConfig;
 import org.xottys.userinterface.ImageViewActivity;
-import org.xottys.userinterface.R;
+
 import org.xottys.userinterface.ScrollViewDemo.ScrollViewActivity;
 import org.xottys.userinterface.WebViewActivity;
 
@@ -81,6 +81,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
+
+import org.xottys.userinterface.R;
 
 public class MenuToolbarActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private static final String SHARED_FILE_NAME = "mshared.png";

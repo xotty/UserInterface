@@ -105,12 +105,12 @@ public class BasicAdapterViewActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //获取点击行Item的视图
-                CheckedTextView tvCheck = (CheckedTextView) parent.getChildAt(position);
-
+                int childPosition=position - parent.getFirstVisiblePosition();
+                CheckedTextView tvCheck = (CheckedTextView)parent.getChildAt(childPosition);
                 if (!tvCheck.isChecked()) {
                     tvCheck.toggle();
-                    for (int i = 0; i < arr2.length; i++) {
-                        if (i != position) {
+                    for (int i = 0; i < parent.getChildCount(); i++) {
+                        if (i != childPosition) {
                             ((CheckedTextView) parent.getChildAt(i)).setChecked(false);
                         }
                     }

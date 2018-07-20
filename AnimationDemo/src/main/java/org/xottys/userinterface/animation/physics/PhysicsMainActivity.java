@@ -6,7 +6,7 @@
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
- * <br/>Program Name:PhysicsAnimationActivity
+ * <br/>Program Name:PhysicsMainActivity
  * <br/>Date:Mar，2018
  *
  * @author xottys@163.com
@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 import org.xottys.userinterface.animation.R;
 
-public class PhysicsAnimationActivity extends FragmentActivity {
+public class PhysicsMainActivity extends FragmentActivity {
     LayoutInflater mLayoutInflater;
     // 存放Fragment的数组
     private Class mFragmentArray[] = {BasicDynamicAnimationFragment.class, BallSpringFragment.class, ChainedSpringFragment.class};

@@ -12,8 +12,8 @@ import android.widget.TextView;
 import org.xottys.userinterface.animation.adapterview_animator.AdapterViewAnimatorActivity;
 import org.xottys.userinterface.animation.advanced_property_animation.AdvancedPropertyAnimationActivity;
 import org.xottys.userinterface.animation.page_transformer.PageTransformerActivity;
-import org.xottys.userinterface.animation.physics.PhysicsAnimationActivity;
-import org.xottys.userinterface.animation.transition.TransitionAnimationActivity;
+import org.xottys.userinterface.animation.physics.PhysicsMainActivity;
+import org.xottys.userinterface.animation.transition.TransitionMainActivity;
 import org.xottys.userinterface.animation.view_animator.ViewAnimatorActivity;
 
 
@@ -25,12 +25,12 @@ public class MainActivity extends LauncherActivity {
 
     //定义各个Activity对应的实现类
     Class<?>[] clazzs = {TweenedAnimationActivity.class, FrameAnimationActivity.class, BasicPropertyAnimationActivity.class, AdvancedPropertyAnimationActivity.class,
-           PhysicsAnimationActivity.class, TransitionAnimationActivity.class, ViewAnimatorActivity.class,AdapterViewAnimatorActivity.class,AnimDrawableActivity.class,CustomSVGActivity.class,FragmentTransactionActivity.class,PageTransformerActivity.class, Transition3dActivity.class};
+           PhysicsMainActivity.class, TransitionMainActivity.class, ViewAnimatorActivity.class,AdapterViewAnimatorActivity.class,AnimDrawableActivity.class,CustomSVGActivity.class,FragmentTransactionActivity.class,PageTransformerActivity.class, Transition3dActivity.class};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         //自定义Adapter以实现不同item显示颜色不同
         final BaseAdapter adapter = new BaseAdapter() {
             //返回有多少个item

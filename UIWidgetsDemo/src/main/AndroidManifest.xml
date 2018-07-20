@@ -169,7 +169,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="org.xottys.fileProvider"
+            android:authorities="org.xottys.userinterface.uiwidgets.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

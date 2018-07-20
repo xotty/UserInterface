@@ -38,14 +38,13 @@ import android.animation.AnimatorInflater;
 import android.animation.StateListAnimator;
 import android.app.Activity;
 import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 public class AnimDrawableActivity extends Activity {
@@ -62,7 +61,10 @@ public class AnimDrawableActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vectordrawable);
+        setContentView(R.layout.activity_animdrawable);
+        //关闭软键盘
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         //AnimatedVectorDrawable演示
         iv1 = findViewById(R.id.iv_1);
         //AnimatedStateListDrawable演示
@@ -75,7 +77,7 @@ public class AnimDrawableActivity extends Activity {
         //将加载的动画运用到控件上
         iv4.setStateListAnimator(stateListAnimator);
 
-        iv5 = (ImageView) findViewById(R.id.iv_5);
+        iv5 = findViewById(R.id.iv_5);
         transitionDrawable = (TransitionDrawable) iv5.getDrawable();
         transitionDrawable.startTransition(3000);
     }

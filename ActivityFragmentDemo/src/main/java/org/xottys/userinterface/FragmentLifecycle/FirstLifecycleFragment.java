@@ -21,8 +21,8 @@
  */
 package org.xottys.userinterface.FragmentLifecycle;
 
-import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,8 +37,8 @@ public class FirstLifecycleFragment extends Fragment {
 
     //Activity与Fragment绑定
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
         ((FragmentLifecycleActivity) getActivity()).setTvText("----onAttach----");
         Log.d(TAG, "----onAttach----");

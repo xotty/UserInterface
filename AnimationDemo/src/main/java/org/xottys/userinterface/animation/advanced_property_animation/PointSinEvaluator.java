@@ -4,7 +4,7 @@
  * <p>
  * <br/>Copyright (C), 2017-2018, Steve Chang
  * <br/>This program is protected by copyright laws.
- * <br/>Program Name:PhysicsAnimationActivity
+ * <br/>Program Name:PhysicsMainActivity
  * <br/>Date:Mar，2018
  *
  * @author xottys@163.com

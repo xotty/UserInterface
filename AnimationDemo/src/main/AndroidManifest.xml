@@ -30,10 +30,10 @@
             android:label="ViewAnimator"
             />
         <activity
-            android:name=".physics.PhysicsAnimationActivity"
+            android:name=".physics.PhysicsMainActivity"
             android:label="PhysicsAnimation" />
         <activity
-            android:name=".transition.TransitionAnimationActivity"
+            android:name=".transition.TransitionMainActivity"
             android:label="TransitionAnimation" />
         <activity
             android:name=".CustomSVGActivity"
