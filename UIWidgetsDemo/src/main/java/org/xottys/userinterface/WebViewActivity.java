@@ -17,19 +17,17 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class WebViewActivity extends Activity {
-    
+    WebView wv;
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         
         setContentView(R.layout.webview);
-        
-        WebView wv;
-        
         wv = (WebView) findViewById(R.id.wv);
 
         //WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、网站title、加载进度等
@@ -39,8 +37,8 @@ public class WebViewActivity extends Activity {
         //WebViewClient主要帮助WebView处理各种通知、请求事件的,希望点击链接继续在当前browser中响应，必须覆盖 WebViewClient对象
         wv.setWebViewClient(new WebViewClient() {
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                view.loadUrl(request.getUrl().toString());
                 return true;
             }
             @Override
@@ -60,5 +58,11 @@ public class WebViewActivity extends Activity {
         //加载网页
         wv.loadUrl("http://www.baidu.com");
 
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        wv.removeAllViews();
+        wv.destroy();
     }
 }

@@ -21,17 +21,18 @@ package org.xottys.userinterface.AdvancedViewGroup;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomSheetDialog;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.NestedScrollView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.fragment.app.Fragment;
+import androidx.core.widget.NestedScrollView;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -93,13 +94,12 @@ public class MaterialDesignFragment extends Fragment implements View.OnClickList
         btn_bottom_dialog.setOnClickListener(this);
         btn_fuulscreen_dialog.setOnClickListener(this);
 
-
         BottomNavigationView navigation = (BottomNavigationView) nestedScrollView.findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // If BottomNavigationView has more than 3 items, using reflection to disable shift mode
-        disableShiftMode(navigation);
-
+        // disableShiftMode(navigation);
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         return nestedScrollView;
     }
 
@@ -192,23 +192,23 @@ public class MaterialDesignFragment extends Fragment implements View.OnClickList
         }
     }
 
-    //通过反射关闭BottomNavigationView中Item的移动
-    public void disableShiftMode(BottomNavigationView navigationView) {
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigationView.getChildAt(0);
-        try {
-            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
-            shiftingMode.setAccessible(true);
-            shiftingMode.setBoolean(menuView, false);
-            shiftingMode.setAccessible(false);
-
-            for (int i = 0; i < menuView.getChildCount(); i++) {
-                BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(i);
-                itemView.setShiftingMode(false);
-                itemView.setChecked(itemView.getItemData().isChecked());
-            }
-
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
+//    //通过反射关闭BottomNavigationView中Item的移动
+//    public void disableShiftMode(BottomNavigationView navigationView) {
+//        BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigationView.getChildAt(0);
+//        try {
+//            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+//            shiftingMode.setAccessible(true);
+//            shiftingMode.setBoolean(menuView, false);
+//            shiftingMode.setAccessible(false);
+//
+//            for (int i = 0; i < menuView.getChildCount(); i++) {
+//                BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(i);
+//                itemView.setShiftingMode(false);
+//                itemView.setChecked(itemView.getItemData().isChecked());
+//            }
+//
+//        } catch (NoSuchFieldException | IllegalAccessException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

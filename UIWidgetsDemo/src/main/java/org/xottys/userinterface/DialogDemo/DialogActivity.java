@@ -22,7 +22,7 @@
  */
 package org.xottys.userinterface.DialogDemo;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;

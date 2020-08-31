@@ -3,15 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ActivityFragmentDemo/ActivityFragmentDemo.iml" filepath="$PROJECT_DIR$/ActivityFragmentDemo/ActivityFragmentDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ActivityFragmentDemo/ActivityFragmentDemo.iml" filepath="$PROJECT_DIR$/ActivityFragmentDemo/ActivityFragmentDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/AnimationDemo/AnimationDemo.iml" filepath="$PROJECT_DIR$/AnimationDemo/AnimationDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AnimationDemo/AnimationDemo.iml" filepath="$PROJECT_DIR$/AnimationDemo/AnimationDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/LayoutDemo/LayoutDemo.iml" filepath="$PROJECT_DIR$/LayoutDemo/LayoutDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Demo-UserInterface.iml" filepath="$PROJECT_DIR$/.idea/modules/Demo-UserInterface.iml" group="UserInterface" />
       <module fileurl="file://$PROJECT_DIR$/LayoutDemo/LayoutDemo.iml" filepath="$PROJECT_DIR$/LayoutDemo/LayoutDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/UIWidgetsDemo/UIWidgetsDemo.iml" filepath="$PROJECT_DIR$/UIWidgetsDemo/UIWidgetsDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/UIWidgetsDemo/UIWidgetsDemo.iml" filepath="$PROJECT_DIR$/UIWidgetsDemo/UIWidgetsDemo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/UserInterface.iml" filepath="$PROJECT_DIR$/.idea/UserInterface.iml" />
       <module fileurl="file://$PROJECT_DIR$/UserInterface.iml" filepath="$PROJECT_DIR$/UserInterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ActivityFragmentDemo/UserInterface-ActivityFragmentDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/ActivityFragmentDemo/UserInterface-ActivityFragmentDemo.iml" group="UserInterface/ActivityFragmentDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AnimationDemo/UserInterface-AnimationDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/AnimationDemo/UserInterface-AnimationDemo.iml" group="UserInterface/AnimationDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LayoutDemo/UserInterface-LayoutDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/LayoutDemo/UserInterface-LayoutDemo.iml" group="UserInterface/LayoutDemo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UIWidgetsDemo/UserInterface-UIWidgetsDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/UIWidgetsDemo/UserInterface-UIWidgetsDemo.iml" group="UserInterface/UIWidgetsDemo" />
     </modules>
   </component>
 </project>

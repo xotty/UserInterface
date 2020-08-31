@@ -18,7 +18,7 @@ package org.xottys.userinterface.animation.transition;
 import android.app.Activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.transition.ChangeBounds;
 import android.transition.Explode;
 import android.transition.Fade;

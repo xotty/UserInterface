@@ -31,7 +31,7 @@ import android.util.AttributeSet;
 
 import org.xottys.userinterface.R;
 
-public class RoundImageView extends android.support.v7.widget.AppCompatImageView {
+public class RoundImageView extends androidx.appcompat.widget.AppCompatImageView {
     private Paint mPaint = new Paint();
     private Path mPath = new Path();
     private Xfermode mXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);

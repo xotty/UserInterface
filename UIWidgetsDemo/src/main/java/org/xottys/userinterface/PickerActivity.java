@@ -17,7 +17,7 @@ package org.xottys.userinterface;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.NumberPicker;

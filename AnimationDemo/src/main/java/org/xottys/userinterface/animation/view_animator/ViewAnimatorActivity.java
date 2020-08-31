@@ -16,8 +16,8 @@
 package org.xottys.userinterface.animation.view_animator;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTabHost;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TabHost.TabSpec;

@@ -17,7 +17,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.widget.ContentLoadingProgressBar;
+import androidx.core.widget.ContentLoadingProgressBar;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;

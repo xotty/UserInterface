@@ -18,7 +18,7 @@
 package org.xottys.userinterface.animation.transition;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.transition.ChangeBounds;
 import android.transition.Scene;
 import android.transition.Slide;

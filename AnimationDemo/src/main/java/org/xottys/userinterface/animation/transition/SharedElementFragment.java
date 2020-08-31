@@ -17,8 +17,8 @@ package org.xottys.userinterface.animation.transition;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.graphics.drawable.DrawableCompat;
+import androidx.fragment.app.Fragment;
+import androidx.core.graphics.drawable.DrawableCompat;
 import android.transition.ChangeBounds;
 import android.transition.Slide;
 import android.view.Gravity;

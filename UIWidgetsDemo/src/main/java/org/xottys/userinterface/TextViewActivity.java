@@ -23,8 +23,8 @@
 package org.xottys.userinterface;
 
 import android.content.Context;
-import android.support.text.emoji.EmojiCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.emoji.text.EmojiCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;

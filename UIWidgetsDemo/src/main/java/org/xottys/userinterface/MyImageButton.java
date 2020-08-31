@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 
-public class MyImageButton extends android.support.v7.widget.AppCompatImageButton{
+public class MyImageButton extends androidx.appcompat.widget.AppCompatImageButton{
     private String text = null;      //要显示的文字
     private int color;               //文字的颜色
     public MyImageButton(Context context, AttributeSet attrs) {
